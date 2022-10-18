@@ -1,0 +1,7 @@
+[
+{
+  "directory": "D:/development_code_2022-9-10/vscode/opencv/build",
+  "command": "D:\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\main.cpp.obj -c D:\\development_code_2022-9-10\\vscode\\opencv\\src\\main.cpp",
+  "file": "D:/development_code_2022-9-10/vscode/opencv/src/main.cpp"
+}
+]

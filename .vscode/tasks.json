@@ -1,0 +1,47 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    //这个是为了在下面执行mingw32-make.exe 和cmake ..，
+    //因为这两个命令在执行前要进入build文件夹中
+    //注意以下的所有配置等于在shell中执行了三条命令
+    // cd build
+    // cmake
+    // mingw32-make
+    // 这三条命令会按照cmakelists中的配置信息去执行命令，其实相当于makefile的升级版
+    "options": {
+        "cwd":"${workspaceFolder}/build"//这个相当于cd build
+    },
+
+    "tasks": [
+        //上面执行了cd build,以下会执行cmake ..;mingw32-make.exe 
+        //这个就是cmake的执行命令的全部。剩下的都是在CMakeLists.txt配置文件中
+        {
+            "type":"shell",
+            "label":"cmake",
+            "command":"cmake",
+            "args":[
+                ".."
+            ]
+        },
+        {
+            "label":"make",
+            "group":{
+                "kind": "build",
+                "isDefault": true
+            },
+            "command":"mingw32-make.exe",
+            "args":[
+                
+            ]
+        },
+        {
+            "label": "Build",
+            "dependsOn":[
+                "cmake",
+                "make"
+            ]
+        }
+
+    ],
+}
