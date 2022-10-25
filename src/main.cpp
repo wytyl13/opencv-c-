@@ -184,7 +184,7 @@ int main(int argc, char const *argv[])
     // notice: this ./ path is the current program opencv.
     // string path = "resources/image.jpg";
     // Mat img = imread(path);
-    // imshow("beautiful women image", img);
+    // imshow("the image", img);
     // waitKey(0);
 
 
@@ -197,7 +197,7 @@ int main(int argc, char const *argv[])
     // while (cap.read(img))
     // {
     //     // read the picture and store the result as img variable.
-    //     imshow("love movie", img);
+    //     imshow(" movie", img);
     //     // the unit is milliseconds. the next code meaning is 1 millisecond interval beatween each frame
     //     // if it is zero, it will be wait forever.
     //     waitKey(20);
@@ -250,12 +250,12 @@ int main(int argc, char const *argv[])
     // erosion the picture based on the imgDIL
     erode(imgDil, imgErode, kernel);
     //the bottom is to show the Mat array as a picture.
-    imshow("love image BGR", img);
-    imshow("love image GRAY", imgGray);
-    imshow("love image Blur", imgBlur);
-    imshow("love image CANNY", imgCanny);
-    imshow("love image DIL", imgDil);
-    imshow("love image ERODE", imgErode);
+    imshow(" image BGR", img);
+    imshow(" image GRAY", imgGray);
+    imshow(" image Blur", imgBlur);
+    imshow(" image CANNY", imgCanny);
+    imshow(" image DIL", imgDil);
+    imshow(" image ERODE", imgErode);
     */
     
     /** the next chapter we will learn how to resize the picture.
@@ -282,9 +282,9 @@ int main(int argc, char const *argv[])
     Mat imgCrop = imgResize2(screenshots);
     cout << "the size of screenshots is : " << screenshots.size() << endl;
 
-    imshow("love image resize1", imgResize1);
-    imshow("love image resize2", imgResize2);
-    imshow("love image Crop", imgCrop);
+    imshow(" image resize1", imgResize1);
+    imshow(" image resize2", imgResize2);
+    imshow(" image Crop", imgCrop);
     */
     
     /** the next we will create the picture by ourself.

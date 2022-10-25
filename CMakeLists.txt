@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.0)
 set(CMAKE_CXX_STANDARD 11)
 
+#echo the version about opencv
+MESSAGE("OpenCV version : ${OpenCV_VERSION}")
+
 #set the project_name is opencv for the variable PROJECT_NAME
 project(opencv)
 #file(GLOB_RECURSE SRC_DIR_LIST "src/*.cpp" "src/*.c")扫描目录下的所有文件存入变量
