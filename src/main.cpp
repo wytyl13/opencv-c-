@@ -1,14 +1,135 @@
 #include <iostream>
+#include <opencv2/opencv_modules.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/objdetect.hpp>
+#include <opencv2/core.hpp>
+
 #include <time.h>
 #include <vector>
 
 using namespace cv;
 using namespace std;
+
+typedef unsigned char uchar;
+// we will define some function about image zoom used c++, 
+// involved linear interpolation, binary linear interpolation, three linear interpolation.
+// we will define the method for gray image first. the method as follow is not suitable for
+// color images.
+// first, you should define a function that can get the element about one coordinates. it means 
+// give x and y, this function should return the corresponding element.
+// the grayscale is range from 0 to 255, so we should define the unsigned char to accept each element in picture.
+// unsigned char type can store the number that range from 0 to 255.
+
+uchar get_scale_value(Mat &input_image, int x, int y) 
+{
+    uchar *p = input_image.ptr<uchar>(x);
+    return p[y];
+}
+
+// then we should define the image zoom function, we will define a simple method that is named linear interpolation.
+// any +-*/ float/double = double
+// int +-*/ float = double
+// int +-*/ double = double
+// char +-*/ int = int
+// int / int = int
+// notice, you should ensure the grayscale of input_image is range from 0 to 255, it means the gray image downloaded
+// from network is not ensure it. so you shoud use cvtColor function to get the gray image.
+// float/double  modify  int = double. you can use any data type to accept the result, because the result will
+// implict type conversion.
+Mat scale(Mat &input_image, int height, int width) 
+{
+    // CV_8UC1 means gray image, 8 bits and single channel
+    // 8 means 8 bits, uc means unsigned char, 1 means 1 channel. it means we will create a gray picture.
+    Mat output_image(height, width, CV_8UC1);
+    output_image.setTo(0); // init all element used 0
+    float scale_rate_h = (float)input_image.rows / height;// calculate the height rate
+    float scale_rate_w = (float)input_image.cols / width;// calcute the width rate
+    // traverse each element used traditional method for circle.
+    for (int i = 0; i < height; i++)
+    {
+        uchar *p = output_image.ptr<uchar>(i);
+        for (int j = 0; j < width; j++)
+        {
+            // you should calculate the coordinates of the adjacent based on x, y and rate 
+            // during the period of traversing.
+            // of course the result will be float, but we want to get a integer, so we should casts
+            // from float to int. take down the whole will happen after casts from float to int.
+            // float * int = int;
+            int scale_i = scale_rate_h * i;
+            int scale_j = scale_rate_w * j;
+            p[j] = get_scale_value(input_image, scale_i, scale_j);
+        }
+    }
+    return output_image;
+}
+
+
+// of course, we can define the scale function used binary linear interpolation method.
+// this method just like the follow.
+/*
+-->
+|
+
+i, j                   i+1, j       
+       i+u, j+v
+
+i, j+1                 i+1, j+1
+0 < u, v < 1.
+because the i+u, j+v what elemet we want to calculate not neccessarily at the center of the image array.
+but we must could find the latest four elements. then we can calculate the result based the four elments.
+f(i+u, j+v) = (1-u)*(1-v)*f(i, j) + (1-u)*v*f(i,j+1) + u*(1-v)*f(i+1,j) + u*v*f(i+1,j+1)
+the f(i+u,j+v) is the result we want to get. then we start to define this function.
+notice, input corrdinates are not the int. but is the float.
+*/
+uchar get_scale_value_binary(Mat &input_image, float _i, float _j) 
+{
+    int i = _i;
+    int j = _j;
+    float u = _i - i;
+    float v = _j - j;
+
+    // handle the border problem
+    if ((i + 1 >= input_image.rows) || (j + 1 >= input_image.cols))
+    {
+        uchar *p = input_image.ptr<uchar>(i);
+        return p[j];
+    }
+    uchar *p = input_image.ptr<uchar>(i);
+    uchar x1 = p[j]; // f(i, j)
+    uchar x2 = p[j + 1]; // f(i, j + 1);
+    p = input_image.ptr<uchar>(i + 1);
+    uchar x3 = p[j]; // f(i+1, j)
+    uchar x4 = p[j + 1]; // f(i+1, j+1)
+    return (1 - u) * (1 - v) * x1 + (1 - u) * v * x2 + u * (1 - v) * x3 + u * v * x4;
+}
+
+// then we will define the function that generate the image after interpolating.
+Mat binary_linear_scale(Mat &input_image, int height, int width) 
+{
+    Mat output_image(height, width, CV_8UC1);
+    output_image.setTo(0); // init all element used 0
+    float scale_rate_h = (float)input_image.rows / height;// calculate the height rate
+    float scale_rate_w = (float)input_image.cols / width;// calcute the width rate
+    for (int i = 0; i < height; i++)
+    {
+        uchar *p = output_image.ptr<uchar>(i);
+        for (int j = 0; j < width; j++)
+        {
+            // you should calculate the coordinates of the adjacent based on x, y and rate 
+            // during the period of traversing.
+            // of course the result will be float, but we want to get a integer, so we should casts
+            // from float to int. take down the whole will happen after casts from float to int.
+            // float * int = int;
+            float scale_i = scale_rate_h * i;
+            float scale_j = scale_rate_w * j;
+            p[j] = get_scale_value_binary(input_image, scale_i, scale_j);
+        }
+    }
+    return output_image;
+}
 
 /**
  * @Author: weiyutao
@@ -160,7 +281,7 @@ void detectPlates()
     {
         capture.read(img);
         plateCascade.detectMultiScale(img, plates, 1.1, 10);
-        for (int i = 0; i < plates.size(); i++)
+        for (long long unsigned int i = 0; i < plates.size(); i++)
         {
             // we should save the plates based on the vetor plates.
             // this plates is a vector that have four points to show a rectangular, 
@@ -176,6 +297,9 @@ void detectPlates()
         waitKey(1);
     }
 }
+
+
+
 
 int main(int argc, char const *argv[])
 {
@@ -522,7 +646,89 @@ int main(int argc, char const *argv[])
     
     // the next chapter we will learn how to virtual graph.
     
-    detectPlates();
+    // detectPlates();
+
+
+    // the next we will learn the opencv basis knowledge
+    // you can read a image as the gray model, just like the next code.
+    // the second param is model, the default is 1 GBR, you should pass 0 if you want to show gray.
+    /*
+    Mat color = imread("resources/image1.jpg");
+    Mat gray = imread("resources/image1.jpg", 0);
+
+    if (!color.data)
+    {
+        cout << "could not open or find the image" << endl;
+        return -1;
+    }
+    // imshow("gray image", gray);
+    // Vec3b is the class to store the GBR, we can use  the Mat::at<typename>(row, col)
+    // to get a Vec3b what stored the GBR three element. 
+    int myRow = color.rows - 1;
+    int myCol = color.cols - 1;
+    Vec3b object = color.at<Vec3b>(myRow, myCol);
+
+    for (int i = 0; i < 3; i++)
+        cout << (int)object[i] << endl;
+    
+    VideoCapture cap;
+    cap.open(0);
+    if (!cap.isOpened())
+        return -1;
+    namedWindow("video", 1);
+    for (;;)
+    {
+        Mat frame;
+        if (cap.read(frame))
+        {
+            imshow("video", frame);
+        }
+        if (waitKey(30) >= 0)
+        {
+            break;
+        }
+    }
+
+    // page 40
+    // release the cap;
+    cap.release();
+    waitKey(0);
+    */
+   
+    // windows you created, WINDOW_AUTOSIZE is default param. you can reset the param.
+    // param 0 means you can resize the window. you can resize the window as follow
+    /*     
+    namedWindow("the beauty woman huliena", 0);
+    resizeWindow("the beauty woman huliena", 900, 500);
+    string path = "resources/美女胡列娜.png";
+    Mat image = imread(path);
+    cout << image.size() << endl;
+    uchar z = get_scale_value(image, 0, 0);
+    cout << (int)z << endl;
+    cout << (int)image.ptr<uchar>(0)[0] << endl;
+    imshow("the beauty woman huliena", image); 
+    */
+
+    string path = "resources/美女胡列娜.png";
+    Mat image, imageGray, resizeImage;
+    image = imread(path);
+    cvtColor(image, imageGray, COLOR_BGR2GRAY);
+    cout << "this resolution of the gray image is " << imageGray.size << endl;
+    Mat output_image = scale(imageGray, 360, 600);
+    // of course, you can also use the method resize that opencv has provided.
+    resize(image, resizeImage, Size(), 0.5, 0.5);
+    Mat output_image_binary = binary_linear_scale(output_image, 720, 1200);
+    Mat output_image_linear = binary_linear_scale(output_image, 720, 1200);
+    imshow("the gray image", imageGray);
+    imshow("the gray image after scaling", output_image);
+    imshow("the gray image after resizing", resizeImage);
+    imshow("the gray image after bianryScaling", output_image_binary);
+    imshow("the gray image after linearScaling", output_image_linear);
+
+    waitKey(0);
+
+    // notice, you should destroy all the windows you have created at end.
+    destroyAllWindows();
     system("pause");
     return 0;
 }

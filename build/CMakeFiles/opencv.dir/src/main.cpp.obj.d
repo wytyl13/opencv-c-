@@ -126,8 +126,8 @@ CMakeFiles/opencv.dir/src/main.cpp.obj: \
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/ostream.tcc \
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/istream \
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/istream.tcc \
- D:/development_app2/opencv/build/install/include/opencv2/opencv.hpp \
  D:/development_app2/opencv/build/install/include/opencv2/opencv_modules.hpp \
+ D:/development_app2/opencv/build/install/include/opencv2/opencv.hpp \
  D:/development_app2/opencv/build/install/include/opencv2/core.hpp \
  D:/development_app2/opencv/build/install/include/opencv2/core/cvdef.h \
  D:/development_app2/opencv/build/install/include/opencv2/core/version.hpp \

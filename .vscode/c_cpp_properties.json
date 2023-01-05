@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "D:/development_app2/opencv/build/install/include",
+                "D:/development_app2/opencv/build/install/include",
+                "D:/development_app2/opencv/build/install/include",
+                "D:/development_app2/opencv/build/install/include",
+                "D:/development_app2/opencv/build/install/include",
+                "D:/development_app2/opencv/build/install/include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.17763.0",
+            "compilerPath": "D:/mingw64-posix/bin/g++.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-gcc-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}
