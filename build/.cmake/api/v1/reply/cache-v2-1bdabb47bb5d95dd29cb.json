@@ -1270,6 +1270,30 @@
 			"value" : "FALSE"
 		},
 		{
+			"name" : "EIGEN2_INCLUDE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a file."
+				}
+			],
+			"type" : "PATH",
+			"value" : "EIGEN2_INCLUDE_DIR-NOTFOUND"
+		},
+		{
+			"name" : "EIGEN3_INCLUDE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a file."
+				}
+			],
+			"type" : "PATH",
+			"value" : "EIGEN3_INCLUDE_DIR-NOTFOUND"
+		},
+		{
 			"name" : "EXECUTABLE_OUTPUT_PATH",
 			"properties" : 
 			[
@@ -1280,6 +1304,54 @@
 			],
 			"type" : "PATH",
 			"value" : ""
+		},
+		{
+			"name" : "Eigen2_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for Eigen2."
+				}
+			],
+			"type" : "PATH",
+			"value" : "Eigen2_DIR-NOTFOUND"
+		},
+		{
+			"name" : "Eigen3.4_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for Eigen3.4."
+				}
+			],
+			"type" : "PATH",
+			"value" : "Eigen3.4_DIR-NOTFOUND"
+		},
+		{
+			"name" : "Eigen3_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for Eigen3."
+				}
+			],
+			"type" : "PATH",
+			"value" : "Eigen3_DIR-NOTFOUND"
+		},
+		{
+			"name" : "Eigen_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for Eigen."
+				}
+			],
+			"type" : "PATH",
+			"value" : "Eigen_DIR-NOTFOUND"
 		},
 		{
 			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_OpenCV",
@@ -1304,6 +1376,30 @@
 			],
 			"type" : "PATH",
 			"value" : ""
+		},
+		{
+			"name" : "eigen-3.4.0_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for eigen-3.4.0."
+				}
+			],
+			"type" : "PATH",
+			"value" : "eigen-3.4.0_DIR-NOTFOUND"
+		},
+		{
+			"name" : "eigen_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for eigen."
+				}
+			],
+			"type" : "PATH",
+			"value" : "eigen_DIR-NOTFOUND"
 		},
 		{
 			"name" : "opencv_BINARY_DIR",

@@ -128,6 +128,102 @@ opencv/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/build
 .PHONY : opencv/fast
 
+src/eigen.obj: src/eigen.cpp.obj
+.PHONY : src/eigen.obj
+
+# target to build an object file
+src/eigen.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/eigen.cpp.obj
+.PHONY : src/eigen.cpp.obj
+
+src/eigen.i: src/eigen.cpp.i
+.PHONY : src/eigen.i
+
+# target to preprocess a source file
+src/eigen.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/eigen.cpp.i
+.PHONY : src/eigen.cpp.i
+
+src/eigen.s: src/eigen.cpp.s
+.PHONY : src/eigen.s
+
+# target to generate assembly for a file
+src/eigen.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/eigen.cpp.s
+.PHONY : src/eigen.cpp.s
+
+src/general.obj: src/general.cpp.obj
+.PHONY : src/general.obj
+
+# target to build an object file
+src/general.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/general.cpp.obj
+.PHONY : src/general.cpp.obj
+
+src/general.i: src/general.cpp.i
+.PHONY : src/general.i
+
+# target to preprocess a source file
+src/general.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/general.cpp.i
+.PHONY : src/general.cpp.i
+
+src/general.s: src/general.cpp.s
+.PHONY : src/general.s
+
+# target to generate assembly for a file
+src/general.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/general.cpp.s
+.PHONY : src/general.cpp.s
+
+src/imageOperation.obj: src/imageOperation.cpp.obj
+.PHONY : src/imageOperation.obj
+
+# target to build an object file
+src/imageOperation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/imageOperation.cpp.obj
+.PHONY : src/imageOperation.cpp.obj
+
+src/imageOperation.i: src/imageOperation.cpp.i
+.PHONY : src/imageOperation.i
+
+# target to preprocess a source file
+src/imageOperation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/imageOperation.cpp.i
+.PHONY : src/imageOperation.cpp.i
+
+src/imageOperation.s: src/imageOperation.cpp.s
+.PHONY : src/imageOperation.s
+
+# target to generate assembly for a file
+src/imageOperation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/imageOperation.cpp.s
+.PHONY : src/imageOperation.cpp.s
+
+src/linearInterpolation.obj: src/linearInterpolation.cpp.obj
+.PHONY : src/linearInterpolation.obj
+
+# target to build an object file
+src/linearInterpolation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/linearInterpolation.cpp.obj
+.PHONY : src/linearInterpolation.cpp.obj
+
+src/linearInterpolation.i: src/linearInterpolation.cpp.i
+.PHONY : src/linearInterpolation.i
+
+# target to preprocess a source file
+src/linearInterpolation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/linearInterpolation.cpp.i
+.PHONY : src/linearInterpolation.cpp.i
+
+src/linearInterpolation.s: src/linearInterpolation.cpp.s
+.PHONY : src/linearInterpolation.s
+
+# target to generate assembly for a file
+src/linearInterpolation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/linearInterpolation.cpp.s
+.PHONY : src/linearInterpolation.cpp.s
+
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -152,6 +248,78 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/noise.obj: src/noise.cpp.obj
+.PHONY : src/noise.obj
+
+# target to build an object file
+src/noise.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/noise.cpp.obj
+.PHONY : src/noise.cpp.obj
+
+src/noise.i: src/noise.cpp.i
+.PHONY : src/noise.i
+
+# target to preprocess a source file
+src/noise.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/noise.cpp.i
+.PHONY : src/noise.cpp.i
+
+src/noise.s: src/noise.cpp.s
+.PHONY : src/noise.s
+
+# target to generate assembly for a file
+src/noise.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/noise.cpp.s
+.PHONY : src/noise.cpp.s
+
+src/someSuperApplication.obj: src/someSuperApplication.cpp.obj
+.PHONY : src/someSuperApplication.obj
+
+# target to build an object file
+src/someSuperApplication.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/someSuperApplication.cpp.obj
+.PHONY : src/someSuperApplication.cpp.obj
+
+src/someSuperApplication.i: src/someSuperApplication.cpp.i
+.PHONY : src/someSuperApplication.i
+
+# target to preprocess a source file
+src/someSuperApplication.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/someSuperApplication.cpp.i
+.PHONY : src/someSuperApplication.cpp.i
+
+src/someSuperApplication.s: src/someSuperApplication.cpp.s
+.PHONY : src/someSuperApplication.s
+
+# target to generate assembly for a file
+src/someSuperApplication.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/someSuperApplication.cpp.s
+.PHONY : src/someSuperApplication.cpp.s
+
+src/transformUsedAffineMatrix.obj: src/transformUsedAffineMatrix.cpp.obj
+.PHONY : src/transformUsedAffineMatrix.obj
+
+# target to build an object file
+src/transformUsedAffineMatrix.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.obj
+.PHONY : src/transformUsedAffineMatrix.cpp.obj
+
+src/transformUsedAffineMatrix.i: src/transformUsedAffineMatrix.cpp.i
+.PHONY : src/transformUsedAffineMatrix.i
+
+# target to preprocess a source file
+src/transformUsedAffineMatrix.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.i
+.PHONY : src/transformUsedAffineMatrix.cpp.i
+
+src/transformUsedAffineMatrix.s: src/transformUsedAffineMatrix.cpp.s
+.PHONY : src/transformUsedAffineMatrix.s
+
+# target to generate assembly for a file
+src/transformUsedAffineMatrix.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.s
+.PHONY : src/transformUsedAffineMatrix.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -161,9 +329,30 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... opencv
+	@echo ... src/eigen.obj
+	@echo ... src/eigen.i
+	@echo ... src/eigen.s
+	@echo ... src/general.obj
+	@echo ... src/general.i
+	@echo ... src/general.s
+	@echo ... src/imageOperation.obj
+	@echo ... src/imageOperation.i
+	@echo ... src/imageOperation.s
+	@echo ... src/linearInterpolation.obj
+	@echo ... src/linearInterpolation.i
+	@echo ... src/linearInterpolation.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... src/noise.obj
+	@echo ... src/noise.i
+	@echo ... src/noise.s
+	@echo ... src/someSuperApplication.obj
+	@echo ... src/someSuperApplication.i
+	@echo ... src/someSuperApplication.s
+	@echo ... src/transformUsedAffineMatrix.obj
+	@echo ... src/transformUsedAffineMatrix.i
+	@echo ... src/transformUsedAffineMatrix.s
 .PHONY : help
 
 

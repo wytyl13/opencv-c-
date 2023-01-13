@@ -56,6 +56,6 @@
         "streambuf": "cpp",
         "thread": "cpp",
         "typeinfo": "cpp",
-        "scoped_allocator": "cpp"
+        "scoped_allocator": "cpp",
     }
 }

@@ -9,7 +9,14 @@
                 "D:/development_app2/opencv/build/install/include",
                 "D:/development_app2/opencv/build/install/include",
                 "D:/development_app2/opencv/build/install/include",
-                "D:/development_app2/opencv/build/install/include"
+                "D:/development_app2/opencv/build/install/include",
+                "D:/development_app2/Eigen3",
+                "D:/mingw64-posix/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++",
+                "D:/mingw64-posix/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32",
+                "D:/mingw64-posix/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward",
+                "D:/mingw64-posix/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include",
+                "D:/mingw64-posix/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed",
+                "D:/mingw64-posix/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"
             ],
             "defines": [
                 "_DEBUG",

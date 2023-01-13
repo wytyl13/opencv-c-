@@ -1,5 +1,5 @@
-CMakeFiles/opencv.dir/src/main.cpp.obj: \
- D:\development_code_2022-9-10\vscode\opencv\src\main.cpp \
+CMakeFiles/opencv.dir/src/test.cpp.obj: \
+ D:\development_code_2022-9-10\vscode\opencv\src\test.cpp \
  D:/development_code_2022-9-10/vscode/opencv/include/general.h \
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/iostream \
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
@@ -127,8 +127,6 @@ CMakeFiles/opencv.dir/src/main.cpp.obj: \
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/ostream.tcc \
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/istream \
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/istream.tcc \
- D:/mingw64/x86_64-w64-mingw32/include/string.h \
- D:/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h \
  D:/development_app2/opencv/build/install/include/opencv2/opencv_modules.hpp \
  D:/development_app2/opencv/build/install/include/opencv2/opencv.hpp \
  D:/development_app2/opencv/build/install/include/opencv2/core.hpp \
@@ -156,6 +154,8 @@ CMakeFiles/opencv.dir/src/main.cpp.obj: \
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/uniform_int_dist.h \
  D:/development_app2/opencv/build/install/include/opencv2/core/cvstd.hpp \
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/cstring \
+ D:/mingw64/x86_64-w64-mingw32/include/string.h \
+ D:/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h \
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/cmath \
  D:/mingw64/x86_64-w64-mingw32/include/math.h \
  D:/development_app2/opencv/build/install/include/opencv2/core/cvstd_wrapper.hpp \
@@ -327,203 +327,4 @@ CMakeFiles/opencv.dir/src/main.cpp.obj: \
  D:/development_app2/opencv/build/install/include/opencv2/stitching/detail/camera.hpp \
  D:/development_app2/opencv/build/install/include/opencv2/video.hpp \
  D:/development_app2/opencv/build/install/include/opencv2/video/tracking.hpp \
- D:/development_app2/opencv/build/install/include/opencv2/video/background_segm.hpp \
- D:/development_app2/Eigen3/Eigen/Dense \
- D:/development_app2/Eigen3/Eigen/Core \
- D:/development_app2/Eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
- D:/development_app2/Eigen3/Eigen/src/Core/util/Macros.h \
- D:/development_app2/Eigen3/Eigen/src/Core/util/ConfigureVectorization.h \
- D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/pmmintrin.h \
- D:/development_app2/Eigen3/Eigen/src/Core/util/MKL_support.h \
- D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/cassert \
- D:/development_app2/Eigen3/Eigen/src/Core/util/Constants.h \
- D:/development_app2/Eigen3/Eigen/src/Core/util/Meta.h \
- D:/development_app2/Eigen3/Eigen/src/Core/util/ForwardDeclarations.h \
- D:/development_app2/Eigen3/Eigen/src/Core/util/StaticAssert.h \
- D:/development_app2/Eigen3/Eigen/src/Core/util/XprHelper.h \
- D:/development_app2/Eigen3/Eigen/src/Core/util/Memory.h \
- D:/development_app2/Eigen3/Eigen/src/Core/util/IntegralConstant.h \
- D:/development_app2/Eigen3/Eigen/src/Core/util/SymbolicIndex.h \
- D:/development_app2/Eigen3/Eigen/src/Core/NumTraits.h \
- D:/development_app2/Eigen3/Eigen/src/Core/MathFunctions.h \
- D:/development_app2/Eigen3/Eigen/src/Core/GenericPacketMath.h \
- D:/development_app2/Eigen3/Eigen/src/Core/MathFunctionsImpl.h \
- D:/development_app2/Eigen3/Eigen/src/Core/arch/Default/ConjHelper.h \
- D:/development_app2/Eigen3/Eigen/src/Core/arch/Default/Half.h \
- D:/development_app2/Eigen3/Eigen/src/Core/arch/Default/BFloat16.h \
- D:/development_app2/Eigen3/Eigen/src/Core/arch/Default/TypeCasting.h \
- D:/development_app2/Eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctionsFwd.h \
- D:/development_app2/Eigen3/Eigen/src/Core/arch/SSE/PacketMath.h \
- D:/development_app2/Eigen3/Eigen/src/Core/arch/SSE/TypeCasting.h \
- D:/development_app2/Eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h \
- D:/development_app2/Eigen3/Eigen/src/Core/arch/SSE/Complex.h \
- D:/development_app2/Eigen3/Eigen/src/Core/arch/Default/Settings.h \
- D:/development_app2/Eigen3/Eigen/src/Core/arch/Default/GenericPacketMathFunctions.h \
- D:/development_app2/Eigen3/Eigen/src/Core/functors/TernaryFunctors.h \
- D:/development_app2/Eigen3/Eigen/src/Core/functors/BinaryFunctors.h \
- D:/development_app2/Eigen3/Eigen/src/Core/functors/UnaryFunctors.h \
- D:/development_app2/Eigen3/Eigen/src/Core/functors/NullaryFunctors.h \
- D:/development_app2/Eigen3/Eigen/src/Core/functors/StlFunctors.h \
- D:/development_app2/Eigen3/Eigen/src/Core/functors/AssignmentFunctors.h \
- D:/development_app2/Eigen3/Eigen/src/Core/util/IndexedViewHelper.h \
- D:/development_app2/Eigen3/Eigen/src/Core/util/ReshapedHelper.h \
- D:/development_app2/Eigen3/Eigen/src/Core/ArithmeticSequence.h \
- D:/development_app2/Eigen3/Eigen/src/Core/IO.h \
- D:/development_app2/Eigen3/Eigen/src/Core/DenseCoeffsBase.h \
- D:/development_app2/Eigen3/Eigen/src/Core/DenseBase.h \
- D:/development_app2/Eigen3/Eigen/src/plugins/CommonCwiseUnaryOps.h \
- D:/development_app2/Eigen3/Eigen/src/plugins/BlockMethods.h \
- D:/development_app2/Eigen3/Eigen/src/plugins/IndexedViewMethods.h \
- D:/development_app2/Eigen3/Eigen/src/plugins/IndexedViewMethods.h \
- D:/development_app2/Eigen3/Eigen/src/plugins/ReshapedMethods.h \
- D:/development_app2/Eigen3/Eigen/src/plugins/ReshapedMethods.h \
- D:/development_app2/Eigen3/Eigen/src/Core/MatrixBase.h \
- D:/development_app2/Eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h \
- D:/development_app2/Eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h \
- D:/development_app2/Eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h \
- D:/development_app2/Eigen3/Eigen/src/Core/EigenBase.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Product.h \
- D:/development_app2/Eigen3/Eigen/src/Core/CoreEvaluators.h \
- D:/development_app2/Eigen3/Eigen/src/Core/AssignEvaluator.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Assign.h \
- D:/development_app2/Eigen3/Eigen/src/Core/ArrayBase.h \
- D:/development_app2/Eigen3/Eigen/src/plugins/ArrayCwiseUnaryOps.h \
- D:/development_app2/Eigen3/Eigen/src/plugins/ArrayCwiseBinaryOps.h \
- D:/development_app2/Eigen3/Eigen/src/Core/util/BlasUtil.h \
- D:/development_app2/Eigen3/Eigen/src/Core/DenseStorage.h \
- D:/development_app2/Eigen3/Eigen/src/Core/NestByValue.h \
- D:/development_app2/Eigen3/Eigen/src/Core/ReturnByValue.h \
- D:/development_app2/Eigen3/Eigen/src/Core/NoAlias.h \
- D:/development_app2/Eigen3/Eigen/src/Core/PlainObjectBase.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Matrix.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Array.h \
- D:/development_app2/Eigen3/Eigen/src/Core/CwiseTernaryOp.h \
- D:/development_app2/Eigen3/Eigen/src/Core/CwiseBinaryOp.h \
- D:/development_app2/Eigen3/Eigen/src/Core/CwiseUnaryOp.h \
- D:/development_app2/Eigen3/Eigen/src/Core/CwiseNullaryOp.h \
- D:/development_app2/Eigen3/Eigen/src/Core/CwiseUnaryView.h \
- D:/development_app2/Eigen3/Eigen/src/Core/SelfCwiseBinaryOp.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Dot.h \
- D:/development_app2/Eigen3/Eigen/src/Core/StableNorm.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Stride.h \
- D:/development_app2/Eigen3/Eigen/src/Core/MapBase.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Map.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Ref.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Block.h \
- D:/development_app2/Eigen3/Eigen/src/Core/VectorBlock.h \
- D:/development_app2/Eigen3/Eigen/src/Core/IndexedView.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Reshaped.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Transpose.h \
- D:/development_app2/Eigen3/Eigen/src/Core/DiagonalMatrix.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Diagonal.h \
- D:/development_app2/Eigen3/Eigen/src/Core/DiagonalProduct.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Redux.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Visitor.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Fuzzy.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Swap.h \
- D:/development_app2/Eigen3/Eigen/src/Core/CommaInitializer.h \
- D:/development_app2/Eigen3/Eigen/src/Core/GeneralProduct.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Solve.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Inverse.h \
- D:/development_app2/Eigen3/Eigen/src/Core/SolverBase.h \
- D:/development_app2/Eigen3/Eigen/src/Core/PermutationMatrix.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Transpositions.h \
- D:/development_app2/Eigen3/Eigen/src/Core/TriangularMatrix.h \
- D:/development_app2/Eigen3/Eigen/src/Core/SelfAdjointView.h \
- D:/development_app2/Eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h \
- D:/development_app2/Eigen3/Eigen/src/Core/products/Parallelizer.h \
- D:/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/atomic \
- D:/development_app2/Eigen3/Eigen/src/Core/ProductEvaluators.h \
- D:/development_app2/Eigen3/Eigen/src/Core/products/GeneralMatrixVector.h \
- D:/development_app2/Eigen3/Eigen/src/Core/products/GeneralMatrixMatrix.h \
- D:/development_app2/Eigen3/Eigen/src/Core/SolveTriangular.h \
- D:/development_app2/Eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h \
- D:/development_app2/Eigen3/Eigen/src/Core/products/SelfadjointMatrixVector.h \
- D:/development_app2/Eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix.h \
- D:/development_app2/Eigen3/Eigen/src/Core/products/SelfadjointProduct.h \
- D:/development_app2/Eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h \
- D:/development_app2/Eigen3/Eigen/src/Core/products/TriangularMatrixVector.h \
- D:/development_app2/Eigen3/Eigen/src/Core/products/TriangularMatrixMatrix.h \
- D:/development_app2/Eigen3/Eigen/src/Core/products/TriangularSolverMatrix.h \
- D:/development_app2/Eigen3/Eigen/src/Core/products/TriangularSolverVector.h \
- D:/development_app2/Eigen3/Eigen/src/Core/BandMatrix.h \
- D:/development_app2/Eigen3/Eigen/src/Core/CoreIterators.h \
- D:/development_app2/Eigen3/Eigen/src/Core/ConditionEstimator.h \
- D:/development_app2/Eigen3/Eigen/src/Core/BooleanRedux.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Select.h \
- D:/development_app2/Eigen3/Eigen/src/Core/VectorwiseOp.h \
- D:/development_app2/Eigen3/Eigen/src/Core/PartialReduxEvaluator.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Random.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Replicate.h \
- D:/development_app2/Eigen3/Eigen/src/Core/Reverse.h \
- D:/development_app2/Eigen3/Eigen/src/Core/ArrayWrapper.h \
- D:/development_app2/Eigen3/Eigen/src/Core/StlIterators.h \
- D:/development_app2/Eigen3/Eigen/src/Core/GlobalFunctions.h \
- D:/development_app2/Eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
- D:/development_app2/Eigen3/Eigen/LU \
- D:/development_app2/Eigen3/Eigen/src/misc/Kernel.h \
- D:/development_app2/Eigen3/Eigen/src/misc/Image.h \
- D:/development_app2/Eigen3/Eigen/src/LU/FullPivLU.h \
- D:/development_app2/Eigen3/Eigen/src/LU/PartialPivLU.h \
- D:/development_app2/Eigen3/Eigen/src/LU/Determinant.h \
- D:/development_app2/Eigen3/Eigen/src/LU/InverseImpl.h \
- D:/development_app2/Eigen3/Eigen/src/LU/arch/InverseSize4.h \
- D:/development_app2/Eigen3/Eigen/Cholesky \
- D:/development_app2/Eigen3/Eigen/Jacobi \
- D:/development_app2/Eigen3/Eigen/src/Jacobi/Jacobi.h \
- D:/development_app2/Eigen3/Eigen/src/Cholesky/LLT.h \
- D:/development_app2/Eigen3/Eigen/src/Cholesky/LDLT.h \
- D:/development_app2/Eigen3/Eigen/QR \
- D:/development_app2/Eigen3/Eigen/Householder \
- D:/development_app2/Eigen3/Eigen/src/Householder/Householder.h \
- D:/development_app2/Eigen3/Eigen/src/Householder/HouseholderSequence.h \
- D:/development_app2/Eigen3/Eigen/src/Householder/BlockHouseholder.h \
- D:/development_app2/Eigen3/Eigen/src/QR/HouseholderQR.h \
- D:/development_app2/Eigen3/Eigen/src/QR/FullPivHouseholderQR.h \
- D:/development_app2/Eigen3/Eigen/src/QR/ColPivHouseholderQR.h \
- D:/development_app2/Eigen3/Eigen/src/QR/CompleteOrthogonalDecomposition.h \
- D:/development_app2/Eigen3/Eigen/SVD \
- D:/development_app2/Eigen3/Eigen/src/misc/RealSvd2x2.h \
- D:/development_app2/Eigen3/Eigen/src/SVD/UpperBidiagonalization.h \
- D:/development_app2/Eigen3/Eigen/src/SVD/SVDBase.h \
- D:/development_app2/Eigen3/Eigen/src/SVD/JacobiSVD.h \
- D:/development_app2/Eigen3/Eigen/src/SVD/BDCSVD.h \
- D:/development_app2/Eigen3/Eigen/Geometry \
- D:/development_app2/Eigen3/Eigen/src/Geometry/OrthoMethods.h \
- D:/development_app2/Eigen3/Eigen/src/Geometry/EulerAngles.h \
- D:/development_app2/Eigen3/Eigen/src/Geometry/Homogeneous.h \
- D:/development_app2/Eigen3/Eigen/src/Geometry/RotationBase.h \
- D:/development_app2/Eigen3/Eigen/src/Geometry/Rotation2D.h \
- D:/development_app2/Eigen3/Eigen/src/Geometry/Quaternion.h \
- D:/development_app2/Eigen3/Eigen/src/Geometry/AngleAxis.h \
- D:/development_app2/Eigen3/Eigen/src/Geometry/Transform.h \
- D:/development_app2/Eigen3/Eigen/src/Geometry/Translation.h \
- D:/development_app2/Eigen3/Eigen/src/Geometry/Scaling.h \
- D:/development_app2/Eigen3/Eigen/src/Geometry/Hyperplane.h \
- D:/development_app2/Eigen3/Eigen/src/Geometry/ParametrizedLine.h \
- D:/development_app2/Eigen3/Eigen/src/Geometry/AlignedBox.h \
- D:/development_app2/Eigen3/Eigen/src/Geometry/Umeyama.h \
- D:/development_app2/Eigen3/Eigen/src/Geometry/arch/Geometry_SIMD.h \
- D:/development_app2/Eigen3/Eigen/Eigenvalues \
- D:/development_app2/Eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h \
- D:/development_app2/Eigen3/Eigen/src/Eigenvalues/RealSchur.h \
- D:/development_app2/Eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h \
- D:/development_app2/Eigen3/Eigen/src/Eigenvalues/EigenSolver.h \
- D:/development_app2/Eigen3/Eigen/src/Eigenvalues/RealSchur.h \
- D:/development_app2/Eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h \
- D:/development_app2/Eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h \
- D:/development_app2/Eigen3/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h \
- D:/development_app2/Eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h \
- D:/development_app2/Eigen3/Eigen/src/Eigenvalues/ComplexSchur.h \
- D:/development_app2/Eigen3/Eigen/src/Eigenvalues/ComplexEigenSolver.h \
- D:/development_app2/Eigen3/Eigen/src/Eigenvalues/ComplexSchur.h \
- D:/development_app2/Eigen3/Eigen/src/Eigenvalues/RealQZ.h \
- D:/development_app2/Eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
- D:/development_app2/Eigen3/Eigen/src/Eigenvalues/RealQZ.h \
- D:/development_app2/Eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
- D:/development_code_2022-9-10/vscode/opencv/include/linearInterpolation.h \
- D:/development_code_2022-9-10/vscode/opencv/include/general.h \
- D:/development_code_2022-9-10/vscode/opencv/include/noise.h \
- D:/development_code_2022-9-10/vscode/opencv/include/transformUsedAffineMatrix.h \
- D:/development_code_2022-9-10/vscode/opencv/include/someSuperApplication.h \
- D:/development_code_2022-9-10/vscode/opencv/include/eigen.h
+ D:/development_app2/opencv/build/install/include/opencv2/video/background_segm.hpp
