@@ -4,8 +4,11 @@
 #include "../include/transformUsedAffineMatrix.h"
 #include "../include/someSuperApplication.h"
 #include "../include/eigen.h"
+#include "../include/grayLevelTransform.h"
+#include "../include/bitOperation.h"
 #include <time.h>
-#include <vector>
+
+
 int main(int argc, char const *argv[])
 {
     srand((unsigned)time(NULL)); // define the randSeed based on the current time.
@@ -547,8 +550,205 @@ int main(int argc, char const *argv[])
     // --------------------test image arithmetic-------------------------------
 
     // --------------------test Eigen-------------------------------
+    /*
     defineSpecificMatrix();
+    Mat image, imageGray;
+    image = imread("../resources/image4.png");
+    cvtColor(image, imageGray, COLOR_BGR2GRAY);
+    imshow("beauty", imageGray);
+    // MatrixXi matrix(imageGray.rows, imageGray.cols);
+    MatrixXi matrix;
+    // you can use cv2eigen or eigen2cv to transform between these two array object.
+    cv2eigen(imageGray, matrix);
+    // notice, the difference between the rows and cols function of matrix and Mat
+    // the former must use (), because it is the function of Matrix.
+    // the last can not use (), because it is the attribute of Mat.
+    cout << matrix.rows() << "," << matrix.cols() << endl;
+    cout << imageGray.rows << "," << imageGray.cols << endl;
+    */
+
+    // transform from Matrix for eigen to Mat for opencv
+    // define a 4*4 random int data matrix
+    /* 
+    Matrix4i matrix = Matrix4i::Random();
+    Mat image;
+    eigen2cv(matrix, image);
+    cout << matrix << endl;
+    cout << image << endl; 
+    */
+    // we will test matrix multi used Matrix class in Eigen
+    // because we have tested the Mat operate used Mat, but it can not work.
+    // because the matrix has not many limit condition like Mat, so we can calculate
+    // the matrix operation used matrix, then transform the result to Mat to show this image.
+    // just like calculate the good image used the images with noise, you can calculate the
+    // mean of all the noise image, but the Mat object has the limit about the size of data type.
+    // so we can calculate the mean first, then transform from matrix to Mat.
+    /* Mat image, imageGray, resizeImage, noiseImage1, noiseImage2, noiseImage3, noiseImage4, noiseImage5;
+    image = imread("../resources/hln.png");
+    cvtColor(image, imageGray, COLOR_BGR2GRAY);
+    resize(imageGray, resizeImage, Size(600, 360));
+
+    gaussionNoise(resizeImage, noiseImage1, 10, 50);
+    gaussionNoise(resizeImage, noiseImage2, 10, 55);
+    gaussionNoise(resizeImage, noiseImage3, 10, 60);
+    gaussionNoise(resizeImage, noiseImage4, 10, 65);
+    gaussionNoise(resizeImage, noiseImage5, 10, 70);
+
+    MatrixXd matrix1, matrix2, matrix3, matrix4, matrix5;
+    cv2eigen(noiseImage1, matrix1);
+    cv2eigen(noiseImage2, matrix2);
+    cv2eigen(noiseImage3, matrix3);
+    cv2eigen(noiseImage4, matrix4);
+    cv2eigen(noiseImage5, matrix5);
+
+    MatrixXd result = (matrix1 + matrix2 + matrix3 + matrix4 + matrix5) / 5;
+    printf("row = %d, col = %d\n", result.rows(), result.cols());
+    // if you want to show one gray image, you should use the 8UC1 data type to store each element.
+    // it means we should transform the each element of matrix from double to int.
+    // then we will transform from MatrixXd to MatrixXi
+    MatrixXi result_int = result.cast<int>();
+    Mat result_image;
+    eigen2cv(result_int, result_image);
+    result_image.convertTo(result_image, CV_8UC1);
+    namedWindow("test image", 1);
+    imshow("test image", resizeImage);
+    imshow("test image", noiseImage5);
+    imshow("result image", result_image); */
+    // but we have failed to reduction the noiseImage. because we have defined a large var.
+    // but we have finished this application of the method.
+    // then, we will learn the rest of the digital image processing.
     // --------------------test Eigen-------------------------------
+    
+    // --------------------test grayLevelTransform-------------------------------
+/*     string str = "compare the original and result image";
+    namedWindow(str, 1);
+    Mat image, imageGray, resizeImage;
+    image = imread("../resources/hln.png");
+    cvtColor(image, imageGray, COLOR_BGR2GRAY);
+    resize(imageGray, resizeImage, Size(600, 360));  
+    Mat outputImage;
+    reverseTransform(resizeImage, outputImage);
+    vector<Mat> vectorImages;
+    vectorImages.push_back(resizeImage);
+    vectorImages.push_back(outputImage);
+    imshowMulti(str, vectorImages); */
+    // --------------------test grayLevelTransform-------------------------------
+    // --------------------test logarithmic transform and linear scaling-------------------------------
+    string str = "compare the original and result image";
+    namedWindow(str, 1);
+    Mat image, imageGray, resizeImage;
+/*     image = imread("../resources/fourier.png");
+    cvtColor(image, imageGray, COLOR_BGR2GRAY);
+    resize(imageGray, resizeImage, Size(600, 360));
+    Mat outputImage;
+    logarithmicAndLinearScaling(resizeImage, outputImage);
+    vector<Mat> vectorImages;
+    vectorImages.push_back(resizeImage);
+    vectorImages.push_back(outputImage);
+    imshowMulti(str, vectorImages); */
+
+
+/*     image = imread("../resources/hln.png");
+    cvtColor(image, imageGray, COLOR_BGR2GRAY);
+    resize(imageGray, resizeImage, Size(600, 360));
+    Mat outputImage;
+    linearScaling(resizeImage, outputImage);
+    vector<Mat> vectorImages;
+    vectorImages.push_back(resizeImage);
+    vectorImages.push_back(outputImage);
+    imshowMulti(str, vectorImages); */
+
+
+    image = imread("../resources/hln.png");
+    cvtColor(image, imageGray, COLOR_BGR2GRAY);
+    resize(imageGray, resizeImage, Size(600, 360));
+    Mat outputImage;
+    // linearScalingBaseTwoPoint(resizeImage, outputImage);
+    // vector<Mat> vectorImages;
+    // vectorImages.push_back(resizeImage);
+    // vectorImages.push_back(outputImage);
+    // imshowMulti(str, vectorImages);
+/*     gamaTransformAndLinearScaling(resizeImage, outputImage, 30, 0.6);
+    vector<Mat> vectorImages;
+    vectorImages.push_back(resizeImage);
+    vectorImages.push_back(outputImage);
+    gamaTransformAndLinearScaling(resizeImage, outputImage, 30, 0.5);
+    vectorImages.push_back(outputImage);
+    gamaTransformAndLinearScaling(resizeImage, outputImage, 30, 0.4);
+    vectorImages.push_back(outputImage);
+    imshowMulti(str, vectorImages); */
+    // --------------------test logarithmic transform and linear scaling-------------------------------
+
+    // --------------------test bit operation--------------------------
+    // bitWise(resizeImage, outputImage);
+    // imshow(str, outputImage);
+    // --------------------test bit operation--------------------------
+
+    // --------------------test draw and screenShots and gray level layered--------------------------
+/*     Point start(0, 0);
+    Point end(100, 100);
+    // drawLines(resizeImage, start, end);
+    Point one(0, 0);
+    Point two(100, 0);
+    Point three(100, 100);
+    Point four(0, 100);
+    Point five(50, 150);
+    vector<Point> vectorPoints;
+    vectorPoints.push_back(one);
+    vectorPoints.push_back(two);
+    vectorPoints.push_back(three);
+    vectorPoints.push_back(five);
+    vectorPoints.push_back(four);
+    drawPolygon(resizeImage, vectorPoints);
+    imshow(str, resizeImage); */
+ /*    Point one(0, 0);
+    Point two(100, 0);
+    Point three(100, 100);
+    Point four(0, 100);
+    Point five(50, 150);
+    vector<Point> vectorPoints;
+    vectorPoints.push_back(one);
+    vectorPoints.push_back(two);
+    vectorPoints.push_back(three);
+    vectorPoints.push_back(five);
+    vectorPoints.push_back(four);
+    // grayLayeredBasedPoints(resizeImage, outputImage, vectorPoints, 0);
+    Rect rect = Rect(one, three);
+    cout << rect.size() << endl;
+    // screenShots(resizeImage, outputImage, rect);
+
+    // cutImage(resizeImage, outputImage, vectorPoints);
+    grayLayeredBasedPoints(resizeImage, outputImage, vectorPoints, 1);
+    imshow(str, outputImage); */
+
+    // grayLayeredBasedValue(resizeImage, outputImage);
+    // grayLayeredBasedBitPlane(resizeImage, outputImage, 1);
+    // vector<Mat> vectorImages;
+    // vectorImages.push_back(resizeImage);
+    // vectorImages.push_back(outputImage);
+    // imshowMulti(str, vectorImages);
+
+    vector<Mat> vectorImages;
+    vectorImages.push_back(resizeImage);
+    // get 8 bit plane.
+    map<int, Mat, compareMap> mapBitPlanes;
+
+    // just like this case, we have got the best results used 7 bit plane and 8 bit plane
+    // to reconstruct the original image.
+    // if you add the lower bit plane, just like 6 and 5 bit plane, the effect will be worse.
+    for (int i = 7; i < 9; i++)
+    {
+        grayLayeredBasedBitPlane(resizeImage, outputImage, i);
+        mapBitPlanes.insert(pair<int, Mat>(i, outputImage));
+        vectorImages.push_back(outputImage);
+    }
+    Mat resultMat;
+    reconstructImageBasedBitPlane(resultMat, mapBitPlanes);
+    vectorImages.push_back(resultMat);
+    imshowMulti(str, vectorImages);
+    // --------------------test draw and screenShots and gray level layered--------------------------
+
+
 
 
     waitKey(0);

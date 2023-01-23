@@ -1,0 +1,3 @@
+D:/development_code_2022-9-10/vscode/opencv/CMakeFiles/opencv.dir
+D:/development_code_2022-9-10/vscode/opencv/CMakeFiles/edit_cache.dir
+D:/development_code_2022-9-10/vscode/opencv/CMakeFiles/rebuild_cache.dir

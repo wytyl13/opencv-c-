@@ -131,3 +131,77 @@ void imshowMulti(string &str, vector<Mat> vectorImage)
     }
     imshow(str, dstImage);
 }
+
+void printMap(const map<int, Mat, compareMap> &mapBitPlane)
+{
+    for (map<int, Mat, compareMap>::const_iterator it = mapBitPlane.begin(); it != mapBitPlane.end(); it++)
+    {
+        cout << "key = " << it->first << "value = " << it->second.size() << endl;
+    }
+}
+
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-01-19 21:39:18
+ * @Parameters: 
+ * @Return: 
+ * @Description: draw one line.
+ */
+void drawLines(Mat &inputImage, Point one, Point two) 
+{
+    line(inputImage, one, two, Scalar(255), 3, 0);
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-01-19 22:01:33
+ * @Parameters: 
+ * @Return: 
+ * @Description: draw one polygon based on the vectorPoints.
+ * you should ensure each points is next. or you will get the error lines.
+ */
+void drawPolygon(Mat &inputImage, vector<Point> vectorPoints) 
+{
+    polylines(inputImage, vectorPoints, true, Scalar(255), 2, 8);
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-01-20 08:32:55
+ * @Parameters: 
+ * @Return: 
+ * @Description: you can only screenShots the recangular region.
+ * we used Rect object to passrecangular region.
+ */
+void screenShots(Mat inputImage, Mat &outputImage, Rect rect) 
+{
+    // it is very simple, you just need to define the Mat object used the Rect
+    // this is a construcure method for Mat object.
+    outputImage = inputImage(rect);
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-01-20 08:49:24
+ * @Parameters: 
+ * @Return: 
+ * @Description: cut image based on multiple points. remain the region that you interested in, 
+ * set the other region used 0.
+ */
+void cutImage(Mat inputImage, Mat &outputImage, vector<Point> vectorPoints) 
+{
+    // first, you should define a mat mask.
+    Mat mask = Mat::zeros(inputImage.size(), CV_8UC1);    
+    fillPoly(mask, vectorPoints, Scalar(255));
+    cout << (int)mask.ptr<uchar>(1)[1] << endl;
+    // then, bitwise inputimage and mask.
+    // of course, you can also use copyTo function.
+    // the first param in copyTo function is src image, the second param is mask
+    // Mat, the element value of region you interested in set used 255, the other
+    // region element value set used 0.
+    // of course, the function of copyTo can also has a extra efficient.
+    // that's you can copy the image to a region, this region can be any 
+    // Mat object. but you should notice, the size of these two image must be same.
+    bitwise_and(inputImage, mask, outputImage);
+}

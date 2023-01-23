@@ -1,6 +1,11 @@
 [
 {
   "directory": "D:/development_code_2022-9-10/vscode/opencv/build",
+  "command": "D:\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\bitOperation.cpp.obj -c D:\\development_code_2022-9-10\\vscode\\opencv\\src\\bitOperation.cpp",
+  "file": "D:/development_code_2022-9-10/vscode/opencv/src/bitOperation.cpp"
+},
+{
+  "directory": "D:/development_code_2022-9-10/vscode/opencv/build",
   "command": "D:\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\eigen.cpp.obj -c D:\\development_code_2022-9-10\\vscode\\opencv\\src\\eigen.cpp",
   "file": "D:/development_code_2022-9-10/vscode/opencv/src/eigen.cpp"
 },
@@ -8,6 +13,11 @@
   "directory": "D:/development_code_2022-9-10/vscode/opencv/build",
   "command": "D:\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\general.cpp.obj -c D:\\development_code_2022-9-10\\vscode\\opencv\\src\\general.cpp",
   "file": "D:/development_code_2022-9-10/vscode/opencv/src/general.cpp"
+},
+{
+  "directory": "D:/development_code_2022-9-10/vscode/opencv/build",
+  "command": "D:\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\grayLevelTransform.cpp.obj -c D:\\development_code_2022-9-10\\vscode\\opencv\\src\\grayLevelTransform.cpp",
+  "file": "D:/development_code_2022-9-10/vscode/opencv/src/grayLevelTransform.cpp"
 },
 {
   "directory": "D:/development_code_2022-9-10/vscode/opencv/build",

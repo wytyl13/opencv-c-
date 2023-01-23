@@ -128,6 +128,30 @@ opencv/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/build
 .PHONY : opencv/fast
 
+src/bitOperation.obj: src/bitOperation.cpp.obj
+.PHONY : src/bitOperation.obj
+
+# target to build an object file
+src/bitOperation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/bitOperation.cpp.obj
+.PHONY : src/bitOperation.cpp.obj
+
+src/bitOperation.i: src/bitOperation.cpp.i
+.PHONY : src/bitOperation.i
+
+# target to preprocess a source file
+src/bitOperation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/bitOperation.cpp.i
+.PHONY : src/bitOperation.cpp.i
+
+src/bitOperation.s: src/bitOperation.cpp.s
+.PHONY : src/bitOperation.s
+
+# target to generate assembly for a file
+src/bitOperation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/bitOperation.cpp.s
+.PHONY : src/bitOperation.cpp.s
+
 src/eigen.obj: src/eigen.cpp.obj
 .PHONY : src/eigen.obj
 
@@ -175,6 +199,30 @@ src/general.s: src/general.cpp.s
 src/general.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/general.cpp.s
 .PHONY : src/general.cpp.s
+
+src/grayLevelTransform.obj: src/grayLevelTransform.cpp.obj
+.PHONY : src/grayLevelTransform.obj
+
+# target to build an object file
+src/grayLevelTransform.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj
+.PHONY : src/grayLevelTransform.cpp.obj
+
+src/grayLevelTransform.i: src/grayLevelTransform.cpp.i
+.PHONY : src/grayLevelTransform.i
+
+# target to preprocess a source file
+src/grayLevelTransform.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.i
+.PHONY : src/grayLevelTransform.cpp.i
+
+src/grayLevelTransform.s: src/grayLevelTransform.cpp.s
+.PHONY : src/grayLevelTransform.s
+
+# target to generate assembly for a file
+src/grayLevelTransform.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.s
+.PHONY : src/grayLevelTransform.cpp.s
 
 src/imageOperation.obj: src/imageOperation.cpp.obj
 .PHONY : src/imageOperation.obj
@@ -329,12 +377,18 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... opencv
+	@echo ... src/bitOperation.obj
+	@echo ... src/bitOperation.i
+	@echo ... src/bitOperation.s
 	@echo ... src/eigen.obj
 	@echo ... src/eigen.i
 	@echo ... src/eigen.s
 	@echo ... src/general.obj
 	@echo ... src/general.i
 	@echo ... src/general.s
+	@echo ... src/grayLevelTransform.obj
+	@echo ... src/grayLevelTransform.i
+	@echo ... src/grayLevelTransform.s
 	@echo ... src/imageOperation.obj
 	@echo ... src/imageOperation.i
 	@echo ... src/imageOperation.s

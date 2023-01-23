@@ -57,5 +57,9 @@
         "thread": "cpp",
         "typeinfo": "cpp",
         "scoped_allocator": "cpp",
+        "dense": "cpp",
+        "*.expression": "cpp",
+        "alignedvector3": "cpp",
+        "fft": "cpp"
     }
 }
