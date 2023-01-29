@@ -34,8 +34,8 @@ add_executable(opencv ${SRC_DIR_VAR})#使用传入变量的方式加入要编译
 # D:/development_app2/Eigen3/Eigen/Dense, because we have include_directories
 # D:/development_app2/Eigen3, so we just need to fill gas the back of path.
 # notice. Eigen is not compile the installation but the unzip the installation.
-set(OpenCV_DIR D:/development_app2/opencv/build/install)
-set(EIGEN3_INCLUDE_DIR D:/development_app2/Eigen3)
+set(OpenCV_DIR C:/Users/weiyutao/opt/opencv/build/install)
+set(EIGEN3_INCLUDE_DIR C:/Users/weiyutao/opt/eigen-3.4.0)
 #scan the package
 find_package(OpenCV REQUIRED)
 find_package(Eigen3 REQUIRED)
@@ -48,6 +48,7 @@ if((OpenCV_FOUND) AND (Eigen3_FOUND))
     include_directories(${EIGEN3_INCLUDE_DIR})
     #add the lib
     target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
+    message(${OpenCV_LIBS})
     # because Eigen is not involved link, so we need not to include it's link libraries.
     # target_link_libraries(${PROJECT_NAME} ${EIGEN3_LIBS})
 else()

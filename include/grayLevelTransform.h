@@ -11,4 +11,7 @@ void grayLayeredBasedPoints(Mat inputImage, Mat &outputImage, vector<Point> vect
 void grayLayeredBasedValue(Mat inputImage, Mat &outputImage);
 void grayLayeredBasedBitPlane(Mat inputImage, Mat &outputImage, int plane);
 void reconstructImageBasedBitPlane(Mat &outputImage, const map<int, Mat, compareMap> &mapBitPlanes);
+double* getDistribution(Mat inputImage);
+void getHistogramMat(double *distribution, Mat &histogramMat);
+void histogramTransform(Mat inputImage, Mat &outputImage);
 #endif

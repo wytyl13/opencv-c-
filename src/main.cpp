@@ -659,7 +659,7 @@ int main(int argc, char const *argv[])
     imshowMulti(str, vectorImages); */
 
 
-    image = imread("../resources/hln.png");
+    image = imread("../resources/darkerImage.webp");
     cvtColor(image, imageGray, COLOR_BGR2GRAY);
     resize(imageGray, resizeImage, Size(600, 360));
     Mat outputImage;
@@ -728,15 +728,15 @@ int main(int argc, char const *argv[])
     // vectorImages.push_back(outputImage);
     // imshowMulti(str, vectorImages);
 
-    vector<Mat> vectorImages;
+/*     vector<Mat> vectorImages;
     vectorImages.push_back(resizeImage);
     // get 8 bit plane.
-    map<int, Mat, compareMap> mapBitPlanes;
+    map<int, Mat, compareMap> mapBitPlanes; */
 
     // just like this case, we have got the best results used 7 bit plane and 8 bit plane
     // to reconstruct the original image.
     // if you add the lower bit plane, just like 6 and 5 bit plane, the effect will be worse.
-    for (int i = 7; i < 9; i++)
+/*     for (int i = 7; i < 9; i++)
     {
         grayLayeredBasedBitPlane(resizeImage, outputImage, i);
         mapBitPlanes.insert(pair<int, Mat>(i, outputImage));
@@ -745,8 +745,32 @@ int main(int argc, char const *argv[])
     Mat resultMat;
     reconstructImageBasedBitPlane(resultMat, mapBitPlanes);
     vectorImages.push_back(resultMat);
-    imshowMulti(str, vectorImages);
+    imshowMulti(str, vectorImages); */
     // --------------------test draw and screenShots and gray level layered--------------------------
+    // --------------------test histogram transform-----------------------------
+    // imshow(str, resizeImage);
+/*     double *listOriginal = getDistribution(resizeImage);
+    // printArray(list);
+    Mat histogramMatOriginal, histogramMatNew;
+    vector<Mat> vectorImages;
+    vectorImages.push_back(resizeImage);
+    getHistogramMat(listOriginal, histogramMatOriginal);
+    vectorImages.push_back(histogramMatOriginal);
+    histogramTransform(resizeImage, outputImage);
+    vectorImages.push_back(outputImage);
+    double *listNew = getDistribution(outputImage);
+    getHistogramMat(listNew, histogramMatNew);
+    vectorImages.push_back(histogramMatNew);
+    imshowMulti(str, vectorImages); */
+    // we have successful tested the histogramTransform, it can enhance contrast.
+    // and the efficient used it is very good.
+    // you can find that the histogram transform has a lot to do with the the conrast of one image.
+
+    
+
+
+
+    // --------------------test histogram transform-----------------------------
 
 
 

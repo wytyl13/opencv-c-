@@ -36,6 +36,7 @@ void sys_error(const char *str);
 void elementOperation(Mat inputImage, Mat &outputImage);
 void imshowMulti(string &str, vector<Mat> vectorImage);
 void printMap(const map<int, Mat, compareMap> &mapBitPlane);
+void printArray(float *array);
 
 void drawLines(Mat &inputImage, Point one, Point two);
 void drawPolygon(Mat &inputImage, vector<Point> vectorPoints);

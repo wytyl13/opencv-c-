@@ -140,6 +140,17 @@ void printMap(const map<int, Mat, compareMap> &mapBitPlane)
     }
 }
 
+void printArray(float *array)
+{
+    for (int i = 0; i < 256; i++)
+    {
+        cout << array[i] << endl;
+    }
+}
+
+
+
+
 
 /**
  * @Author: weiyutao

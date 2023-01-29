@@ -1,4 +1,4 @@
-# Install script for directory: D:/development_code_2022-9-10/vscode/opencv
+# Install script for directory: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "D:/mingw64/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "C:/Users/weiyutao/opt/mingw64/bin/objdump.exe")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "D:/development_code_2022-9-10/vscode/opencv/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

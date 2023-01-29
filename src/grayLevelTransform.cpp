@@ -438,3 +438,191 @@ void reconstructImageBasedBitPlane(Mat &outputImage, const map<int, Mat, compare
 
     linearScaling(sumMat, outputImage);
 }
+
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-01-25 20:05:40
+ * @Parameters: 
+ * @Return: 
+ * @Description: get the distribution of the inputImage. pass the inputImage, return the 
+ * we can use list in cpp, the index of the list is the gray value. the value in the list is the appearance
+ * numbers of the gray value in this image. of course, we can also use the map in cpp container.
+ */
+double* getDistribution(Mat inputImage)
+{
+    static double list[256] = {0};
+    uchar *matRow;
+    int rows = inputImage.rows;
+    int cols = inputImage.cols;
+    double MN = rows * cols;
+    double sum = 0;
+    for (int i = 0; i < rows; i++)
+    {
+        matRow = inputImage.ptr<uchar>(i);
+        for (int j = 0; j < cols; j++)
+        {
+            int grayValue = (int)matRow[j];
+            list[grayValue] += 1;    
+        }
+    }
+    // int len = sizeof(list) / sizeof(list[0]);
+    for (int i = 0; i < 256; i++)
+    {
+        list[i] /= MN;
+        // rounded and remain two decimal places.
+        // list[i] = (int)((list[i] * 100) + 0.5) / 100.0;
+        // list[i] = round(list[i] * 100) / 100;
+        sum += list[i];
+    }
+    cout << sum << endl;
+    return list;
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-01-25 20:07:31
+ * @Parameters: 
+ * @Return: 
+ * @Description: imshow the histogram. pass the distribution, return a histogram.
+ * you will find this histogram is very asymmetric. because we have too much gray value.
+ * so it result to the asymmetric happend.
+ * 
+ * we can name this function as histogram equalization what is a important method
+ * for histogram transform. it can enhance contrast.
+ */
+void getHistogramMat(double *distribution, Mat &histogramMat)
+{
+    int scale = 2;
+    int hist_height = 256;
+    histogramMat = Mat::zeros(hist_height, 256 * scale, CV_8UC1);
+    Point pt1, pt2;
+    double maxValue, currentValue;
+    // 64F means double
+    // 32F means float
+    // 8UC means 8bit unsigned char.
+    // Mat_<uchar>对应的是CV_8U
+    // Mat_<char>对应的是CV_8S
+    // Mat_<int>对应的是CV_32S
+    // Mat_<float>对应的是CV_32F
+    // Mat_<double>对应的是CV_64F
+    // you'd better to use double to store the decimal, or you will get the error number.
+    // if you find the error number in your mat object, it must be you have used the float
+    // type to store your decimal.
+    Mat hist = Mat(256, 1, CV_64F, distribution);
+    minMaxLoc(hist, 0, &maxValue, 0, 0);
+    for (int i = 0; i < 256; i++)
+    {
+        currentValue = distribution[i];
+        int height = cvRound(currentValue * hist_height / maxValue);
+        pt1.x = i * scale;
+        pt2.x = (i + 1) * scale - 1;
+        pt1.y = hist_height - 1;
+        pt2.y = hist_height - height;
+        // pt2.y = 500 - i;
+        rectangle(histogramMat, pt1, pt2, Scalar::all(255), 1);
+    }
+}
+
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-01-25 18:20:28
+ * @Parameters: 
+ * @Return: 
+ * @Description: histogram processing. 
+ * p(rk) = h(rk) / MN = nk / MN
+ * M N is the numbers of rows and columns, for all p value of k, sum p(rk) = 1;
+ * the component of p(rk) is the probability estimates for the gray value in the image.
+ * the histogram is the basic operation in the image processing. because it is simple and 
+ * suitable for hardware implementation quickly. so the histogram technology is a popular tool
+ * for the real-time image processing. the shape of the histogram is related with the appearance
+ * of the image. we can image the relationship between histogram and the appearance of the image.
+ * the horizontal axis of the histogram is the gray value. the histogram will foucuse on the left
+ * if the picture is the dark image. the histogram will foucuse on the right if the picture is the
+ * bright image. the histogram will foucuse on the middle if the picture is low contrast.
+ * the histogram will be uniform distribution if the picture is high contrast.
+ * so h(rk) is the numbers of the gray value appear in the image.
+ * h(rk) / MN is the probabilty of the gray value appear in the image.
+ * 
+ * the concept of histogram.
+ * just like a 3 bit image, L = 2^3 = 8. L - 1 = 7. a 64*64 = 4096 image.
+ * we can get the gray scale distribution for this image.
+ * gray value       numbers         probability
+ * 0                790             790/4096=0.19
+ * 1                1023            0.25
+ * 2                850             0.21
+ * 3                656             0.16
+ * 4                329             0.08
+ * 5                245             0.06
+ * 6                122             0.03
+ * 7                81              0.02
+ * the normalized image histogram. it is a expression. histogram equalization.
+ * s_k = T(r_k) = (L - 1) * Σ(j = 0~k) p_r(r_j)
+ * s0 = 7*p_r(r0) = 7 * 0.19 = 1.33 -rounded-> 1 
+ * s1 = 7*[p_r(r0)+p_r(r1)] = 7*(0.19+0.25) = 3.08 -rounded->3
+ * s2 = 5
+ * s3 = 6
+ * s4 = 6
+ * s5 = 7
+ * s6 = 7
+ * s7 = 7
+ * we can see, the mapping for this expression is one to many mapping.
+ * the gray value is monotonous increasing.
+ * the mapping of the gray value has two cases.
+ * first is monotone increasing function, it means one to many mapping.
+ * second is strictly monotone increasing function, it means one to one mapping.
+ * it is monotone increasing function in this case.
+ * then we can get another hostogram based on the mapping gray value.
+ * 1        790                 790         0.19   
+ * 3        1023                1023        0.25
+ * 5        850                 850         0.21
+ * 6        656+329             985         0.24
+ * 7        245+122+81          448         0.11
+ *
+ * the histogram is the approximate of the probabilty density function.
+ * this case used normolized image histogram. it will cover the border gray range after
+ * the equalization of the image. it means we can enhance the image contrast by using
+ * normolized image histogram. this is a specific histogram transform.
+ * you can see the probabilty will be balanced for each gray value, and the gray value 
+ * will be similar to the original gray value.
+ * and a special feature is that, no matter what type image you given, you can get the same high contrast
+ * image. it means, if you give some images that the different darker or brightness of one image.
+ * carrying out the transformation of histogram equalization to them. you can get the different
+ * histogram for the image after transformation, and the result image is euqal.
+ * the didfferent darker or brightness image of one same image, you can get the same high contrast
+ * image by doing the histogram equalization transformation for them. and the histogram for all high
+ * contrast you have got are different. it can also mean that the histogram of the same image may be different.
+ * it means the different histogram of one image can show the same contrast picture.
+ */ 
+void histogramTransform(Mat inputImage, Mat &outputImage) 
+{
+    // you should get the histogram of the original image.
+    double *distribution = getDistribution(inputImage);
+    double transformValue[256] = {0};
+    // then, transform the distribution.
+    float s = 0.0;
+    for (int r = 0; r < 256; r++)
+    {
+        for (int j = 0; j <= r; j++)
+        {
+            s += distribution[j];
+        }
+        s *= 255;
+        transformValue[r] = round(s);
+        s = 0.0;
+    }
+    // change the original gray value.
+    outputImage = inputImage.clone();
+    int rows = outputImage.rows;
+    int cols = outputImage.cols;
+    uchar *rowMat;
+    for (int i = 0; i < rows; i++)
+    {
+        rowMat = outputImage.ptr<uchar>(i);
+        for (int j = 0; j < cols; j++)
+        {
+            rowMat[j] = (uchar)transformValue[rowMat[j]];
+        }
+    }
+}
