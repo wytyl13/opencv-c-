@@ -659,7 +659,7 @@ int main(int argc, char const *argv[])
     imshowMulti(str, vectorImages); */
 
 
-    image = imread("../resources/darkerImage.webp");
+    image = imread("../resources/hln.png");
     cvtColor(image, imageGray, COLOR_BGR2GRAY);
     resize(imageGray, resizeImage, Size(600, 360));
     Mat outputImage;
@@ -756,7 +756,7 @@ int main(int argc, char const *argv[])
     vectorImages.push_back(resizeImage);
     getHistogramMat(listOriginal, histogramMatOriginal);
     vectorImages.push_back(histogramMatOriginal);
-    histogramTransform(resizeImage, outputImage);
+    histogramEqualizeTransformation(resizeImage, outputImage);
     vectorImages.push_back(outputImage);
     double *listNew = getDistribution(outputImage);
     getHistogramMat(listNew, histogramMatNew);
@@ -765,18 +765,152 @@ int main(int argc, char const *argv[])
     // we have successful tested the histogramTransform, it can enhance contrast.
     // and the efficient used it is very good.
     // you can find that the histogram transform has a lot to do with the the conrast of one image.
-
+/*  // of course, you can also use the official function equalizeHist that opencv has defined.
+    equalizeHist(resizeImage, outputImage);
+    imshow(str, outputImage); */
     
+
+    // we will test the histogram matching function.
+    // you can find it is euqal to the original image if you used the pure blank image as the objectImage.
+    Mat obj_image = imread("../resources/darkerImage.webp");
+    Mat gray_image, objectImage, equalizationMat;
+    Mat equalizationMat_equalization_original, equalizationMat_matching_original;
+    Mat equalizationMat_original, equalizationMat_object;
+    Mat matching_original, equalization_original, matching_equalization_original;
+    Mat matching_object, equalization_object, matching_equalization_object;
+    cvtColor(obj_image, gray_image, COLOR_BGRA2GRAY);
+    resize(gray_image, objectImage, Size(720, 360));
+    // objectImage = Mat::zeros(Size(100, 100), CV_8UC1);
+    // objectImage = Mat::ones(Size(100, 100), CV_8UC1);
+    // Point leftUpper = Point(0, 0);
+    // Point rightUpper = Point(100, 0);
+    // Point rightDown = Point(100, 100);
+    // Point leftDown = Point(0, 100);
+    // vector<Point> vectorPoints;
+    // vectorPoints.push_back(leftUpper);
+    // vectorPoints.push_back(rightUpper);
+    // vectorPoints.push_back(rightDown);
+    // vectorPoints.push_back(leftDown);
+    // fillPoly(objectImage, vectorPoints, Scalar::all(255));
+
+    /* str = "compare the histogram and image of the original and other transformation";
+    vector<Mat> vectorImages_compare1;
+    vectorImages_compare1.push_back(resizeImage);
+    vectorImages_compare1.push_back(objectImage);
+    getHistogramMatBasedOnInputImage(resizeImage, equalizationMat_original);
+    vectorImages_compare1.push_back(equalizationMat_original);
+    getHistogramMatBasedOnInputImage(objectImage, equalizationMat_object);
+    vectorImages_compare1.push_back(equalizationMat_object);
+    histogramEqualizeTransformation(resizeImage, equalization_original);
+    vectorImages_compare1.push_back(equalization_original);
+    getHistogramMatBasedOnInputImage(equalization_original, equalizationMat_equalization_original);
+    vectorImages_compare1.push_back(equalizationMat_equalization_original);
+    histogramMatchingTransformation(resizeImage, objectImage, matching_original);
+    vectorImages_compare1.push_back(matching_original);
+    getHistogramMatBasedOnInputImage(matching_original, equalizationMat_matching_original);
+    vectorImages_compare1.push_back(equalizationMat_matching_original);
+    imshowMulti(str, vectorImages_compare1);
+
+    str = "compare the image of resizeImage, any transformation involved matching_original, equalization_original, matching_equalization";
+    histogramMatchingTransformation(equalization_original, objectImage, matching_equalization_original);
+    vector<Mat> vectorImages_compare2;
+    vectorImages_compare2.push_back(resizeImage);
+    vectorImages_compare2.push_back(matching_original);
+    vectorImages_compare2.push_back(equalization_original);
+    vectorImages_compare2.push_back(matching_equalization_original);
+    imshowMulti(str, vectorImages_compare2);
+
+    str = "compare the image of objectImage, any transformation involved matching_original, equalization_original, matching_equalization";
+    histogramMatchingTransformation(objectImage, resizeImage, matching_object);
+    histogramEqualizeTransformation(objectImage, equalization_object);
+    histogramMatchingTransformation(equalization_object, resizeImage, matching_equalization_object);
+    vector<Mat> vectorImages_compare3;
+    vectorImages_compare3.push_back(objectImage);
+    vectorImages_compare3.push_back(matching_object);
+    vectorImages_compare3.push_back(equalization_object);
+    vectorImages_compare3.push_back(matching_equalization_object);
+    imshowMulti(str, vectorImages_compare3); */
+
+    // histogramTransformationLocal(resizeImage, outputImage, 4);
+    // imshow("test the local histogram transformation", outputImage);
+    // double *distribution = getEqualizationDistribution(resizeImage);
+    // printOneArrayPointer(distribution);
+/*     str = "compare the original image and local histogram equalization image";
+    histogramTransformationLocal(resizeImage, outputImage, 6);
+    vector<Mat> vectorImages;
+    vectorImages.push_back(resizeImage);
+    vectorImages.push_back(outputImage);
+    imshowMulti(str, vectorImages); */
+
+/*     thread first_thread(thread_function, 1);
+    thread second_thread(thread_function, 2);
+
+    first_thread.join();
+    second_thread.join(); */
+    // cpp is simpled to use the thread. create the thread object means the thread started
+    // join or detach means the thread end. the join means the process will block at here
+    // and util the thread end. detach will not wait the thread end. but
+    // these two keyword will all free the thread. the thread will enjoy all the code in the main
+    // after the thread creation.
+    // you can find each thread is separate during runing, and they will rob the cpu resoueces.
+    // if you call the cout function or other function, the other thread will rob the resources.
+    // so you will get the print content like as follow. "子线程子线程2开始执行1开始执行"
+    // the first thread rob the standard output resources and print "子线程", when the first thread
+    // want to print the other content, the second thread has robbed the cpu resouces and print all
+    // content it want to print. but when the second thread want to print the endl, the first thread
+    // robbed the cpu resources and print the other content, at the end, these two thread all
+    // print the endl; because we has free the thread used join keyword, so the main thread will not
+    // rob the resource before all sub thread run end. the main thread will rob the cpu resources
+    // if you used the detach keyword to free the sub thread.
+    // cout << "main thread" << endl;
+
+    // you can find the function used thread will waste less time, the thread function waste 4s
+    // if the kernel is 16, but the general function will wast 17s. the difference is 13s.
+    // if you adjust the parameter about the thread numbers, you will waste less time.
+    // we have test the 12 thread, it just wasted 1s. the efficient is equal to the general local histogram function.
+/*     time_t start_thread = time(NULL);
+    Mat outputImage_thread, outputImage_general;
+    histogramTransformationLocalThread(objectImage, outputImage_thread, 8, 4);
+    time_t end_thread = time(NULL);
+    time_t time_thread = end_thread - start_thread;
+    cout << "the local histogram transformation used thread has wasted " << time_thread << "s" << endl;
+    time_t start_general = time(NULL);
+    histogramTransformationLocal(objectImage, outputImage_general, 8);
+    time_t end_general = time(NULL);
+    time_t time_general = end_general - start_general;
+    cout << "the local histogram transformation without thread has wasted " << time_general << "s" << endl;
+    cout << Mat(objectImage, Range(0, 1), Range(350, 370)) << endl;
+    // cout << Mat(outputImage, Range(0, 1), Range(350, 370)) << endl;
+    vector<Mat> vectorImages;
+    vectorImages.push_back(objectImage);
+    vectorImages.push_back(outputImage_thread);
+    vectorImages.push_back(outputImage_general);
+    imshowMulti(str, vectorImages); */
+    // we have tested the histogram equalization local function used multi threads, it also has some problem expect to slove.
+    // then, we will test the other content of the digital image processing.
+    // of course, you can also test the histogram matching local function. we are here to omit it.
+
+    // quickly initialize one Mat
+    // mean 10*0.25+20*0.5+30*0.25 = 2.5+10+7.5=20
+    // variance (10-20)^2*0.25+(20-20)^2*0.5+(20-20)^2*0.5+(30-20)^2*0.25 = 25+25=50
+/*     uchar m[2][2] = {{10, 20}, {20, 30}};
+    Mat testMat = Mat(2, 2, CV_8UC1, m);
+    getMeanAndVarianceBaseOnMat(testMat, array);
+    cout << array[0] << " " << array[1] << endl;
+    double *distribution = getDistribution(testMat);
+    printOneArrayPointer(distribution); */
+    double k[4] = {0.0, 0.99999, 0.0, 0.0000009};
+    // LocalWithStatistics(objectImage, outputImage, 2, k);
+    LocalWithStatistics(objectImage, outputImage);
+    vector<Mat> vectorImages;
+    vectorImages.push_back(objectImage);
+    vectorImages.push_back(outputImage);
+    imshowMulti(str, vectorImages);
 
 
 
     // --------------------test histogram transform-----------------------------
-
-
-
-
     waitKey(0);
-
     // notice, you should destroy all the windows you have created at end.
     destroyAllWindows();
     system("pause");

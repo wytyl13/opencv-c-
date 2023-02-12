@@ -26,20 +26,20 @@ Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" p
 The CXX compiler identification is GNU, found in "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/3.25.2/CompilerIdCXX/a.exe"
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-hgdejk
+Change Dir: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-qm5qrg
 
-Run Build Command(s):C:/Users/weiyutao/opt/mingw64/bin/mingw32-make.exe -f Makefile cmTC_ecee1/fast && C:/Users/weiyutao/opt/mingw64/bin/mingw32-make.exe  -f CMakeFiles\cmTC_ecee1.dir\build.make CMakeFiles/cmTC_ecee1.dir/build
-mingw32-make.exe[1]: Entering directory 'C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-hgdejk'
-Building C object CMakeFiles/cmTC_ecee1.dir/CMakeCCompilerABI.c.obj
-C:\Users\weiyutao\opt\mingw64\bin\gcc.exe   -v -o CMakeFiles\cmTC_ecee1.dir\CMakeCCompilerABI.c.obj -c C:\Users\weiyutao\opt\cmake\share\cmake-3.25\Modules\CMakeCCompilerABI.c
+Run Build Command(s):C:/Users/weiyutao/opt/mingw64/bin/mingw32-make.exe -f Makefile cmTC_d23d0/fast && C:/Users/weiyutao/opt/mingw64/bin/mingw32-make.exe  -f CMakeFiles\cmTC_d23d0.dir\build.make CMakeFiles/cmTC_d23d0.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-qm5qrg'
+Building C object CMakeFiles/cmTC_d23d0.dir/CMakeCCompilerABI.c.obj
+C:\Users\weiyutao\opt\mingw64\bin\gcc.exe   -v -o CMakeFiles\cmTC_d23d0.dir\CMakeCCompilerABI.c.obj -c C:\Users\weiyutao\opt\cmake\share\cmake-3.25\Modules\CMakeCCompilerABI.c
 Using built-in specs.
 COLLECT_GCC=C:\Users\weiyutao\opt\mingw64\bin\gcc.exe
 Target: x86_64-w64-mingw32
 Configured with: ../../../src/gcc-8.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --with-sysroot=/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64 --enable-shared --enable-static --enable-targets=all --enable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-sjlj-exceptions --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch-32=i686 --with-arch-64=nocona --with-tune-32=generic --with-tune-64=core2 --with-libiconv --with-system-zlib --with-gmp=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-sjlj-rev0, Built by MinGW-W64 project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/lib -L/c/mingw810/prerequisites/x86_64-zlib-static/lib -L/c/mingw810/prerequisites/x86_64-w64-mingw32-static/lib '
 Thread model: posix
 gcc version 8.1.0 (x86_64-posix-sjlj-rev0, Built by MinGW-W64 project) 
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_ecee1.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona'
- C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/cc1.exe -quiet -v -iprefix C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/ -D_REENTRANT C:\Users\weiyutao\opt\cmake\share\cmake-3.25\Modules\CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=core2 -march=nocona -auxbase-strip CMakeFiles\cmTC_ecee1.dir\CMakeCCompilerABI.c.obj -version -o C:\Users\weiyutao\AppData\Local\Temp\ccILKGNk.s
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_d23d0.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona'
+ C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/cc1.exe -quiet -v -iprefix C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/ -D_REENTRANT C:\Users\weiyutao\opt\cmake\share\cmake-3.25\Modules\CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=core2 -march=nocona -auxbase-strip CMakeFiles\cmTC_d23d0.dir\CMakeCCompilerABI.c.obj -version -o C:\Users\weiyutao\AppData\Local\Temp\ccOU6U1q.s
 GNU C17 (x86_64-posix-sjlj-rev0, Built by MinGW-W64 project) version 8.1.0 (x86_64-w64-mingw32)
 	compiled by GNU C version 8.1.0, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0, isl version isl-0.18-GMP
 
@@ -61,17 +61,17 @@ GNU C17 (x86_64-posix-sjlj-rev0, Built by MinGW-W64 project) version 8.1.0 (x86_
 
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 Compiler executable checksum: 7d6121789872d4509209e56c3264e038
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_ecee1.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona'
- C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\cmTC_ecee1.dir\CMakeCCompilerABI.c.obj C:\Users\weiyutao\AppData\Local\Temp\ccILKGNk.s
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_d23d0.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona'
+ C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\cmTC_d23d0.dir\CMakeCCompilerABI.c.obj C:\Users\weiyutao\AppData\Local\Temp\ccOU6U1q.s
 GNU assembler version 2.30 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.30
 COMPILER_PATH=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/;C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/bin/
 LIBRARY_PATH=C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../lib/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_ecee1.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona'
-Linking C executable cmTC_ecee1.exe
-C:\Users\weiyutao\opt\cmake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_ecee1.dir\link.txt --verbose=1
-C:\Users\weiyutao\opt\cmake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_ecee1.dir/objects.a
-C:\Users\weiyutao\opt\mingw64\bin\ar.exe qc CMakeFiles\cmTC_ecee1.dir/objects.a @CMakeFiles\cmTC_ecee1.dir\objects1
-C:\Users\weiyutao\opt\mingw64\bin\gcc.exe  -v -Wl,--whole-archive CMakeFiles\cmTC_ecee1.dir/objects.a -Wl,--no-whole-archive -o cmTC_ecee1.exe -Wl,--out-implib,libcmTC_ecee1.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_d23d0.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona'
+Linking C executable cmTC_d23d0.exe
+C:\Users\weiyutao\opt\cmake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_d23d0.dir\link.txt --verbose=1
+C:\Users\weiyutao\opt\cmake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_d23d0.dir/objects.a
+C:\Users\weiyutao\opt\mingw64\bin\ar.exe qc CMakeFiles\cmTC_d23d0.dir/objects.a @CMakeFiles\cmTC_d23d0.dir\objects1
+C:\Users\weiyutao\opt\mingw64\bin\gcc.exe  -v -Wl,--whole-archive CMakeFiles\cmTC_d23d0.dir/objects.a -Wl,--no-whole-archive -o cmTC_d23d0.exe -Wl,--out-implib,libcmTC_d23d0.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
 Using built-in specs.
 COLLECT_GCC=C:\Users\weiyutao\opt\mingw64\bin\gcc.exe
 COLLECT_LTO_WRAPPER=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/lto-wrapper.exe
@@ -81,10 +81,10 @@ Thread model: posix
 gcc version 8.1.0 (x86_64-posix-sjlj-rev0, Built by MinGW-W64 project) 
 COMPILER_PATH=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/;C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/bin/
 LIBRARY_PATH=C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../lib/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_ecee1.exe' '-mtune=core2' '-march=nocona'
- C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/collect2.exe -plugin C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/liblto_plugin-0.dll -plugin-opt=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\weiyutao\AppData\Local\Temp\ccIli6UI.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt --sysroot=C:/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64 -m i386pep -Bdynamic -o cmTC_ecee1.exe C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtbegin.o -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0 -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../.. --whole-archive CMakeFiles\cmTC_ecee1.dir/objects.a --no-whole-archive --out-implib libcmTC_ecee1.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtend.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_ecee1.exe' '-mtune=core2' '-march=nocona'
-mingw32-make.exe[1]: Leaving directory 'C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-hgdejk'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d23d0.exe' '-mtune=core2' '-march=nocona'
+ C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/collect2.exe -plugin C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/liblto_plugin-0.dll -plugin-opt=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\weiyutao\AppData\Local\Temp\ccAP6upF.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt --sysroot=C:/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64 -m i386pep -Bdynamic -o cmTC_d23d0.exe C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtbegin.o -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0 -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../.. --whole-archive CMakeFiles\cmTC_d23d0.dir/objects.a --no-whole-archive --out-implib libcmTC_d23d0.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtend.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d23d0.exe' '-mtune=core2' '-march=nocona'
+mingw32-make.exe[1]: Leaving directory 'C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-qm5qrg'
 
 
 
@@ -105,20 +105,20 @@ Parsed C implicit include dir info from above output: rv=done
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-hgdejk]
+  ignore line: [Change Dir: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-qm5qrg]
   ignore line: []
-  ignore line: [Run Build Command(s):C:/Users/weiyutao/opt/mingw64/bin/mingw32-make.exe -f Makefile cmTC_ecee1/fast && C:/Users/weiyutao/opt/mingw64/bin/mingw32-make.exe  -f CMakeFiles\cmTC_ecee1.dir\build.make CMakeFiles/cmTC_ecee1.dir/build]
-  ignore line: [mingw32-make.exe[1]: Entering directory 'C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-hgdejk']
-  ignore line: [Building C object CMakeFiles/cmTC_ecee1.dir/CMakeCCompilerABI.c.obj]
-  ignore line: [C:\Users\weiyutao\opt\mingw64\bin\gcc.exe   -v -o CMakeFiles\cmTC_ecee1.dir\CMakeCCompilerABI.c.obj -c C:\Users\weiyutao\opt\cmake\share\cmake-3.25\Modules\CMakeCCompilerABI.c]
+  ignore line: [Run Build Command(s):C:/Users/weiyutao/opt/mingw64/bin/mingw32-make.exe -f Makefile cmTC_d23d0/fast && C:/Users/weiyutao/opt/mingw64/bin/mingw32-make.exe  -f CMakeFiles\cmTC_d23d0.dir\build.make CMakeFiles/cmTC_d23d0.dir/build]
+  ignore line: [mingw32-make.exe[1]: Entering directory 'C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-qm5qrg']
+  ignore line: [Building C object CMakeFiles/cmTC_d23d0.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [C:\Users\weiyutao\opt\mingw64\bin\gcc.exe   -v -o CMakeFiles\cmTC_d23d0.dir\CMakeCCompilerABI.c.obj -c C:\Users\weiyutao\opt\cmake\share\cmake-3.25\Modules\CMakeCCompilerABI.c]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=C:\Users\weiyutao\opt\mingw64\bin\gcc.exe]
   ignore line: [Target: x86_64-w64-mingw32]
   ignore line: [Configured with: ../../../src/gcc-8.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --with-sysroot=/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64 --enable-shared --enable-static --enable-targets=all --enable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-sjlj-exceptions --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch-32=i686 --with-arch-64=nocona --with-tune-32=generic --with-tune-64=core2 --with-libiconv --with-system-zlib --with-gmp=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-sjlj-rev0, Built by MinGW-W64 project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/lib -L/c/mingw810/prerequisites/x86_64-zlib-static/lib -L/c/mingw810/prerequisites/x86_64-w64-mingw32-static/lib ']
   ignore line: [Thread model: posix]
   ignore line: [gcc version 8.1.0 (x86_64-posix-sjlj-rev0  Built by MinGW-W64 project) ]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_ecee1.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona']
-  ignore line: [ C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/cc1.exe -quiet -v -iprefix C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/ -D_REENTRANT C:\Users\weiyutao\opt\cmake\share\cmake-3.25\Modules\CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=core2 -march=nocona -auxbase-strip CMakeFiles\cmTC_ecee1.dir\CMakeCCompilerABI.c.obj -version -o C:\Users\weiyutao\AppData\Local\Temp\ccILKGNk.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_d23d0.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona']
+  ignore line: [ C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/cc1.exe -quiet -v -iprefix C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/ -D_REENTRANT C:\Users\weiyutao\opt\cmake\share\cmake-3.25\Modules\CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=core2 -march=nocona -auxbase-strip CMakeFiles\cmTC_d23d0.dir\CMakeCCompilerABI.c.obj -version -o C:\Users\weiyutao\AppData\Local\Temp\ccOU6U1q.s]
   ignore line: [GNU C17 (x86_64-posix-sjlj-rev0  Built by MinGW-W64 project) version 8.1.0 (x86_64-w64-mingw32)]
   ignore line: [	compiled by GNU C version 8.1.0  GMP version 6.1.2  MPFR version 4.0.1  MPC version 1.1.0  isl version isl-0.18-GMP]
   ignore line: []
@@ -140,8 +140,8 @@ Parsed C implicit link information from above output:
   ignore line: []
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
   ignore line: [Compiler executable checksum: 7d6121789872d4509209e56c3264e038]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_ecee1.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona']
-  ignore line: [ C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\cmTC_ecee1.dir\CMakeCCompilerABI.c.obj C:\Users\weiyutao\AppData\Local\Temp\ccILKGNk.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_d23d0.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona']
+  ignore line: [ C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\cmTC_d23d0.dir\CMakeCCompilerABI.c.obj C:\Users\weiyutao\AppData\Local\Temp\ccOU6U1q.s]
   ignore line: [GNU assembler version 2.30 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.30]
   ignore line: [COMPILER_PATH=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/]
   ignore line: [C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/]
@@ -152,12 +152,12 @@ Parsed C implicit link information from above output:
   ignore line: [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../lib/]
   ignore line: [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/]
   ignore line: [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_ecee1.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona']
-  ignore line: [Linking C executable cmTC_ecee1.exe]
-  ignore line: [C:\Users\weiyutao\opt\cmake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_ecee1.dir\link.txt --verbose=1]
-  ignore line: [C:\Users\weiyutao\opt\cmake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_ecee1.dir/objects.a]
-  ignore line: [C:\Users\weiyutao\opt\mingw64\bin\ar.exe qc CMakeFiles\cmTC_ecee1.dir/objects.a @CMakeFiles\cmTC_ecee1.dir\objects1]
-  ignore line: [C:\Users\weiyutao\opt\mingw64\bin\gcc.exe  -v -Wl --whole-archive CMakeFiles\cmTC_ecee1.dir/objects.a -Wl --no-whole-archive -o cmTC_ecee1.exe -Wl --out-implib libcmTC_ecee1.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_d23d0.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona']
+  ignore line: [Linking C executable cmTC_d23d0.exe]
+  ignore line: [C:\Users\weiyutao\opt\cmake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_d23d0.dir\link.txt --verbose=1]
+  ignore line: [C:\Users\weiyutao\opt\cmake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_d23d0.dir/objects.a]
+  ignore line: [C:\Users\weiyutao\opt\mingw64\bin\ar.exe qc CMakeFiles\cmTC_d23d0.dir/objects.a @CMakeFiles\cmTC_d23d0.dir\objects1]
+  ignore line: [C:\Users\weiyutao\opt\mingw64\bin\gcc.exe  -v -Wl --whole-archive CMakeFiles\cmTC_d23d0.dir/objects.a -Wl --no-whole-archive -o cmTC_d23d0.exe -Wl --out-implib libcmTC_d23d0.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=C:\Users\weiyutao\opt\mingw64\bin\gcc.exe]
   ignore line: [COLLECT_LTO_WRAPPER=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/lto-wrapper.exe]
@@ -174,13 +174,13 @@ Parsed C implicit link information from above output:
   ignore line: [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../lib/]
   ignore line: [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/]
   ignore line: [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_ecee1.exe' '-mtune=core2' '-march=nocona']
-  link line: [ C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/collect2.exe -plugin C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/liblto_plugin-0.dll -plugin-opt=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\weiyutao\AppData\Local\Temp\ccIli6UI.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt --sysroot=C:/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64 -m i386pep -Bdynamic -o cmTC_ecee1.exe C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtbegin.o -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0 -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../.. --whole-archive CMakeFiles\cmTC_ecee1.dir/objects.a --no-whole-archive --out-implib libcmTC_ecee1.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtend.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d23d0.exe' '-mtune=core2' '-march=nocona']
+  link line: [ C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/collect2.exe -plugin C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/liblto_plugin-0.dll -plugin-opt=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\weiyutao\AppData\Local\Temp\ccAP6upF.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt --sysroot=C:/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64 -m i386pep -Bdynamic -o cmTC_d23d0.exe C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtbegin.o -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0 -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../.. --whole-archive CMakeFiles\cmTC_d23d0.dir/objects.a --no-whole-archive --out-implib libcmTC_d23d0.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtend.o]
     arg [C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/collect2.exe] ==> ignore
     arg [-plugin] ==> ignore
     arg [C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/liblto_plugin-0.dll] ==> ignore
     arg [-plugin-opt=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/lto-wrapper.exe] ==> ignore
-    arg [-plugin-opt=-fresolution=C:\Users\weiyutao\AppData\Local\Temp\ccIli6UI.res] ==> ignore
+    arg [-plugin-opt=-fresolution=C:\Users\weiyutao\AppData\Local\Temp\ccAP6upF.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_eh] ==> ignore
@@ -204,7 +204,7 @@ Parsed C implicit link information from above output:
     arg [i386pep] ==> ignore
     arg [-Bdynamic] ==> search dynamic
     arg [-o] ==> ignore
-    arg [cmTC_ecee1.exe] ==> ignore
+    arg [cmTC_d23d0.exe] ==> ignore
     arg [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> obj [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o]
     arg [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtbegin.o] ==> obj [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtbegin.o]
     arg [-LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0] ==> dir [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0]
@@ -214,10 +214,10 @@ Parsed C implicit link information from above output:
     arg [-LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib] ==> dir [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib]
     arg [-LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../..] ==> dir [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../..]
     arg [--whole-archive] ==> ignore
-    arg [CMakeFiles\cmTC_ecee1.dir/objects.a] ==> ignore
+    arg [CMakeFiles\cmTC_d23d0.dir/objects.a] ==> ignore
     arg [--no-whole-archive] ==> ignore
     arg [--out-implib] ==> ignore
-    arg [libcmTC_ecee1.dll.a] ==> ignore
+    arg [libcmTC_d23d0.dll.a] ==> ignore
     arg [--major-image-version] ==> ignore
     arg [0] ==> ignore
     arg [--minor-image-version] ==> ignore
@@ -261,20 +261,20 @@ Parsed C implicit link information from above output:
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-wqxqru
+Change Dir: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-kmqj5c
 
-Run Build Command(s):C:/Users/weiyutao/opt/mingw64/bin/mingw32-make.exe -f Makefile cmTC_7c116/fast && C:/Users/weiyutao/opt/mingw64/bin/mingw32-make.exe  -f CMakeFiles\cmTC_7c116.dir\build.make CMakeFiles/cmTC_7c116.dir/build
-mingw32-make.exe[1]: Entering directory 'C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-wqxqru'
-Building CXX object CMakeFiles/cmTC_7c116.dir/CMakeCXXCompilerABI.cpp.obj
-C:\Users\weiyutao\opt\mingw64\bin\g++.exe   -v -o CMakeFiles\cmTC_7c116.dir\CMakeCXXCompilerABI.cpp.obj -c C:\Users\weiyutao\opt\cmake\share\cmake-3.25\Modules\CMakeCXXCompilerABI.cpp
+Run Build Command(s):C:/Users/weiyutao/opt/mingw64/bin/mingw32-make.exe -f Makefile cmTC_0e4eb/fast && C:/Users/weiyutao/opt/mingw64/bin/mingw32-make.exe  -f CMakeFiles\cmTC_0e4eb.dir\build.make CMakeFiles/cmTC_0e4eb.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-kmqj5c'
+Building CXX object CMakeFiles/cmTC_0e4eb.dir/CMakeCXXCompilerABI.cpp.obj
+C:\Users\weiyutao\opt\mingw64\bin\g++.exe   -v -o CMakeFiles\cmTC_0e4eb.dir\CMakeCXXCompilerABI.cpp.obj -c C:\Users\weiyutao\opt\cmake\share\cmake-3.25\Modules\CMakeCXXCompilerABI.cpp
 Using built-in specs.
 COLLECT_GCC=C:\Users\weiyutao\opt\mingw64\bin\g++.exe
 Target: x86_64-w64-mingw32
 Configured with: ../../../src/gcc-8.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --with-sysroot=/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64 --enable-shared --enable-static --enable-targets=all --enable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-sjlj-exceptions --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch-32=i686 --with-arch-64=nocona --with-tune-32=generic --with-tune-64=core2 --with-libiconv --with-system-zlib --with-gmp=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-sjlj-rev0, Built by MinGW-W64 project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/lib -L/c/mingw810/prerequisites/x86_64-zlib-static/lib -L/c/mingw810/prerequisites/x86_64-w64-mingw32-static/lib '
 Thread model: posix
 gcc version 8.1.0 (x86_64-posix-sjlj-rev0, Built by MinGW-W64 project) 
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_7c116.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona'
- C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/cc1plus.exe -quiet -v -iprefix C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/ -D_REENTRANT C:\Users\weiyutao\opt\cmake\share\cmake-3.25\Modules\CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=core2 -march=nocona -auxbase-strip CMakeFiles\cmTC_7c116.dir\CMakeCXXCompilerABI.cpp.obj -version -o C:\Users\weiyutao\AppData\Local\Temp\ccdRyfzd.s
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_0e4eb.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona'
+ C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/cc1plus.exe -quiet -v -iprefix C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/ -D_REENTRANT C:\Users\weiyutao\opt\cmake\share\cmake-3.25\Modules\CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=core2 -march=nocona -auxbase-strip CMakeFiles\cmTC_0e4eb.dir\CMakeCXXCompilerABI.cpp.obj -version -o C:\Users\weiyutao\AppData\Local\Temp\ccIzqSed.s
 GNU C++14 (x86_64-posix-sjlj-rev0, Built by MinGW-W64 project) version 8.1.0 (x86_64-w64-mingw32)
 	compiled by GNU C version 8.1.0, GMP version 6.1.2, MPFR version 4.0.1, MPC version 1.1.0, isl version isl-0.18-GMP
 
@@ -302,17 +302,17 @@ GNU C++14 (x86_64-posix-sjlj-rev0, Built by MinGW-W64 project) version 8.1.0 (x8
 
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 Compiler executable checksum: 4d9b8bf99f17512bc9c3ca87fdffa973
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_7c116.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona'
- C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\cmTC_7c116.dir\CMakeCXXCompilerABI.cpp.obj C:\Users\weiyutao\AppData\Local\Temp\ccdRyfzd.s
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_0e4eb.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona'
+ C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\cmTC_0e4eb.dir\CMakeCXXCompilerABI.cpp.obj C:\Users\weiyutao\AppData\Local\Temp\ccIzqSed.s
 GNU assembler version 2.30 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.30
 COMPILER_PATH=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/;C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/bin/
 LIBRARY_PATH=C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../lib/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_7c116.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona'
-Linking CXX executable cmTC_7c116.exe
-C:\Users\weiyutao\opt\cmake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_7c116.dir\link.txt --verbose=1
-C:\Users\weiyutao\opt\cmake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_7c116.dir/objects.a
-C:\Users\weiyutao\opt\mingw64\bin\ar.exe qc CMakeFiles\cmTC_7c116.dir/objects.a @CMakeFiles\cmTC_7c116.dir\objects1
-C:\Users\weiyutao\opt\mingw64\bin\g++.exe  -v -Wl,--whole-archive CMakeFiles\cmTC_7c116.dir/objects.a -Wl,--no-whole-archive -o cmTC_7c116.exe -Wl,--out-implib,libcmTC_7c116.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_0e4eb.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona'
+Linking CXX executable cmTC_0e4eb.exe
+C:\Users\weiyutao\opt\cmake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_0e4eb.dir\link.txt --verbose=1
+C:\Users\weiyutao\opt\cmake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_0e4eb.dir/objects.a
+C:\Users\weiyutao\opt\mingw64\bin\ar.exe qc CMakeFiles\cmTC_0e4eb.dir/objects.a @CMakeFiles\cmTC_0e4eb.dir\objects1
+C:\Users\weiyutao\opt\mingw64\bin\g++.exe  -v -Wl,--whole-archive CMakeFiles\cmTC_0e4eb.dir/objects.a -Wl,--no-whole-archive -o cmTC_0e4eb.exe -Wl,--out-implib,libcmTC_0e4eb.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
 Using built-in specs.
 COLLECT_GCC=C:\Users\weiyutao\opt\mingw64\bin\g++.exe
 COLLECT_LTO_WRAPPER=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/lto-wrapper.exe
@@ -322,10 +322,10 @@ Thread model: posix
 gcc version 8.1.0 (x86_64-posix-sjlj-rev0, Built by MinGW-W64 project) 
 COMPILER_PATH=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/;C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/bin/
 LIBRARY_PATH=C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../lib/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/;C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7c116.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona'
- C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/collect2.exe -plugin C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/liblto_plugin-0.dll -plugin-opt=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\weiyutao\AppData\Local\Temp\ccH0LqCo.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt --sysroot=C:/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64 -m i386pep -Bdynamic -o cmTC_7c116.exe C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtbegin.o -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0 -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../.. --whole-archive CMakeFiles\cmTC_7c116.dir/objects.a --no-whole-archive --out-implib libcmTC_7c116.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtend.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7c116.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona'
-mingw32-make.exe[1]: Leaving directory 'C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-wqxqru'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_0e4eb.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona'
+ C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/collect2.exe -plugin C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/liblto_plugin-0.dll -plugin-opt=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\weiyutao\AppData\Local\Temp\ccLWDqQe.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt --sysroot=C:/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64 -m i386pep -Bdynamic -o cmTC_0e4eb.exe C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtbegin.o -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0 -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../.. --whole-archive CMakeFiles\cmTC_0e4eb.dir/objects.a --no-whole-archive --out-implib libcmTC_0e4eb.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtend.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_0e4eb.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona'
+mingw32-make.exe[1]: Leaving directory 'C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-kmqj5c'
 
 
 
@@ -352,20 +352,20 @@ Parsed CXX implicit include dir info from above output: rv=done
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-wqxqru]
+  ignore line: [Change Dir: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-kmqj5c]
   ignore line: []
-  ignore line: [Run Build Command(s):C:/Users/weiyutao/opt/mingw64/bin/mingw32-make.exe -f Makefile cmTC_7c116/fast && C:/Users/weiyutao/opt/mingw64/bin/mingw32-make.exe  -f CMakeFiles\cmTC_7c116.dir\build.make CMakeFiles/cmTC_7c116.dir/build]
-  ignore line: [mingw32-make.exe[1]: Entering directory 'C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-wqxqru']
-  ignore line: [Building CXX object CMakeFiles/cmTC_7c116.dir/CMakeCXXCompilerABI.cpp.obj]
-  ignore line: [C:\Users\weiyutao\opt\mingw64\bin\g++.exe   -v -o CMakeFiles\cmTC_7c116.dir\CMakeCXXCompilerABI.cpp.obj -c C:\Users\weiyutao\opt\cmake\share\cmake-3.25\Modules\CMakeCXXCompilerABI.cpp]
+  ignore line: [Run Build Command(s):C:/Users/weiyutao/opt/mingw64/bin/mingw32-make.exe -f Makefile cmTC_0e4eb/fast && C:/Users/weiyutao/opt/mingw64/bin/mingw32-make.exe  -f CMakeFiles\cmTC_0e4eb.dir\build.make CMakeFiles/cmTC_0e4eb.dir/build]
+  ignore line: [mingw32-make.exe[1]: Entering directory 'C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build/CMakeFiles/CMakeScratch/TryCompile-kmqj5c']
+  ignore line: [Building CXX object CMakeFiles/cmTC_0e4eb.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [C:\Users\weiyutao\opt\mingw64\bin\g++.exe   -v -o CMakeFiles\cmTC_0e4eb.dir\CMakeCXXCompilerABI.cpp.obj -c C:\Users\weiyutao\opt\cmake\share\cmake-3.25\Modules\CMakeCXXCompilerABI.cpp]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=C:\Users\weiyutao\opt\mingw64\bin\g++.exe]
   ignore line: [Target: x86_64-w64-mingw32]
   ignore line: [Configured with: ../../../src/gcc-8.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --with-sysroot=/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64 --enable-shared --enable-static --enable-targets=all --enable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-sjlj-exceptions --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch-32=i686 --with-arch-64=nocona --with-tune-32=generic --with-tune-64=core2 --with-libiconv --with-system-zlib --with-gmp=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-sjlj-rev0, Built by MinGW-W64 project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64/opt/lib -L/c/mingw810/prerequisites/x86_64-zlib-static/lib -L/c/mingw810/prerequisites/x86_64-w64-mingw32-static/lib ']
   ignore line: [Thread model: posix]
   ignore line: [gcc version 8.1.0 (x86_64-posix-sjlj-rev0  Built by MinGW-W64 project) ]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_7c116.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona']
-  ignore line: [ C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/cc1plus.exe -quiet -v -iprefix C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/ -D_REENTRANT C:\Users\weiyutao\opt\cmake\share\cmake-3.25\Modules\CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=core2 -march=nocona -auxbase-strip CMakeFiles\cmTC_7c116.dir\CMakeCXXCompilerABI.cpp.obj -version -o C:\Users\weiyutao\AppData\Local\Temp\ccdRyfzd.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_0e4eb.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona']
+  ignore line: [ C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/cc1plus.exe -quiet -v -iprefix C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/ -D_REENTRANT C:\Users\weiyutao\opt\cmake\share\cmake-3.25\Modules\CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=core2 -march=nocona -auxbase-strip CMakeFiles\cmTC_0e4eb.dir\CMakeCXXCompilerABI.cpp.obj -version -o C:\Users\weiyutao\AppData\Local\Temp\ccIzqSed.s]
   ignore line: [GNU C++14 (x86_64-posix-sjlj-rev0  Built by MinGW-W64 project) version 8.1.0 (x86_64-w64-mingw32)]
   ignore line: [	compiled by GNU C version 8.1.0  GMP version 6.1.2  MPFR version 4.0.1  MPC version 1.1.0  isl version isl-0.18-GMP]
   ignore line: []
@@ -393,8 +393,8 @@ Parsed CXX implicit link information from above output:
   ignore line: []
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
   ignore line: [Compiler executable checksum: 4d9b8bf99f17512bc9c3ca87fdffa973]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_7c116.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona']
-  ignore line: [ C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\cmTC_7c116.dir\CMakeCXXCompilerABI.cpp.obj C:\Users\weiyutao\AppData\Local\Temp\ccdRyfzd.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_0e4eb.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona']
+  ignore line: [ C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\cmTC_0e4eb.dir\CMakeCXXCompilerABI.cpp.obj C:\Users\weiyutao\AppData\Local\Temp\ccIzqSed.s]
   ignore line: [GNU assembler version 2.30 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.30]
   ignore line: [COMPILER_PATH=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/]
   ignore line: [C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/]
@@ -405,12 +405,12 @@ Parsed CXX implicit link information from above output:
   ignore line: [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../lib/]
   ignore line: [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/]
   ignore line: [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_7c116.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona']
-  ignore line: [Linking CXX executable cmTC_7c116.exe]
-  ignore line: [C:\Users\weiyutao\opt\cmake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_7c116.dir\link.txt --verbose=1]
-  ignore line: [C:\Users\weiyutao\opt\cmake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_7c116.dir/objects.a]
-  ignore line: [C:\Users\weiyutao\opt\mingw64\bin\ar.exe qc CMakeFiles\cmTC_7c116.dir/objects.a @CMakeFiles\cmTC_7c116.dir\objects1]
-  ignore line: [C:\Users\weiyutao\opt\mingw64\bin\g++.exe  -v -Wl --whole-archive CMakeFiles\cmTC_7c116.dir/objects.a -Wl --no-whole-archive -o cmTC_7c116.exe -Wl --out-implib libcmTC_7c116.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_0e4eb.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona']
+  ignore line: [Linking CXX executable cmTC_0e4eb.exe]
+  ignore line: [C:\Users\weiyutao\opt\cmake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_0e4eb.dir\link.txt --verbose=1]
+  ignore line: [C:\Users\weiyutao\opt\cmake\bin\cmake.exe -E rm -f CMakeFiles\cmTC_0e4eb.dir/objects.a]
+  ignore line: [C:\Users\weiyutao\opt\mingw64\bin\ar.exe qc CMakeFiles\cmTC_0e4eb.dir/objects.a @CMakeFiles\cmTC_0e4eb.dir\objects1]
+  ignore line: [C:\Users\weiyutao\opt\mingw64\bin\g++.exe  -v -Wl --whole-archive CMakeFiles\cmTC_0e4eb.dir/objects.a -Wl --no-whole-archive -o cmTC_0e4eb.exe -Wl --out-implib libcmTC_0e4eb.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=C:\Users\weiyutao\opt\mingw64\bin\g++.exe]
   ignore line: [COLLECT_LTO_WRAPPER=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/lto-wrapper.exe]
@@ -427,13 +427,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../lib/]
   ignore line: [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/]
   ignore line: [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7c116.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona']
-  link line: [ C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/collect2.exe -plugin C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/liblto_plugin-0.dll -plugin-opt=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\weiyutao\AppData\Local\Temp\ccH0LqCo.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt --sysroot=C:/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64 -m i386pep -Bdynamic -o cmTC_7c116.exe C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtbegin.o -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0 -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../.. --whole-archive CMakeFiles\cmTC_7c116.dir/objects.a --no-whole-archive --out-implib libcmTC_7c116.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtend.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_0e4eb.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona']
+  link line: [ C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/collect2.exe -plugin C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/liblto_plugin-0.dll -plugin-opt=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\weiyutao\AppData\Local\Temp\ccLWDqQe.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt --sysroot=C:/mingw810/x86_64-810-posix-sjlj-rt_v6-rev0/mingw64 -m i386pep -Bdynamic -o cmTC_0e4eb.exe C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtbegin.o -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0 -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib -LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../.. --whole-archive CMakeFiles\cmTC_0e4eb.dir/objects.a --no-whole-archive --out-implib libcmTC_0e4eb.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtend.o]
     arg [C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/collect2.exe] ==> ignore
     arg [-plugin] ==> ignore
     arg [C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/liblto_plugin-0.dll] ==> ignore
     arg [-plugin-opt=C:/Users/weiyutao/opt/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/lto-wrapper.exe] ==> ignore
-    arg [-plugin-opt=-fresolution=C:\Users\weiyutao\AppData\Local\Temp\ccH0LqCo.res] ==> ignore
+    arg [-plugin-opt=-fresolution=C:\Users\weiyutao\AppData\Local\Temp\ccLWDqQe.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
@@ -457,7 +457,7 @@ Parsed CXX implicit link information from above output:
     arg [i386pep] ==> ignore
     arg [-Bdynamic] ==> search dynamic
     arg [-o] ==> ignore
-    arg [cmTC_7c116.exe] ==> ignore
+    arg [cmTC_0e4eb.exe] ==> ignore
     arg [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> obj [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o]
     arg [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtbegin.o] ==> obj [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/crtbegin.o]
     arg [-LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0] ==> dir [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0]
@@ -467,10 +467,10 @@ Parsed CXX implicit link information from above output:
     arg [-LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib] ==> dir [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib]
     arg [-LC:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../..] ==> dir [C:/Users/weiyutao/opt/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../..]
     arg [--whole-archive] ==> ignore
-    arg [CMakeFiles\cmTC_7c116.dir/objects.a] ==> ignore
+    arg [CMakeFiles\cmTC_0e4eb.dir/objects.a] ==> ignore
     arg [--no-whole-archive] ==> ignore
     arg [--out-implib] ==> ignore
-    arg [libcmTC_7c116.dll.a] ==> ignore
+    arg [libcmTC_0e4eb.dll.a] ==> ignore
     arg [--major-image-version] ==> ignore
     arg [0] ==> ignore
     arg [--minor-image-version] ==> ignore

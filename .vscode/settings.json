@@ -61,6 +61,7 @@
         "*.expression": "cpp",
         "alignedvector3": "cpp",
         "fft": "cpp",
-        "matrixfunctions": "cpp"
-    }
+        "matrixfunctions": "cpp",
+    },
+    "C_Cpp.errorSquiggles": "enabled"
 }

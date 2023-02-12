@@ -1,6 +1,7 @@
 #ifndef _GENERAL_H
 #define _GENERAL_H
 #include <iostream>
+#include <cstdarg>
 #include <string.h>
 #include <vector>
 #include <map>
@@ -16,6 +17,7 @@
 // or you will get error.
 #include <Eigen/Dense>
 #include <opencv2/core/eigen.hpp>
+#include <Python.h>
 
 using namespace cv;
 using namespace std;
@@ -36,7 +38,10 @@ void sys_error(const char *str);
 void elementOperation(Mat inputImage, Mat &outputImage);
 void imshowMulti(string &str, vector<Mat> vectorImage);
 void printMap(const map<int, Mat, compareMap> &mapBitPlane);
-void printArray(float *array);
+void printOneArrayPointer(const double *array);
+void printTwoArrayPointer(const double *array1, const double *array2);
+void printArrayListPointer(double *array, ...);
+void thread_function(int i);
 
 void drawLines(Mat &inputImage, Point one, Point two);
 void drawPolygon(Mat &inputImage, vector<Point> vectorPoints);

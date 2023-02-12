@@ -3,7 +3,9 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "C:/Users/weiyutao/opt/opencv/build/install/include",
+                "C:/Users/weiyutao/opt/eigen-3.4.0"
             ],
             "defines": [
                 "_DEBUG",
@@ -16,6 +18,22 @@
             "cppStandard": "c++17",
             "intelliSenseMode": "windows-gcc-x64",
             "configurationProvider": "ms-vscode.cmake-tools"
+        },
+        {
+            "name": "opencv",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "c:/users/weiyutao/opt/opencv/build/install/include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\gcc.exe",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "windows-gcc-x64"
         }
     ],
     "version": 4

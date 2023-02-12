@@ -1,5 +1,5 @@
 #include "../include/general.h"
-
+#define MAX_COLUMN = 7
 void sys_error(const char *str) 
 {
     perror(str);
@@ -140,7 +140,7 @@ void printMap(const map<int, Mat, compareMap> &mapBitPlane)
     }
 }
 
-void printArray(float *array)
+void printOneArrayPointer(const double *array) 
 {
     for (int i = 0; i < 256; i++)
     {
@@ -148,6 +148,71 @@ void printArray(float *array)
     }
 }
 
+
+void printTwoArrayPointer(const double *array1, const double *array2) 
+{
+    for (int i = 0; i < 256; i++)
+    {
+        cout << array1[i] << " " << array2[i] << endl;
+    }
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-01-31 09:55:51
+ * @Parameters: 
+ * @Return: 
+ * @Description: you can use this function show multi arrayList what shape is 256*1.
+ * if you pass two parameters, it will return the 256*2 information.
+ * becasue the pointer of the array can not calculate the size, so we do not 
+ * judge the size of the array you have passed. of course, you can also use the class to encapsulation
+ * these print method. but you can also define these function used the uncertain parameters method.
+ */
+
+void printArrayListPointer(double *array, ...)
+{
+    va_list arg;
+    va_start(arg, array);
+    // you can use memcpy function to append two 256*1 dimension array to a 256*2 dimension array.
+    double argArray[7][256];
+    double *argValue;
+    memcpy(argArray[0], array, 256 * sizeof(double));
+    int i = 1;
+    do
+    {
+        
+        argValue = va_arg(arg, double *);
+        memcpy(argArray[i], argValue, 256 * sizeof(double));
+        i++;
+        if (i == 7)
+        {
+            sys_error("the parameters has overflow");
+        }
+    } while (argValue != 0);
+    va_end(arg);
+    for (int n = 0; n < 256; n++)
+    {
+        for (int m = 0; m < i; m++)
+        {
+            cout << argArray[m][n] << " ";
+        }
+        cout << endl;
+    }
+}
+
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-01 09:28:45
+ * @Parameters: 
+ * @Return: 
+ * @Description: define a thread function to handle the localHistogram transformation
+ * problem, because its amount of calculation is large.
+ */
+void thread_function(int i)
+{
+    cout << "子线程" << i << "开始执行" << endl;
+}
 
 
 

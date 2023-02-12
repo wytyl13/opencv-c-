@@ -17,6 +17,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/main.cpp" "CMakeFiles/opencv.dir/src/main.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/main.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/noise.cpp" "CMakeFiles/opencv.dir/src/noise.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/noise.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/someSuperApplication.cpp" "CMakeFiles/opencv.dir/src/someSuperApplication.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/someSuperApplication.cpp.obj.d"
+  "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/spatialFilter.cpp" "CMakeFiles/opencv.dir/src/spatialFilter.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/spatialFilter.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/transformUsedAffineMatrix.cpp" "CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.obj.d"
   )
 

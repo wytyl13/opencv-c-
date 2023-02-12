@@ -1,52 +1,57 @@
 [
 {
   "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
-  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\bitOperation.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\bitOperation.cpp",
+  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\bitOperation.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\bitOperation.cpp",
   "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/bitOperation.cpp"
 },
 {
   "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
-  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\eigen.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\eigen.cpp",
+  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\eigen.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\eigen.cpp",
   "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/eigen.cpp"
 },
 {
   "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
-  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\general.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\general.cpp",
+  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\general.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\general.cpp",
   "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/general.cpp"
 },
 {
   "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
-  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\grayLevelTransform.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\grayLevelTransform.cpp",
+  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\grayLevelTransform.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\grayLevelTransform.cpp",
   "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/grayLevelTransform.cpp"
 },
 {
   "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
-  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\imageOperation.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\imageOperation.cpp",
+  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\imageOperation.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\imageOperation.cpp",
   "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/imageOperation.cpp"
 },
 {
   "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
-  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\linearInterpolation.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\linearInterpolation.cpp",
+  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\linearInterpolation.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\linearInterpolation.cpp",
   "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/linearInterpolation.cpp"
 },
 {
   "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
-  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\main.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\main.cpp",
+  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\main.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\main.cpp",
   "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/main.cpp"
 },
 {
   "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
-  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\noise.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\noise.cpp",
+  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\noise.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\noise.cpp",
   "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/noise.cpp"
 },
 {
   "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
-  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\someSuperApplication.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\someSuperApplication.cpp",
+  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\someSuperApplication.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\someSuperApplication.cpp",
   "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/someSuperApplication.cpp"
 },
 {
   "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
-  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\transformUsedAffineMatrix.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\transformUsedAffineMatrix.cpp",
+  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\spatialFilter.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\spatialFilter.cpp",
+  "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/spatialFilter.cpp"
+},
+{
+  "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
+  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\transformUsedAffineMatrix.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\transformUsedAffineMatrix.cpp",
   "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/transformUsedAffineMatrix.cpp"
 }
 ]

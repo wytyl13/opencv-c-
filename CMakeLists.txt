@@ -10,10 +10,17 @@ project(opencv)
 #file(GLOB_RECURSE SRC_DIR_LIST "src/*.cpp" "src/*.c")扫描目录下的所有文件存入变量
 
 #add the head file path
+# notice, you just need to add the include path for your program. 
+# the cmakelists.txt file will generat the makefile that invovled your program's include
+# and other three party libraries' include path. you should command make all in your terminal.
+# and the generated makefile file is located at build directory.
+# you should make all at there. if you use g++ in your terminal, you should add
+# -I to specified the include path and -l specified the dynamic library name and 
+# -L to specified the dinamic library directory.
 include_directories(./include)#指定头文件，相当于g++中的-I
 
 #add the param
-add_compile_options(-Wall -fexec-charset=GBK)
+add_compile_options(-Wall -fexec-charset=GBK -std=c++11)
 
 #store all the cpp file need to be compiled into the variable SRC_DIR_VAR.
 aux_source_directory(./src SRC_DIR_VAR)#扫描src目录下的所有文件并保存到变量中
@@ -46,6 +53,9 @@ if((OpenCV_FOUND) AND (Eigen3_FOUND))
     #add the include path
     include_directories(${OpenCv_INCLUDE_DIR})
     include_directories(${EIGEN3_INCLUDE_DIR})
+    # cpp call python script will use the python head file, what is lacated at the 
+    # directory as follow.
+    include_directories("C:\\Users\\weiyutao\\opt\\python\\include")
     #add the lib
     target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
     message(${OpenCV_LIBS})

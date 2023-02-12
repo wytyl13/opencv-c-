@@ -17,6 +17,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/opencv.dir/src/noise.cpp.obj.d"
   "CMakeFiles/opencv.dir/src/someSuperApplication.cpp.obj"
   "CMakeFiles/opencv.dir/src/someSuperApplication.cpp.obj.d"
+  "CMakeFiles/opencv.dir/src/spatialFilter.cpp.obj"
+  "CMakeFiles/opencv.dir/src/spatialFilter.cpp.obj.d"
   "CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.obj"
   "CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.obj.d"
   "libopencv.dll.a"

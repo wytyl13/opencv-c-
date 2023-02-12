@@ -344,6 +344,30 @@ src/someSuperApplication.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/someSuperApplication.cpp.s
 .PHONY : src/someSuperApplication.cpp.s
 
+src/spatialFilter.obj: src/spatialFilter.cpp.obj
+.PHONY : src/spatialFilter.obj
+
+# target to build an object file
+src/spatialFilter.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/spatialFilter.cpp.obj
+.PHONY : src/spatialFilter.cpp.obj
+
+src/spatialFilter.i: src/spatialFilter.cpp.i
+.PHONY : src/spatialFilter.i
+
+# target to preprocess a source file
+src/spatialFilter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/spatialFilter.cpp.i
+.PHONY : src/spatialFilter.cpp.i
+
+src/spatialFilter.s: src/spatialFilter.cpp.s
+.PHONY : src/spatialFilter.s
+
+# target to generate assembly for a file
+src/spatialFilter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/spatialFilter.cpp.s
+.PHONY : src/spatialFilter.cpp.s
+
 src/transformUsedAffineMatrix.obj: src/transformUsedAffineMatrix.cpp.obj
 .PHONY : src/transformUsedAffineMatrix.obj
 
@@ -404,6 +428,9 @@ help:
 	@echo ... src/someSuperApplication.obj
 	@echo ... src/someSuperApplication.i
 	@echo ... src/someSuperApplication.s
+	@echo ... src/spatialFilter.obj
+	@echo ... src/spatialFilter.i
+	@echo ... src/spatialFilter.s
 	@echo ... src/transformUsedAffineMatrix.obj
 	@echo ... src/transformUsedAffineMatrix.i
 	@echo ... src/transformUsedAffineMatrix.s

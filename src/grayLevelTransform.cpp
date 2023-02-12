@@ -448,34 +448,46 @@ void reconstructImageBasedBitPlane(Mat &outputImage, const map<int, Mat, compare
  * @Description: get the distribution of the inputImage. pass the inputImage, return the 
  * we can use list in cpp, the index of the list is the gray value. the value in the list is the appearance
  * numbers of the gray value in this image. of course, we can also use the map in cpp container.
+ * 
+ * so we have learned a method, we do not use the static to modify the local variable, 
+ * if you want to return the local variabel in one function, you should malloc it or use the reference parameter
+ * to receive the content you want to get.
  */
-double* getDistribution(Mat inputImage)
+double* getDistribution(const Mat &inputImage)
 {
-    static double list[256] = {0};
-    uchar *matRow;
+    // it will return the same address if you used the static to modify the array variable.
+    // so we will use malloc function to create this variable. and return it.
+    // you should define a pointer first, then malloc a address for this pointer in heap.
+    // static double list[256] = {0};
+    double *list;
+    list = (double *)malloc(sizeof(double) * 256);
+    // notice you should distinguish the size and size_t, the former is the numbers in array
+    // and the last is the memory size waste for the array.
+    // you must initialize the array inside the function, or you will get the error numbers.
+    memset(list, 0.0, sizeof(double) * 256);
+    const uchar *matRow;
     int rows = inputImage.rows;
     int cols = inputImage.cols;
     double MN = rows * cols;
-    double sum = 0;
     for (int i = 0; i < rows; i++)
     {
         matRow = inputImage.ptr<uchar>(i);
+        int grayValue = 0;
         for (int j = 0; j < cols; j++)
         {
-            int grayValue = (int)matRow[j];
+            grayValue = matRow[j];
             list[grayValue] += 1;    
         }
     }
     // int len = sizeof(list) / sizeof(list[0]);
+    // the normalized, in order to handle the problem about the size is different between two image.
     for (int i = 0; i < 256; i++)
     {
         list[i] /= MN;
         // rounded and remain two decimal places.
         // list[i] = (int)((list[i] * 100) + 0.5) / 100.0;
         // list[i] = round(list[i] * 100) / 100;
-        sum += list[i];
     }
-    cout << sum << endl;
     return list;
 }
 
@@ -491,7 +503,7 @@ double* getDistribution(Mat inputImage)
  * we can name this function as histogram equalization what is a important method
  * for histogram transform. it can enhance contrast.
  */
-void getHistogramMat(double *distribution, Mat &histogramMat)
+void getHistogramMatBasedOnDistribution(double *distribution, Mat &histogramMat)
 {
     int scale = 2;
     int hist_height = 256;
@@ -524,13 +536,54 @@ void getHistogramMat(double *distribution, Mat &histogramMat)
     }
 }
 
+/**
+* @Author: weiyutao
+* @Date: 2023-01-30 22:15:12
+* @Parameters: inputImage
+* @Return: 
+* @Description: getHistogramMatBasedOnInputImage
+*/
+void getHistogramMatBasedOnInputImage(const Mat &inputImage, Mat &histogramMat) 
+{
+    double *distribution = getDistribution(inputImage);
+    getHistogramMatBasedOnDistribution(distribution, histogramMat);
+}
+
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-01-31 16:44:45
+ * @Parameters: 
+ * @Return: 
+ * @Description: get the distribution if equalization transform. it is almost equal to the function
+ * getCumulativeHistogram we have defined.
+ */
+double *getEqualizationDistribution(const Mat &inputImage) 
+{
+    double *distribution = getDistribution(inputImage);
+    double *equalizationDistribution;
+    equalizationDistribution = (double *)malloc(sizeof(double) * 256);
+    // then, transform the distribution.
+    double s = 0.0;
+    for (int r = 0; r < 256; r++)
+    {
+        for (int j = 0; j <= r; j++)
+        {
+            s += distribution[j];
+        }
+        s *= 255;
+        equalizationDistribution[r] = round(s);
+        s = 0.0;
+    }
+    return equalizationDistribution;
+}
 
 /**
  * @Author: weiyutao
  * @Date: 2023-01-25 18:20:28
  * @Parameters: 
- * @Return: 
- * @Description: histogram processing. 
+ * @Return: the image after doing histogram equalize transformation.
+ * @Description: histogram equalize transformation processing. 
  * p(rk) = h(rk) / MN = nk / MN
  * M N is the numbers of rows and columns, for all p value of k, sum p(rk) = 1;
  * the component of p(rk) is the probability estimates for the gray value in the image.
@@ -594,14 +647,31 @@ void getHistogramMat(double *distribution, Mat &histogramMat)
  * image by doing the histogram equalization transformation for them. and the histogram for all high
  * contrast you have got are different. it can also mean that the histogram of the same image may be different.
  * it means the different histogram of one image can show the same contrast picture.
+ * why? because all the image just has the different contrast for one same image, so you can get the same
+ * high contrast image by using histogram equalize transformation. if this condition do not reach, you can not
+ * get this effection.
+ * 
+ * of course, you can define histogram transform used the official function that opencv has defined.
+ * it is equalizeHhist in opencv. 
+ * but it may not be appropriate used histogram equalization in some appication. because the histogram equalization
+ * will generate the not sure histogram. but sometimes we may want to generate the specific shape histogram.
+ * it can be name as histogram matching. the difference between the histogram equalization and histogram
+ * matching is the former will generate the unknown histogram based on the known histogram transformation function.
+ * the last will generate the known shape histogram based on the changeable histogram transformation function.
+ * the former the transformation funcition is the only, the last transformation function need to be calculated
+ * according to the known shape of the histogram. the last method can be named the histogram matching.
+ * 
+ * the histogramEqualizeTransformation function is invalid for the brightness image. because it can just
+ * improve the details about the low gray level value. so we should define the histogramMatchingTransformation
+ * function.
  */ 
-void histogramTransform(Mat inputImage, Mat &outputImage) 
+void histogramEqualizeTransformation(const Mat &inputImage, Mat &outputImage) 
 {
     // you should get the histogram of the original image.
     double *distribution = getDistribution(inputImage);
     double transformValue[256] = {0};
     // then, transform the distribution.
-    float s = 0.0;
+    double s = 0.0;
     for (int r = 0; r < 256; r++)
     {
         for (int j = 0; j <= r; j++)
@@ -623,6 +693,581 @@ void histogramTransform(Mat inputImage, Mat &outputImage)
         for (int j = 0; j < cols; j++)
         {
             rowMat[j] = (uchar)transformValue[rowMat[j]];
+        }
+    }
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-01-30 11:57:25
+ * @Parameters: 
+ * @Return: 
+ * @Description: define the get cumulative histogram function. we will use the former 
+ */
+double *getCumulativeHistogram(const Mat &inputImage) 
+{
+    // get the distribution of the original image first.
+    // notice the difference between pointer variable and array variable.
+    // distribution is a pointer variable here, so you can not calculate the size of the array used sizeof
+    double *distribution = getDistribution(inputImage);
+    double s = 0.0;
+    double *transformValue;
+    transformValue = (double *)malloc(sizeof(double) * 256);
+    // int len = sizeof(distribution) / sizeof(*distribution); this will return 1, because the size of pointer is 8 bytes.
+    // and the double is also 8 bytes. 8 / 8 = 1;
+    // we will write a fixed length numbers. if you want to define a dynamic method, you should modify the getDistribution function.
+    // second, you should calculate the cumulative histogram.
+    for (int i = 0; i < 256; i++)
+    {
+        for (int j = 0; j <= i; j++)
+        {
+            s += distribution[j];
+        }
+        transformValue[i] = s;
+        s = 0.0;
+    }
+
+    return transformValue;
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-01-30 11:46:11
+ * @Parameters: use the const to modified the former two parameters, they can not be changed.
+ * and use reference to modified all parameters, it means we can save the memory that parameter 
+ * wasted the run the stack.
+ * @Return: 
+ * @Description: we should understand the different between histogram equalization and histogram
+ * matching, the former will improve the contrast, but it did not consider the image
+ * color evenly, it means, the histogram equalization will only make the contrast of the image
+ * clearly, but it did not consider the truth of the image. the gray value will drop a bluff.
+ * but the last method histogram matching will consider the imange color enenly on the basis
+ * of the histogram equalization.
+
+ * then, how to define the histogram matching on the basis of the histogram equalization?
+ * you can use two method:
+ *     first, you can get the hostogram based on one image. it means you can histogram equalization
+ *     from the histogram of one image to another histogram of another image.
+ *     
+ *     second, you can give a fixed histogram function.
+ * then, the first method is generally used. because it is simple and feasible.
+ * the generally scenario for histogram matching is, if you want to improve the contranst of one image, 
+ * you can do histogram equalization for the original image, if you want to maintain uniform color image,
+ * you should do the histogram matching on the basis of the result after doing histogram equalization.
+ * then, we will construct this application, remain the image color evenly and to increase the contrast of the image.
+ * 
+ * in the ideal state, histogram equalization realize the image gray uniform distribution. it is useful to increase the
+ * the contrast of the image, generally, the increasing of image contrast means the increasing about the brightness.
+ * but in practical application, we do not want the image histogram has the uniform distribution of the whole sometimes.
+ * it means we want to a gentle changeable for image gray. then we will give a shape of histogram, and design a histogram
+ * transformation function based on the original histogram and the histogram we give. 
+ * 
+ * then, the original histogram is usually the histogram after equalization, the histogram we give is 
+ * usually got from a image. so it means the param of function we will define involved the original image and
+ * the image we want to get histogram from it. and the outputImage as the reference pass parameter to store the result
+ * after the histogram transformation.
+ * so this function we can describe as follow.
+ *     what we will do is with reference to the gray level distribution of the objectImage to transform the inputImage to 
+ *     the outputImage. we will get the specific gray level distribution not the uniform distribution. the sepecific
+ *     gray level distribution we will get it from the objectImage.
+ * then, the main content of the function is how to transform from a fixed histogram to a fixed histogram.
+ * then, we will describe this transformation process.
+ * 1 histogram equalize the histogram of the inputImage. s = T(r), r is the original gray, s is the gray after histogram equalizing for the original histogram.
+ * 2 histogram equalize the regulation histogram. v = G(z), z is the gray value of the regulation histogram. v is the gray after histogram equalizing for the regulation histogram.
+ * 3 because the regulation and original histogram are all the histogram of the same original image, so the s is euqal to v.
+ *     it means z = G^-1(v) = G^-1(T(r)), the r is known, so we can get z used this expression.
+ * the more details is as follow.
+ * s_k=T(r_k)=(L-1) * ∑i=0_k P_r(r_k)
+ * v_k=G(z_m)=(L-1) * ∑j=0_m P_z(z_m)
+ * then you can get the function map from s to z. you should find the minimize(∑i=0_k P_r(r_k) - ∑j=0_m P_z(z_m))
+ * minimize(∑i=0_k P_r(r_k) - ∑j=0_m P_z(z_m))
+ * the k is the original gray value, the m is the regulation histogram gray value.
+ * known the k, the m of minimize this function is the mapping. it menas k-->m, m meet minimize(∑i=0_k P_r(r_k) - ∑j=0_m P_z(z_m))
+ * in order to understand, we will define some new word.
+ * ∑i=0_k P_r(r_k) is the original cumulative histogram.
+ * ∑j=0_m P_z(z_m) is the regulation cumulative histogram.
+ * minimize(∑i=0_k P_r(r_k) - ∑j=0_m P_z(z_m)), m is the gray value that minimize the difference between
+ * the two cumulative histogram.
+ * so we will define this histogram matching transformation based on the concept above.
+ * you can find from this function, if you give a low gray value image, you will get a low gray value mapping.
+ * or you will get a equal or high gray value mapping.
+ * but the efficient of this function is bad for the gray image. because its color is single.
+ * unless you use the pure white or pure blank image you can see the different gray mapping.
+ * or you will get the equal mapping Mat to the original gray value.
+ 
+ * then, we have found a problem. no matter select which one picture as object image. always get a replica
+ * of the original image. it means the function histogramMatchingTransformation we defined is not working.
+ * why? we found the problem is the function getDistribution in getCumulativeHistogram function is error.
+ * no matter you pass any inputImage, you will get the same distribution. so we will modify this error.
+ 
+ * then, we have found the problem in getDistribution function, because we define the list in the function, and 
+ * use the static to modify it, so this function will return the same pointer created in this function stack.
+ * so we pass the different image, this function will always return the same distribution. how to fix it?
+ * you can use the reference pass parameters to instead the return type. or you can malloc this pointer in
+ * the function. because you have modified this variale list used static, so thsi variable will be the fixed
+ * global variabel. and the same address in this function will show one fixed information in the same time.
+ * we will use the malloc method to handle this problem. because malloc function will create the address in the heap.
+ * the static modified the variable in function will create the address in stack, and the stack will be fixed in
+ * the same process, and this address will not free after the function run end if you have modified it used static.
+ * so it means we will create this array used malloc function. the function of using malloc is create the variable 
+ * in heap when the function run in the stack.
+ */
+
+void histogramMatchingTransformation(const Mat &inputImage, const Mat &objectImage, Mat &outputImage) 
+{
+    // you should get the cumulative histogram for the original image and object image.
+    // we will use the get cumulative histogram function defined by ourselves.
+    double *cumulativeDistributionInputImage = getCumulativeHistogram(inputImage);
+    double *cumulativeDistributionObjectImage = getCumulativeHistogram(objectImage);
+    // calculate the difference between two cumulative histogram. we will use a two dimension array to store it.
+    // each cumulative has 256 element, the difference for each element is 256*256.
+    double difference[256][256];
+    for (int i = 0; i < 256; i++)
+    {
+        for (int j = 0; j < 256; j++)
+        {
+            difference[i][j] = fabs(cumulativeDistributionInputImage[i] - cumulativeDistributionObjectImage[j]);
+        }
+    }
+
+    // construct the gray level value mapping table.
+    Mat lut(1, 256, CV_8UC1);
+    for (int i = 0; i < 256; i++)
+    {
+        double min = difference[i][0];
+        int index = 0;
+        for (int j = 1; j < 256; j++)
+        {
+            if (min > difference[i][j])
+            {
+                min = difference[i][j];
+                index = j;
+            }
+        }
+        // lut.at<uchar>(i) = static_cast<uchar>(index);
+        lut.at<uchar>(i) = static_cast<uchar>(index);
+    }
+    // cout << lut << endl;
+    // then, you should mapping the gray table you have got to change the original gray value.
+    // of course, you can also use the function define by yourself. 
+    // we used the LUT function that official defined.
+    LUT(inputImage, lut, outputImage);
+
+    // of course, you can use the LUT function to map the original gray value.
+}
+
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-01-31 15:04:51
+ * @Parameters: 
+ * @Return: 
+ * @Description: util now, the histogram processing we have contacted are all global. the global processinig
+ * method is suitable for the overall enhancement of image. it will be failure to handle the increase in the local area.
+ * the solution is designed the transformation function based on the neighborhood of the gray level distribution.
+ * the differenece between global and local histogram is the former is based on the whole gray value of the image.
+ * the last is based on the local region gray value of the image. the former can not handle the situation that
+ * gray value of local region is highlight than the other region. just like the people in the night, the gray 
+ * value of people region is bigger than the other region, or the local region is very small relative to the whole image.
+ * 
+ * of course, the local histogram transformation must specified the local size.
+ * generally, the gray value range from 0 to 100 is dark. range from 100 to 150 is low contrast image.
+ * range from 150 to 250 is light image. the histogram equalization is mapping the gray value from 
+ * range (100,150) to range(0,255)
+ * 
+ * the application of local histogram transformation is we can enhance the contrast of local region in the image.
+ * it will enhance the highlight of the local region and will not reduce the highlight of the other light region.
+ * you will not acheive this effect if you used global histogram transformation.
+ * just like the image as follow
+ * 0 0 0 0 255 255 255 255 255 255
+ * 2 188 188 188 255 255 255 255 255 255
+ * 188 188 188 255 255 255 255 255 255
+ * 0 0 0 0 255 255 255 255 255 255
+ * 0 0 0 0 255 255 255 255 255 255
+ * 0 0 0 0 255 255 255 255 255 255
+ * if you want to enhance the left upper region contrast, you will reduce the other high region contrast
+ * if you used the global histogram transformation. but it will not happen if you used the local
+ * histogram transformation.
+ */
+void histogramTransformationLocal(const Mat &inputImage, Mat &outputImage, int sideLength)
+{
+    int halfSideLength = sideLength / 2;
+    int rows = inputImage.rows;// hight
+    int cols = inputImage.cols;// width
+    outputImage = inputImage.clone();
+    double *tempMatEqualizationDistribution;
+    for (int row = halfSideLength; row < (rows - halfSideLength); row++)
+    {
+        for (int col = halfSideLength; col < (cols - halfSideLength); col++)
+        {
+            // scanf the region element.
+            Rect rect = Rect(col - halfSideLength, row - halfSideLength, sideLength, sideLength);
+            Mat tempMat = outputImage(rect);
+            // then calculate the equailization histogram of the local region rect, it is the tempMat.
+            // we will calculate the mapping table about the gray value in global histogram transformation.
+            // but now we are handling the local histogram. so we just need to mapping the center of the 
+            // local region to the new gray value we have calculated used histogram equalization transformation method.
+            tempMatEqualizationDistribution = getEqualizationDistribution(tempMat);
+            int index = (int)(tempMat.at<uchar>(tempMat.rows / 2, tempMat.cols / 2));
+            outputImage.at<uchar>(row, col) = tempMatEqualizationDistribution[index];
+        }
+    }
+}
+
+void thread_function_local_histogram_transformation(Mat &outputImage, int rows_thread, \
+int cols_thread, int halfSideLength, Mat tempMat, bool isPrint = false) 
+{
+    for (int row = halfSideLength; row < (rows_thread - halfSideLength); row++)
+    {
+        for (int col = halfSideLength; col < (cols_thread - halfSideLength); col++)
+        {
+            // the first and second param of Rect is the original point coordinated, the third and fourth
+            // of Rect is the width and height of the Rect.
+            Rect rect = Rect(col - halfSideLength, row - halfSideLength, halfSideLength * 2, halfSideLength * 2);
+            Mat kernelMat = tempMat(rect);
+            double *tempMatEqualizationDistribution = getEqualizationDistribution(kernelMat);
+            int index = (int)(kernelMat.at<uchar>(kernelMat.rows / 2, kernelMat.cols / 2));
+            tempMat.at<uchar>(row, col) = tempMatEqualizationDistribution[index];
+            if (isPrint)
+            {
+                cout << row << " " << col << endl;
+            }
+        }
+    }
+}
+
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-01 09:46:07
+ * @Parameters: 
+ * @Return: 
+ * @Description: then, we will perfect this local histogram transformation by
+ * adding the method of thread. if you want to show the perfect result, you should pass the correct param.
+ * the shape of the image should suitable for the sideLength and thread_number, it means the shape you defined
+ * should be as follow. 360*700, sideLength = 4, thread_numbers = 4.
+ * 360 / 2 = 180; 180 / 4 = 45. 700 / 2 = 360, 360 / 4 = 90. you should ensure the it can be divisible.
+ * not the remainder. then, we will reshape the image to 360*700 to test the efficience.
+ * but this local histogram function has a letal problem. no matter how to optimize this process,
+ * the result image always has some highlights in the middle of the image. because you process is not
+ * continuous if you added the thread, because the element mapping is not continuous. but this problem will
+ * not exists if you do not use the thread. just like as follow.
+ * 1 0 0 1 1 1 0 0
+ * 1 1 1 0 0 1 1 1
+ * 1 1 1 0 1 0 1 1
+ * 0 1 0 1 0 1 1 0
+ * 
+ * if you want to handle this process used general method. just like 2*2 kernel. the mapping is sum.
+ * you will get a 2*6 dimension matrix from a 4*8 matrix, notice, the former change can influence the last change.
+ *    7 11 15 20 26 31
+ *   13 24 37 56 81 113
+ * 
+ * if you use the thread to kernel this process. you will get a 3*6 dimension matrix, the result is as follow.
+ * if you want to scan all element, you use the method as the follow function. because the you used the thread, so
+ * the former change will not influence the last value in some coordinates.
+ *   7 11 15 20 6 11
+ *   7 12 15 19 6 13
+ * you can find, if you used thread, some coordinates just like the different value coordinates will
+ * be the highlights.
+ * how to fix the problem? you can just set to divide the row not the column, to handle the highlights in
+ * column. temporarily no the method to handle all the problem.
+ * this method is to divide this original image into four uniform. then scan the image from left upper corner
+ * to the low right corner. it will happend to this highlight problem.
+ * you can try to scan from the four corner and scan end to the center of the image. this problem will be dropping.
+ * but this problem will be still exists.
+ * 
+ * then, you should distinguish the difference between width, height and coordinates.
+ * just like a 2*2 kernal in the leftUpper of the image. it involved
+ * 0,0 1,0 2,0
+ * 0,1 1,1 2,1
+ * 0,3 1,3 2,3
+ * it involved 9 coordinates, the width is 2, the height is 2, the area is 2*2=4
+ * but the coordinates it involved is not 4, but the 9.
+ * 
+ * 
+ * you can try scan each element based on the row or columns, you can also scan each element based on the diagonal.
+ * then, this problem we will optimize it at last.
+ */
+void histogramTransformationLocalThread(const Mat &inputImage, Mat &outputImage, int sideLength, \
+int thread_numbers) 
+{
+    if (thread_numbers % 2 != 0 && thread_numbers > 12)
+    {
+        sys_error("you should input an even number and less than 12");
+    }
+
+    int w = (thread_numbers / 2) > 4 ? 4 : thread_numbers / 2;
+    int h = thread_numbers / w;
+    int halfSideLength = sideLength / 2;
+    int rows = inputImage.rows;// hight
+    int cols = inputImage.cols;// width
+    outputImage = inputImage.clone();
+    // if you want to add the pthread in this function, you should make an issue of the for loop
+    // first, you should create the recall function dedicated to using in this function.
+    // then, you should calculate the thread numbers you should create.
+    // then start each thread.
+    // at the end, free the thread.
+    // the idea to handle this problem is we will divide the input image into four quartering.
+    // it means we will create four thread to handle this function.
+    int rows_thread = rows / h;
+    int cols_thread = cols / w;
+    int width, height;
+    // x, y means the coordinates.
+    // you should find the leftupper pointer you will handle the small mat in each thread.
+    // because we used the for loop create the thread, so we should use a vector to store it.
+    // you should use emplace_back not the push_back.
+    vector<thread *> vectorThreads;
+    for (int i = 0, x = 0, y = 0; i < thread_numbers; i++, x += cols_thread)
+    {
+        if (i % w == 0 && x != 0)
+        {
+            x = 0, y += rows_thread;
+        }
+        // find the region that relative to the right and bottom.
+        // define the different shape region. over more area. or you will get the 
+        // obvious differences in the result image.
+        // find the lowerRight region.
+        if (i % w == 1 && (i == (thread_numbers - 1)))
+        {
+            width = cols_thread;
+            height = rows_thread;
+        }
+        else if(i >= (thread_numbers - w))
+        {
+            // height is original, width should add sideLength - 1;
+            width = cols_thread + sideLength - 1;
+            height = rows_thread;
+        }
+        else if((i % w) == 1)
+        {
+            // width is original, height should add sideLength - 1;
+            width = cols_thread;
+            height = rows_thread + sideLength - 1;//
+        }
+        else
+        {
+            width = cols_thread + sideLength - 1;
+            height = rows_thread + sideLength - 1;            
+        }
+        cout << width << " " << height << endl;
+        Rect rect = Rect(x, y, width, height);
+        Mat tempMat = outputImage(rect);
+        thread *thread_pointer = new thread (thread_function_local_histogram_transformation, ref(outputImage), rows_thread, \
+        cols_thread, halfSideLength, tempMat, false);
+        vectorThreads.push_back(thread_pointer);
+    }
+    for (long long unsigned int i = 0; i < vectorThreads.size(); i++)
+    {
+        thread *thread_i = vectorThreads[i];
+        if (thread_i != NULL)
+        {
+            thread_i->join();
+            delete thread_i;
+            thread_i = NULL;
+        }
+    }
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-03 10:51:19
+ * @Parameters: 
+ * @Return: 
+ * @Description: if you want to return a array in one funciton, you'd better use the pointer parameter.
+ * this pointer defined in the main function. if the process run end, the pointer will be freed automatic.
+ * you would hand relese this pointer if you want to return the array, because you must malloc inside the function.
+ * it will create the pointer in heap. and you can also use static to modify the pointer inside the function.
+ * but you will have a problem that you will get the same content if you call this function in the same function.
+ * so you'd better use the pointer parameter.
+ * m = Σi=0_(L-1) r_i * p(r_i)
+ * variance = Σi=0_(L-1) (r_i - m)^2 * p(r_i)
+ */
+void getMeanAndVarianceBaseOnMat(const Mat &inputImage, int array[]) 
+{
+    double *distribution = getDistribution(inputImage);
+    double tempValue = 0.0;
+    int mean;
+    for (int i = 0; i < 256; i++)
+    {
+        tempValue += (i * distribution[i]);
+    }
+    mean = (int)tempValue;
+    array[0] = mean;
+    tempValue = 0.0;
+    for (int i = 0; i < 256; i++)
+    {
+        tempValue += (pow((i - mean), 2) * distribution[i]);
+    }
+    array[1] = (int)tempValue;
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-02 10:55:23
+ * @Parameters: 
+ * @Return: 
+ * @Description:  then, we will understand the concept of moment.
+ * N moments is defined as the integral of the product of the power and probability density function
+ * about one variable. just like μ_n = Σi=0_m r_i^n * p(r_i), p(r_i) is the probability desity function
+ * about the r_i. r_i is the variable, the range of r_i is (0, m), it means the gray value in the digital
+ * image processing, the m is L-1 in for one image.
+ * based on the above content. we can define N moments of the gray value r relative to the mean is as follow.
+ * μ_n = Σi=0_(L-1) (r_i - m)^n * p(r_i), m = Σi=0_(L-1) r_i * p(r_i).
+ * it just is equal to the expressim m = (Σi=0_(L-1) r_i) / (L-1), it is the mean of r_i in fact.
+ * the variance of r_i is μ_2 = Σi=0_(L-1) (r_i - m)^2 * p(r_i), it is the 2 moments of the (r_i - m).
+ * this expression about variance or standard deviation is the measure of the image contrast.
+ * generally, the mean and variance is the tools to enhance the image that we should consider.
+ * it involved global mean, variance and local mean, variance. but the more powerful application is 
+ * in local handle. the local mean and variance is calculated based on the neighborhood of one element
+ * in one image.
+ * then, we can define the expression about the mean of the local region.
+ * m_Sxy = Σi=0_(L-1) r_i * p_Sxy(r_i)
+ * m_Sxy is the mean of the local region in one image.
+ * L is the max possible numbers of the gray value in the local region of the image. it usually is 256 in global region.
+ * but in the local region, but the possible numbers of the gray value is determined by the shape of the region
+ * in local region. it is not set up for the global image. the possible numbers of the gray value in global
+ * image is 256, but it is determined the area about the region in local region. L is equal to 9 if the local region is 3*3
+ * because the possible numnber of the gray value in the region is 9. so the L is 9.
+ * p_Sxy(r_i) is the probability density function about the each element for the local region.
+ * this 3*3 here means the numbers of element. the row has 3 element, the column has 3 element.
+ * it involved 9 element. so the probability numbers of gray value is 9. notice, the difference 
+ * between element numbers and area.
+ * then, we will unified the dimension. the m*n means the the row numbers are m, the column numbers are n.
+ * just like the kernel dimension. it generally is an even number. the even number in computer science
+ * means the odd number. only the odd numbers has the center. just like 3*3
+ * 1 2 3
+ * 4 5 6
+ * 7 8 9
+ * the center is 5, the coordinates is (1, 1), (2/2, 2/2)
+ * the dimension in kernel means the length. just like 2*2, it means the row length is 2, the cloumn length
+ * is 2, the numbers of gray value in row is 3, the numbers of gray value in column is 3.
+ * and the index started from 0, so we can use the length dimension to show the kernel size.
+ * notice the difference of dimension information betweem kernel and image.
+ * 
+ * 
+ * let's return the mean and variance of the neighborhood element.
+ * the variance of the neighborhood element expression is 
+ * variance(Sxy) = Σi0_(L-1)(r_i - m_Sxy)^2 * p_Sxy(r_i)
+ * L-1 is 256, it means the probability numbers of gray value in the image. it is a fixed container.
+ * the numbers of the container are always 256, the difference between difference dimension region is 
+ * the difference region has the effective container different numbers. the effective container is nonzero.
+ * the invalid container is zero. just like the 2*2 dimension region. it involved 3*3 numbers element.
+ * so the probability numbers of the gray value in this region are 9. so it will has 9 containers
+ * is effective, each effective container involved the numbers of the gray value occured in the local region.
+ * because the local region may be up to occure nine different gray value. so the container numbers 9
+ * is the max numbers. if the local region has 9 different gray value, the value will be 1 in each container.
+ * or the effective container numbers will be reduced.
+ * 
+ * the expression local region means is the messure of the average gray value for the neighborhood of the center gray value.
+ * the expression local region variance is the messure of the contrast for the neighborhood of the center gray value.
+ * the application for these two indicators that are closely related to the image appearance is we can develope simple
+ * and strong rules of image enhancement.
+ * 
+ * how to ocnstruct this relationship based on the contrast enhancement and these two indicators.
+ * we will distinguish the darker and darker relative to the global image for each gray value.
+ * compare the mean gray value of local region and the global region. the local region is Sxy.
+ * m_Sxy represent the mean gray value of local region and m_G represent the mean gray value of global 
+ * region. we can add two parameters. just like as follow.
+ * k0*m_G <= m_Sxy <= k1*m_G, the range value of k0 and k1 is from 0 to 1, and k0 is less than k1.
+ * so if the m_Sxy is in the middle of k0*m_G and k1*m_G, this coordinates is adjustable. it means
+ * we can find the adjustbale coordinates that can enhance the contrast of image by this simple expression.
+ * of course, we can also define the paramters based on the idea that ourselves.
+ * just like we can define the k0 is 0, and k1 is 0.25, it means the important region we interested in is
+ * the coordinates that gray value the range is from 0 to 1/4 of the global mean gray value.
+ * this is how to find the coordinates that we interested in. but the interested region must can be adjustble?
+ * we should judge it based on the compared result that the variance of the global region variance and
+ * local region variance. it is same to as the mean, you should define two parameters to judge.
+ * just like k2*variance_G <= variance_Sxy <= k3*variance_G. if the condition is suitable for the expression.
+ * we can adjust the coordinates. this expression can judge the coordinates.
+ * 
+ * with those tools above, we can do the local histogram transformation more flexible. just like you can 
+ * do it by adding some condition, not for all. 
+ * for example:
+ * just like the local region is blank background. and the other region is highlight background.
+ * the local region means to enhance the regional. the enhance means to increasing the contrast.
+ * the range of gray value in global region is from 0 to 228.
+ * the range of gray value in local region is from 0 to 10.
+ * you can find that the gray value difference between local and region is very big.
+ * the m_G is equal to 161, variance_G is 103. of course, you can image that m_Sxy and variance_Sxy
+ * is far less than m_G and variance_G. so the parameter you can define smaller, just like from 0 to 0.1.
+ * this parameters can judge the condition that the rate about m_Sxy, variance_Sxy and m_G, variance_G.
+ * if the true value for m_Sxy and variance_Sxy within the range of proportion. you can do mapping the 
+ * current scaned gray value used the center gray value of the keneral Mat in the mapping distribution.
+ * of course, the mapping distribution can calculated used equalization and matching method.
+ * the m_G, m_Sxy can messure the average gray value. variance_G and variance_Sxy can messure the 
+ * contrast of the image. you can decide whether to do change by comparing these two indicators between 
+ * local region and global region. but the local region means what? means the kernel scaned region or 
+ * the interested region? of course, it is the kernel scaned region. becasue we can not define the interested
+ * region, so we define some parameters based on the average and variance of the gray value. in order
+ * to judge the interested region by some condition. so you should known the relative about the kernel region and local region.
+ * the kernel region is scaned region. the local region is the interested region. you can define the local
+ * region by adding some judge condition into the kernel region.
+ * 
+ * you can image that the local histogram trasnformation function, no matter the equalization or matching transformation.
+ * the purpose is we want to scan kernel size region, and calculate the mapping based on the kernel to change 
+ * the original gray value. but the global transformation is to map the gray value by calculated the mapping
+ * based on the global region. so the difference between local transformation and global transformation is 
+ * the former can mapping the gray value more continue. because the former changed gray value by kernel can 
+ * influence the last. but the global transformation can not do it.
+ * 
+ * but no matter the local or global transformation, they can all transforme all gray value. we can not 
+ * determine which region we want to remain the original value. so we introduced the m_G, variance_G, m_Sxy
+ * and variance_Sxy, aim to judge which region we want to change, which region we do not want to change.
+ * that is all.
+ * then, we will define the function about hitogram transformation used histogram statistics.
+ * actually very simple, it is to add some condition when you scaned the kernel.
+ * 
+ * finally, how to change the gray value if you have found the interested region?
+ * the equalization transformation or matching transformation are all good method.
+ * but these two method are all not suitable here.
+ * the simple and effective method is multiplied by a fixed constant.
+ * the constant generally is equal to the max gray value about global region divided the max gray
+ * value about local region.
+ * 
+ * notice, the scaned kernel size, it means sideLength in this function, is relatived to the
+ * k0, k1, k2, k3. because the kernel size is smaller, the corresponding mean and variance will
+ * be changed.
+ */
+void LocalWithStatistics(const Mat &inputImage, Mat &outputImage, int sideLength, const double k[])
+{
+    int array_glocal[2] = {0};
+    getMeanAndVarianceBaseOnMat(inputImage, array_glocal);
+    int m_G = array_glocal[0];
+    int variance_G = array_glocal[1];
+    int m_Sxy, variance_Sxy;
+    double k0 = k[0];
+    double k1 = k[1];
+    double k2 = k[2];
+    double k3 = k[3];
+    int halfSideLength = sideLength / 2;
+    int rows = inputImage.rows;// hight
+    int cols = inputImage.cols;// width
+    outputImage = inputImage.clone();
+    int array_kernel[2] = {0};
+    double maxValueGlobal, maxValueKernel;
+    minMaxLoc(outputImage, 0, &maxValueGlobal, 0, 0);
+    // calculate the m_G and variance_Sxy.
+    // we will define the function about calculated the m and variance out of the function.
+    for (int row = halfSideLength; row < (rows - halfSideLength); row++)
+    {
+        for (int col = halfSideLength; col < (cols - halfSideLength); col++)
+        {
+            // scanf the region element.
+            Rect rect = Rect(col - halfSideLength, row - halfSideLength, sideLength, sideLength);
+            Mat tempMat = outputImage(rect);
+            minMaxLoc(tempMat, 0, &maxValueKernel, 0, 0);
+            // then calculate the equailization histogram of the local region rect, it is the tempMat.
+            // we will calculate the mapping table about the gray value in global histogram transformation.
+            // but now we are handling the local histogram. so we just need to mapping the center of the 
+            // local region to the new gray value we have calculated used histogram equalization transformation method.
+            getMeanAndVarianceBaseOnMat(tempMat, array_kernel);
+            m_Sxy = array_kernel[0];
+            variance_Sxy = array_kernel[1];
+            double k = maxValueGlobal / maxValueKernel;
+            if (m_Sxy >= k0 * m_G && m_Sxy <= k1 * m_G && variance_Sxy >= k2 * variance_G && variance_Sxy <= k3 * variance_G)
+            {
+                outputImage.at<uchar>(row, col) *= k;
+            }
         }
     }
 }

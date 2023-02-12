@@ -128,6 +128,10 @@ CMakeFiles/opencv.dir/src/linearInterpolation.cpp.obj: \
  C:/Users/weiyutao/opt/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/ostream.tcc \
  C:/Users/weiyutao/opt/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/istream \
  C:/Users/weiyutao/opt/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/bits/istream.tcc \
+ C:/Users/weiyutao/opt/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/cstdarg \
+ C:/Users/weiyutao/opt/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/stdarg.h \
+ C:/Users/weiyutao/opt/mingw64/x86_64-w64-mingw32/include/stdarg.h \
+ C:/Users/weiyutao/opt/mingw64/x86_64-w64-mingw32/include/_mingw_stdarg.h \
  C:/Users/weiyutao/opt/mingw64/x86_64-w64-mingw32/include/string.h \
  C:/Users/weiyutao/opt/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h \
  C:/Users/weiyutao/opt/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/vector \
@@ -263,9 +267,6 @@ CMakeFiles/opencv.dir/src/linearInterpolation.cpp.obj: \
  C:/Users/weiyutao/opt/opencv/build/install/include/opencv2/flann/kdtree_single_index.h \
  C:/Users/weiyutao/opt/opencv/build/install/include/opencv2/flann/kmeans_index.h \
  C:/Users/weiyutao/opt/opencv/build/install/include/opencv2/flann/logger.h \
- C:/Users/weiyutao/opt/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/stdarg.h \
- C:/Users/weiyutao/opt/mingw64/x86_64-w64-mingw32/include/stdarg.h \
- C:/Users/weiyutao/opt/mingw64/x86_64-w64-mingw32/include/_mingw_stdarg.h \
  C:/Users/weiyutao/opt/opencv/build/install/include/opencv2/flann/composite_index.h \
  C:/Users/weiyutao/opt/opencv/build/install/include/opencv2/flann/linear_index.h \
  C:/Users/weiyutao/opt/opencv/build/install/include/opencv2/flann/hierarchical_clustering_index.h \
