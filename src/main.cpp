@@ -901,7 +901,7 @@ int main(int argc, char const *argv[])
     printOneArrayPointer(distribution); */
     double k[4] = {0.0, 0.99999, 0.0, 0.0000009};
     // LocalWithStatistics(objectImage, outputImage, 2, k);
-    LocalWithStatistics(objectImage, outputImage);
+    LocalWithStatistics(objectImage, outputImage, 4, k);
     vector<Mat> vectorImages;
     vectorImages.push_back(objectImage);
     vectorImages.push_back(outputImage);
