@@ -10,6 +10,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/bitOperation.cpp" "CMakeFiles/opencv.dir/src/bitOperation.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/bitOperation.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/eigen.cpp" "CMakeFiles/opencv.dir/src/eigen.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/eigen.cpp.obj.d"
+  "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/faceApplication.cpp" "CMakeFiles/opencv.dir/src/faceApplication.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/faceApplication.cpp.obj.d"
+  "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/featureInImage.cpp" "CMakeFiles/opencv.dir/src/featureInImage.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/featureInImage.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/general.cpp" "CMakeFiles/opencv.dir/src/general.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/general.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/grayLevelTransform.cpp" "CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/imageOperation.cpp" "CMakeFiles/opencv.dir/src/imageOperation.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/imageOperation.cpp.obj.d"

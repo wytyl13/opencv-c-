@@ -77,3 +77,42 @@
 ***********************************************************************/
 #include "../include/spatialFilter.h"
 
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-14 16:14:41
+ * @Parameters: 
+ * @Return: 
+ * @Description: this function involved some official function about spatial filter.
+ */
+void officialFilterTest(Mat &inputImage, Mat &outputImage, int kernel_number) 
+{
+    if (kernel_number >= 3)
+    {
+        sys_error("kernel number is overflow");
+    }
+    Mat kernel;
+    // define the kernel, this kernel can sharpen the image.
+    // this Mat_ is a super application for Mat class. you can use it more convinence.
+    if (kernel_number == 0)
+    {
+        kernel  = (Mat_<char>(3, 3) << 0, -1, 0, -1, 5, -1, 0, -1, 0);
+    }
+    if (kernel_number == 1)
+    {
+        // fuzzy kernel.
+        kernel = Mat::ones(5, 5, CV_32F) / (float)(25);
+    }
+    filter2D(inputImage, outputImage, inputImage.depth(), kernel);
+}
+
+void officialImageMixTest(Mat &inputImage1, Mat &inputImage2, Mat &outputImage, float firstWeight) 
+{
+    // ensure the same size of two image
+    if (inputImage1.rows != inputImage2.rows || inputImage1.cols != inputImage2.cols || inputImage1.type() != inputImage2.type())
+    {
+        resize(inputImage1, inputImage1, Size(300, 300));
+        resize(inputImage2, inputImage2, Size(300, 300));
+    }
+    addWeighted(inputImage1, firstWeight, inputImage2, 1 - firstWeight, 0.0, outputImage);
+}

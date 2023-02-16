@@ -11,6 +11,16 @@
 },
 {
   "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
+  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\faceApplication.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\faceApplication.cpp",
+  "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/faceApplication.cpp"
+},
+{
+  "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
+  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\featureInImage.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\featureInImage.cpp",
+  "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/featureInImage.cpp"
+},
+{
+  "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
   "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\general.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\general.cpp",
   "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/general.cpp"
 },

@@ -43,22 +43,45 @@ add_executable(opencv ${SRC_DIR_VAR})#使用传入变量的方式加入要编译
 # notice. Eigen is not compile the installation but the unzip the installation.
 set(OpenCV_DIR C:/Users/weiyutao/opt/opencv/build/install)
 set(EIGEN3_INCLUDE_DIR C:/Users/weiyutao/opt/eigen-3.4.0)
+set(Dlib_INCLUDE_DIR "C:/Users/weiyutao/opt/dlib-19.24/dlib-19.24/install/Program Files (x86)/dlib_project/include")
+set(Dlib_LIBS "C:/Users/weiyutao/opt/dlib-19.24/dlib-19.24/install/Program Files (x86)/dlib_project/lib/libdlib.a")
+# set the static library path, you can set the lib path and added it used
+# target_link_libraries(${PROJECT_NAME} ${Dlib_LIBS} X11 pthread), you should 
+# use find_package(dlib REQUIRED) and target_link_libraries(${PROJECT_NAME} ${dlib_LIBRARIES})
+# to set it. this is a dlib static library, it is very slowly when you compiler your
+# program. you can set the libarary used set command. you can also use find_package.
+# just like the code as follow.
+
+# find_package(dlib REQUIRED)
+# include_directories(${dlib_INCLUDE_DIR})
+# target_link_libraries(${PROJECT_NAME} dlib::dlib)
+
+# target_link_libraries(${PROJECT_NAME} ${Dlib_LIBS})
+
 #scan the package
 find_package(OpenCV REQUIRED)
 find_package(Eigen3 REQUIRED)
+
+
+
 #if is exist
-if((OpenCV_FOUND) AND (Eigen3_FOUND))
-    message(STATUS "found OpenCv: " ${OpenCv_INCLUDE_DIR})
+# AND (Eigen3_FOUND) AND (Dlib_FOUND)
+if((OpenCV_FOUND))
+    message(STATUS "found OpenCV: " ${OpenCV_INCLUDE_DIR})
+    message(STATUS "found OpenCV: " ${OpenCV_LIBS})
     message(STATUS "found Eigen3: " ${EIGEN3_INCLUDE_DIR})
+    message(STATUS "found Dlib: " ${Dlib_INCLUDE_DIR})
     #add the include path
-    include_directories(${OpenCv_INCLUDE_DIR})
+    include_directories(${OpenCV_INCLUDE_DIR})
     include_directories(${EIGEN3_INCLUDE_DIR})
+    include_directories(${Dlib_INCLUDE_DIR})
     # cpp call python script will use the python head file, what is lacated at the 
     # directory as follow.
     include_directories("C:\\Users\\weiyutao\\opt\\python\\include")
     #add the lib
+    # target_link_libraries(${PROJECT_NAME} ${Dlib_LIBS})
     target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
-    message(${OpenCV_LIBS})
+    target_link_libraries(${PROJECT_NAME} ${Dlib_LIBS})
     # because Eigen is not involved link, so we need not to include it's link libraries.
     # target_link_libraries(${PROJECT_NAME} ${EIGEN3_LIBS})
 else()

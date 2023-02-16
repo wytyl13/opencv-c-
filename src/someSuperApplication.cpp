@@ -7,7 +7,7 @@
  * @Return: null
  * @Description: the method to get the contours.
  */
-void getContours(Mat imgDil, Mat img)
+void getContours(Mat &imgDil, Mat &img)
 {
     // define the contours used vector. we just need to define the data type.
     // this variable contours will be a outgoing param

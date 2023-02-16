@@ -1,5 +1,6 @@
 #include "../include/eigen.h"
 
+#if 0
 void defineSpecificMatrix() 
 {
     // define a general matrix
@@ -96,3 +97,4 @@ void transform2Matrix(Mat inputImage, MatrixXi &matrix)
     cv2eigen(inputImage, matrix);
 }
 
+#endif

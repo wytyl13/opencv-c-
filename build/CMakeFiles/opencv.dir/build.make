@@ -98,11 +98,41 @@ CMakeFiles/opencv.dir/src/eigen.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv.dir/src/eigen.cpp.s"
 	C:\Users\weiyutao\opt\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\src\eigen.cpp -o CMakeFiles\opencv.dir\src\eigen.cpp.s
 
+CMakeFiles/opencv.dir/src/faceApplication.cpp.obj: CMakeFiles/opencv.dir/flags.make
+CMakeFiles/opencv.dir/src/faceApplication.cpp.obj: CMakeFiles/opencv.dir/includes_CXX.rsp
+CMakeFiles/opencv.dir/src/faceApplication.cpp.obj: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/faceApplication.cpp
+CMakeFiles/opencv.dir/src/faceApplication.cpp.obj: CMakeFiles/opencv.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/opencv.dir/src/faceApplication.cpp.obj"
+	C:\Users\weiyutao\opt\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/opencv.dir/src/faceApplication.cpp.obj -MF CMakeFiles\opencv.dir\src\faceApplication.cpp.obj.d -o CMakeFiles\opencv.dir\src\faceApplication.cpp.obj -c C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\src\faceApplication.cpp
+
+CMakeFiles/opencv.dir/src/faceApplication.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv.dir/src/faceApplication.cpp.i"
+	C:\Users\weiyutao\opt\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\src\faceApplication.cpp > CMakeFiles\opencv.dir\src\faceApplication.cpp.i
+
+CMakeFiles/opencv.dir/src/faceApplication.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv.dir/src/faceApplication.cpp.s"
+	C:\Users\weiyutao\opt\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\src\faceApplication.cpp -o CMakeFiles\opencv.dir\src\faceApplication.cpp.s
+
+CMakeFiles/opencv.dir/src/featureInImage.cpp.obj: CMakeFiles/opencv.dir/flags.make
+CMakeFiles/opencv.dir/src/featureInImage.cpp.obj: CMakeFiles/opencv.dir/includes_CXX.rsp
+CMakeFiles/opencv.dir/src/featureInImage.cpp.obj: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/featureInImage.cpp
+CMakeFiles/opencv.dir/src/featureInImage.cpp.obj: CMakeFiles/opencv.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/opencv.dir/src/featureInImage.cpp.obj"
+	C:\Users\weiyutao\opt\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/opencv.dir/src/featureInImage.cpp.obj -MF CMakeFiles\opencv.dir\src\featureInImage.cpp.obj.d -o CMakeFiles\opencv.dir\src\featureInImage.cpp.obj -c C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\src\featureInImage.cpp
+
+CMakeFiles/opencv.dir/src/featureInImage.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/opencv.dir/src/featureInImage.cpp.i"
+	C:\Users\weiyutao\opt\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\src\featureInImage.cpp > CMakeFiles\opencv.dir\src\featureInImage.cpp.i
+
+CMakeFiles/opencv.dir/src/featureInImage.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/opencv.dir/src/featureInImage.cpp.s"
+	C:\Users\weiyutao\opt\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\src\featureInImage.cpp -o CMakeFiles\opencv.dir\src\featureInImage.cpp.s
+
 CMakeFiles/opencv.dir/src/general.cpp.obj: CMakeFiles/opencv.dir/flags.make
 CMakeFiles/opencv.dir/src/general.cpp.obj: CMakeFiles/opencv.dir/includes_CXX.rsp
 CMakeFiles/opencv.dir/src/general.cpp.obj: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/general.cpp
 CMakeFiles/opencv.dir/src/general.cpp.obj: CMakeFiles/opencv.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/opencv.dir/src/general.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/opencv.dir/src/general.cpp.obj"
 	C:\Users\weiyutao\opt\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/opencv.dir/src/general.cpp.obj -MF CMakeFiles\opencv.dir\src\general.cpp.obj.d -o CMakeFiles\opencv.dir\src\general.cpp.obj -c C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\src\general.cpp
 
 CMakeFiles/opencv.dir/src/general.cpp.i: cmake_force
@@ -117,7 +147,7 @@ CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj: CMakeFiles/opencv.dir/flag
 CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj: CMakeFiles/opencv.dir/includes_CXX.rsp
 CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/grayLevelTransform.cpp
 CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj: CMakeFiles/opencv.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj"
 	C:\Users\weiyutao\opt\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj -MF CMakeFiles\opencv.dir\src\grayLevelTransform.cpp.obj.d -o CMakeFiles\opencv.dir\src\grayLevelTransform.cpp.obj -c C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\src\grayLevelTransform.cpp
 
 CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.i: cmake_force
@@ -132,7 +162,7 @@ CMakeFiles/opencv.dir/src/imageOperation.cpp.obj: CMakeFiles/opencv.dir/flags.ma
 CMakeFiles/opencv.dir/src/imageOperation.cpp.obj: CMakeFiles/opencv.dir/includes_CXX.rsp
 CMakeFiles/opencv.dir/src/imageOperation.cpp.obj: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/imageOperation.cpp
 CMakeFiles/opencv.dir/src/imageOperation.cpp.obj: CMakeFiles/opencv.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/opencv.dir/src/imageOperation.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/opencv.dir/src/imageOperation.cpp.obj"
 	C:\Users\weiyutao\opt\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/opencv.dir/src/imageOperation.cpp.obj -MF CMakeFiles\opencv.dir\src\imageOperation.cpp.obj.d -o CMakeFiles\opencv.dir\src\imageOperation.cpp.obj -c C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\src\imageOperation.cpp
 
 CMakeFiles/opencv.dir/src/imageOperation.cpp.i: cmake_force
@@ -147,7 +177,7 @@ CMakeFiles/opencv.dir/src/linearInterpolation.cpp.obj: CMakeFiles/opencv.dir/fla
 CMakeFiles/opencv.dir/src/linearInterpolation.cpp.obj: CMakeFiles/opencv.dir/includes_CXX.rsp
 CMakeFiles/opencv.dir/src/linearInterpolation.cpp.obj: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/linearInterpolation.cpp
 CMakeFiles/opencv.dir/src/linearInterpolation.cpp.obj: CMakeFiles/opencv.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/opencv.dir/src/linearInterpolation.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/opencv.dir/src/linearInterpolation.cpp.obj"
 	C:\Users\weiyutao\opt\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/opencv.dir/src/linearInterpolation.cpp.obj -MF CMakeFiles\opencv.dir\src\linearInterpolation.cpp.obj.d -o CMakeFiles\opencv.dir\src\linearInterpolation.cpp.obj -c C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\src\linearInterpolation.cpp
 
 CMakeFiles/opencv.dir/src/linearInterpolation.cpp.i: cmake_force
@@ -162,7 +192,7 @@ CMakeFiles/opencv.dir/src/main.cpp.obj: CMakeFiles/opencv.dir/flags.make
 CMakeFiles/opencv.dir/src/main.cpp.obj: CMakeFiles/opencv.dir/includes_CXX.rsp
 CMakeFiles/opencv.dir/src/main.cpp.obj: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/main.cpp
 CMakeFiles/opencv.dir/src/main.cpp.obj: CMakeFiles/opencv.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/opencv.dir/src/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/opencv.dir/src/main.cpp.obj"
 	C:\Users\weiyutao\opt\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/opencv.dir/src/main.cpp.obj -MF CMakeFiles\opencv.dir\src\main.cpp.obj.d -o CMakeFiles\opencv.dir\src\main.cpp.obj -c C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\src\main.cpp
 
 CMakeFiles/opencv.dir/src/main.cpp.i: cmake_force
@@ -177,7 +207,7 @@ CMakeFiles/opencv.dir/src/noise.cpp.obj: CMakeFiles/opencv.dir/flags.make
 CMakeFiles/opencv.dir/src/noise.cpp.obj: CMakeFiles/opencv.dir/includes_CXX.rsp
 CMakeFiles/opencv.dir/src/noise.cpp.obj: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/noise.cpp
 CMakeFiles/opencv.dir/src/noise.cpp.obj: CMakeFiles/opencv.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/opencv.dir/src/noise.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/opencv.dir/src/noise.cpp.obj"
 	C:\Users\weiyutao\opt\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/opencv.dir/src/noise.cpp.obj -MF CMakeFiles\opencv.dir\src\noise.cpp.obj.d -o CMakeFiles\opencv.dir\src\noise.cpp.obj -c C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\src\noise.cpp
 
 CMakeFiles/opencv.dir/src/noise.cpp.i: cmake_force
@@ -192,7 +222,7 @@ CMakeFiles/opencv.dir/src/someSuperApplication.cpp.obj: CMakeFiles/opencv.dir/fl
 CMakeFiles/opencv.dir/src/someSuperApplication.cpp.obj: CMakeFiles/opencv.dir/includes_CXX.rsp
 CMakeFiles/opencv.dir/src/someSuperApplication.cpp.obj: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/someSuperApplication.cpp
 CMakeFiles/opencv.dir/src/someSuperApplication.cpp.obj: CMakeFiles/opencv.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/opencv.dir/src/someSuperApplication.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/opencv.dir/src/someSuperApplication.cpp.obj"
 	C:\Users\weiyutao\opt\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/opencv.dir/src/someSuperApplication.cpp.obj -MF CMakeFiles\opencv.dir\src\someSuperApplication.cpp.obj.d -o CMakeFiles\opencv.dir\src\someSuperApplication.cpp.obj -c C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\src\someSuperApplication.cpp
 
 CMakeFiles/opencv.dir/src/someSuperApplication.cpp.i: cmake_force
@@ -207,7 +237,7 @@ CMakeFiles/opencv.dir/src/spatialFilter.cpp.obj: CMakeFiles/opencv.dir/flags.mak
 CMakeFiles/opencv.dir/src/spatialFilter.cpp.obj: CMakeFiles/opencv.dir/includes_CXX.rsp
 CMakeFiles/opencv.dir/src/spatialFilter.cpp.obj: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/spatialFilter.cpp
 CMakeFiles/opencv.dir/src/spatialFilter.cpp.obj: CMakeFiles/opencv.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/opencv.dir/src/spatialFilter.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/opencv.dir/src/spatialFilter.cpp.obj"
 	C:\Users\weiyutao\opt\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/opencv.dir/src/spatialFilter.cpp.obj -MF CMakeFiles\opencv.dir\src\spatialFilter.cpp.obj.d -o CMakeFiles\opencv.dir\src\spatialFilter.cpp.obj -c C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\src\spatialFilter.cpp
 
 CMakeFiles/opencv.dir/src/spatialFilter.cpp.i: cmake_force
@@ -222,7 +252,7 @@ CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.obj: CMakeFiles/opencv.d
 CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.obj: CMakeFiles/opencv.dir/includes_CXX.rsp
 CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.obj: C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/transformUsedAffineMatrix.cpp
 CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.obj: CMakeFiles/opencv.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.obj"
 	C:\Users\weiyutao\opt\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.obj -MF CMakeFiles\opencv.dir\src\transformUsedAffineMatrix.cpp.obj.d -o CMakeFiles\opencv.dir\src\transformUsedAffineMatrix.cpp.obj -c C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\src\transformUsedAffineMatrix.cpp
 
 CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.i: cmake_force
@@ -237,6 +267,8 @@ CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.s: cmake_force
 opencv_OBJECTS = \
 "CMakeFiles/opencv.dir/src/bitOperation.cpp.obj" \
 "CMakeFiles/opencv.dir/src/eigen.cpp.obj" \
+"CMakeFiles/opencv.dir/src/faceApplication.cpp.obj" \
+"CMakeFiles/opencv.dir/src/featureInImage.cpp.obj" \
 "CMakeFiles/opencv.dir/src/general.cpp.obj" \
 "CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj" \
 "CMakeFiles/opencv.dir/src/imageOperation.cpp.obj" \
@@ -252,6 +284,8 @@ opencv_EXTERNAL_OBJECTS =
 
 opencv.exe: CMakeFiles/opencv.dir/src/bitOperation.cpp.obj
 opencv.exe: CMakeFiles/opencv.dir/src/eigen.cpp.obj
+opencv.exe: CMakeFiles/opencv.dir/src/faceApplication.cpp.obj
+opencv.exe: CMakeFiles/opencv.dir/src/featureInImage.cpp.obj
 opencv.exe: CMakeFiles/opencv.dir/src/general.cpp.obj
 opencv.exe: CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj
 opencv.exe: CMakeFiles/opencv.dir/src/imageOperation.cpp.obj
@@ -314,11 +348,12 @@ opencv.exe: C:/Users/weiyutao/opt/opencv/build/install/x64/mingw/lib/libopencv_w
 opencv.exe: C:/Users/weiyutao/opt/opencv/build/install/x64/mingw/lib/libopencv_world470.dll.a
 opencv.exe: C:/Users/weiyutao/opt/opencv/build/install/x64/mingw/lib/libopencv_world470.dll.a
 opencv.exe: C:/Users/weiyutao/opt/opencv/build/install/x64/mingw/lib/libopencv_world470.dll.a
+opencv.exe: C:/Users/weiyutao/opt/dlib-19.24/dlib-19.24/install/Program\ Files\ (x86)/dlib_project/lib/libdlib.a
 opencv.exe: C:/Users/weiyutao/opt/opencv/build/install/x64/mingw/lib/libopencv_world470.dll.a
 opencv.exe: CMakeFiles/opencv.dir/linkLibs.rsp
 opencv.exe: CMakeFiles/opencv.dir/objects1
 opencv.exe: CMakeFiles/opencv.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable opencv.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\weiyutao\development_code_2023-01-28\vscode\opencv\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable opencv.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\opencv.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

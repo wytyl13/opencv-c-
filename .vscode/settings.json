@@ -62,6 +62,8 @@
         "alignedvector3": "cpp",
         "fft": "cpp",
         "matrixfunctions": "cpp",
+        "random": "cpp",
+        "stop_token": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

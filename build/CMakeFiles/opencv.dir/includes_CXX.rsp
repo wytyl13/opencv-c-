@@ -1,1 +1,1 @@
--I"C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/./include" -I"C:/Users/weiyutao/opt/eigen-3.4.0" -IC:/Users/weiyutao/opt/python/include -isystem C:/Users/weiyutao/opt/opencv/build/install/include
+-I"C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/./include" -I"C:/Users/weiyutao/opt/eigen-3.4.0" -I"C:/Users/weiyutao/opt/dlib-19.24/dlib-19.24/install/PROGRA~1/DLIB_P~1/include" -IC:/Users/weiyutao/opt/python/include -isystem C:/Users/weiyutao/opt/opencv/build/install/include

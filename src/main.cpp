@@ -6,8 +6,17 @@
 #include "../include/eigen.h"
 #include "../include/grayLevelTransform.h"
 #include "../include/bitOperation.h"
+#include "../include/spatialFilter.h"
+#include "../include/faceApplication.h"
+#include "../include/featureInImage.h"
 #include <time.h>
 
+// typedef enum ENUM
+// {
+//     A,
+//     B,
+//     C
+// } ENUMCLASS;
 
 int main(int argc, char const *argv[])
 {
@@ -634,9 +643,9 @@ int main(int argc, char const *argv[])
     imshowMulti(str, vectorImages); */
     // --------------------test grayLevelTransform-------------------------------
     // --------------------test logarithmic transform and linear scaling-------------------------------
-    string str = "compare the original and result image";
-    namedWindow(str, 1);
-    Mat image, imageGray, resizeImage;
+    // string str = "compare the original and result image";
+    // namedWindow(str, 1);
+    // Mat image, imageGray, resizeImage;
 /*     image = imread("../resources/fourier.png");
     cvtColor(image, imageGray, COLOR_BGR2GRAY);
     resize(imageGray, resizeImage, Size(600, 360));
@@ -659,10 +668,10 @@ int main(int argc, char const *argv[])
     imshowMulti(str, vectorImages); */
 
 
-    image = imread("../resources/hln.png");
-    cvtColor(image, imageGray, COLOR_BGR2GRAY);
-    resize(imageGray, resizeImage, Size(600, 360));
-    Mat outputImage;
+    // image = imread("../resources/hln.png");
+    // cvtColor(image, imageGray, COLOR_BGR2GRAY);
+    // resize(imageGray, resizeImage, Size(600, 360));
+    // Mat outputImage;
     // linearScalingBaseTwoPoint(resizeImage, outputImage);
     // vector<Mat> vectorImages;
     // vectorImages.push_back(resizeImage);
@@ -772,14 +781,14 @@ int main(int argc, char const *argv[])
 
     // we will test the histogram matching function.
     // you can find it is euqal to the original image if you used the pure blank image as the objectImage.
-    Mat obj_image = imread("../resources/darkerImage.webp");
-    Mat gray_image, objectImage, equalizationMat;
-    Mat equalizationMat_equalization_original, equalizationMat_matching_original;
-    Mat equalizationMat_original, equalizationMat_object;
-    Mat matching_original, equalization_original, matching_equalization_original;
-    Mat matching_object, equalization_object, matching_equalization_object;
-    cvtColor(obj_image, gray_image, COLOR_BGRA2GRAY);
-    resize(gray_image, objectImage, Size(720, 360));
+    // Mat obj_image = imread("../resources/darkerImage.webp");
+    // Mat gray_image, objectImage, equalizationMat;
+    // Mat equalizationMat_equalization_original, equalizationMat_matching_original;
+    // Mat equalizationMat_original, equalizationMat_object;
+    // Mat matching_original, equalization_original, matching_equalization_original;
+    // Mat matching_object, equalization_object, matching_equalization_object;
+    // cvtColor(obj_image, gray_image, COLOR_BGRA2GRAY);
+    // resize(gray_image, objectImage, Size(720, 360));
     // objectImage = Mat::zeros(Size(100, 100), CV_8UC1);
     // objectImage = Mat::ones(Size(100, 100), CV_8UC1);
     // Point leftUpper = Point(0, 0);
@@ -899,17 +908,120 @@ int main(int argc, char const *argv[])
     cout << array[0] << " " << array[1] << endl;
     double *distribution = getDistribution(testMat);
     printOneArrayPointer(distribution); */
-    double k[4] = {0.0, 0.99999, 0.0, 0.0000009};
+/*     double k[4] = {0.0, 0.99999, 0.0, 0.0000009};
     // LocalWithStatistics(objectImage, outputImage, 2, k);
     LocalWithStatistics(objectImage, outputImage, 4, k);
     vector<Mat> vectorImages;
     vectorImages.push_back(objectImage);
     vectorImages.push_back(outputImage);
-    imshowMulti(str, vectorImages);
-
-
-
+    imshowMulti(str, vectorImages); */
     // --------------------test histogram transform-----------------------------
+
+    // --------------------test spatial filter device -----------------------------
+    // Mat inputImage = imread("../resources/hln.png", 0);
+    // Mat outputImage;
+    // vector<Mat> vectorImages;
+    // officialFilterTest(inputImage, outputImage, SFD::FUZZY);
+    // vectorImages.push_back(inputImage);
+    // vectorImages.push_back(outputImage);
+    // string str = "resharpen the image";
+    // // imshowMulti(str, vectorImages);
+    // imshow("original image", inputImage);
+    // imshow("sharpen image", outputImage);
+/*     Mat inputImage2 = imread("../resources/dusk.jpg", 1);
+    officialImageMixTest(inputImage, inputImage2, outputImage, 0.5);
+    imshow("mix image", outputImage); */
+    // --------------------test spatial filter device -----------------------------
+
+
+
+
+    // --------------------test super application-----------------------------
+    string windowName = "face detect movie";
+    string path = "../resources/xiyou.mp4";
+    // faceDetectMovie(windowName, path, face_cascade, eye_cascade);
+
+    Mat faceImage = imread("../resources/faces.jfif");
+    Mat outputImage;
+    CascadeClassifier face_cascade;
+    CascadeClassifier eye_cascade;
+    // faceDetectImage(faceImage, outputImage, face_cascade, eye_cascade);
+    // imshow("face detect image test", outputImage);
+
+/*     Mat faceImage = imread("../resources/faces.jpeg");
+    Mat inputImage;
+    resize(faceImage, inputImage, Size(720, 360));
+    faceDetectImage(inputImage, outputImage, face_cascade);
+    imshow(str, outputImage); */
+
+
+    // CascadeClassifier face_cascade;
+    // CascadeClassifier eye_cascade;
+    // string windowName = "movie play device";
+    // faceDetectMovie(windowName, "../resources/yuanyuan.mp4", face_cascade, eye_cascade);
+
+    // Mat image1 = imread("../resources/hln.webp", 0);
+    // Mat image2 = imread("../resources/yy2.webp", 0);
+    // faceRecognition(image1, image2);
+    
+    // printf("SIFT IS %d\n", FD::SIFT);
+    // open a picture in gray mode.
+    // Mat image = imread("../resources/hln.webp", 0);
+    // imshow("original image", image);
+
+    // if you scale the matrix, the feature vector is constant, the feature value is 
+    // also scaled. 
+/*     Mat eigen_value, eigen_vector;
+    Mat data = (Mat_<double>(2, 2) << 1, 2, 2, 1);
+    eigen(data, eigen_value, eigen_vector);
+    cout << eigen_value << endl;
+    cout << eigen_vector << endl; */
+    // BINARY THE IMAGE
+    // threshold(inputImage, outputImage, 0, 255, THRESH_BINARY | THRESH_OTSU);
+    // imshow("threshold image", outputImage);
+
+    // test the boundary tranck and pca and calculate the center point based on 
+    // the feature points set of one detected object in one image.
+/*     Mat inputImage = imread("../resources/123.jfif");
+    resize(inputImage, inputImage, Size(720, 360));
+    Mat outputImage;
+    boundaryTrackUsedOfficial(inputImage, outputImage); */
+
+
+    Mat oceanImage = imread("../resources/ocean.webp");
+    Mat ballImage = imread("../resources/ball.webp");
+    Mat heyingImage = imread("../resources/heying.jpg");
+    Mat oceanFaceImage = imread("../resources/oceanFace.webp");
+    Mat houseImage = imread("../resources/house.jpg");
+    resize(oceanFaceImage, oceanFaceImage, Size(500, 500));
+    resize(houseImage, houseImage, Size(500, 500));
+/*     faceFeatureDetectUsedOfficial(oceanImage, outputImage);
+    imshow("feature detect test one", outputImage);
+    faceFeatureDetectUsedOfficial(oceanFaceImage, outputImage);
+    imshow("feature detect test two", outputImage);
+    faceFeatureDetectUsedOfficial(houseImage, outputImage);
+    imshow("house feature detect test", outputImage); */
+/*     featureDetectUsedOfficial(oceanFaceImage, outputImage);
+    imshow("oceanface feature detected image", outputImage);
+    boundaryDetectUsedOfficial(oceanFaceImage, outputImage);
+    imshow("oceanface boundary detected image", outputImage);
+    featureDetectUsedOfficial(houseImage, outputImage);
+    imshow("house feature detected image", outputImage);
+    boundaryDetectUsedOfficial(houseImage, outputImage);
+    imshow("house boundary detected image", outputImage); */
+    // Mat resizeImage;
+    // faceDetectUsedDlib(heyingImage, outputImage, DLIB::MMOD);
+    // resize(outputImage, resizeImage, Size(1400, 700));
+    // imshow("dlib detected face image", resizeImage);
+
+    // getFaceSamplesFromMovie("../resources/movie/gutianle.mp4", "../resources/trainSample/gtl");
+    vector<string> vectorPath;
+    int count = 0;
+    getAllFileFromDirAndCreatTrainData("../resources/trainSample", vectorPath, \
+        "../resources/labelFile/gyygtl.txt", count);
+    faceRecognitionUsedEigenFace("../resources/labelFile/gyygtl.txt", "../resources/movie/predict.mp4");
+    // --------------------test super application-----------------------------
+
     waitKey(0);
     // notice, you should destroy all the windows you have created at end.
     destroyAllWindows();

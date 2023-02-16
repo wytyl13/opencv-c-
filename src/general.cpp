@@ -1,5 +1,123 @@
 #include "../include/general.h"
+
 #define MAX_COLUMN = 7
+
+
+
+// overload the + and += operators. you can use string+int or
+// string+=int.
+string operator+(string &content, int number)
+{
+    string temp = "";
+    char t = 0;
+    while (true)
+    {
+        t = number % 10 + '0';
+        temp = t + temp;
+        number /= 10;
+        if (number == 0)
+        {
+            return content + temp;
+        }
+    }
+}
+
+string& operator+=(string &content, int number)
+{
+    return content = content + number;
+}
+
+
+
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-15 11:43:36
+ * @Parameters: pts, coordinates set, mode, the attribution mode, you can use the macro.
+ * @Return: any type pointer, you can receive double and vector or other. you can calculate
+ * the length, area and center of the feature points set.
+ * @Description: this function will calculate all attribubtion based on the coordinates.
+ * you should pass one coordinates set, the type is vector here, of course, you can define
+ * used other type. just like ACS::LENGTH.
+ * 
+ * 00 01 02 03 04 05 06 07
+ * 10 11 12 12 14 15 16 17
+ * 20 21 22 23 24 25 26 27
+ * 30 31 32 33 34 35 36 37
+ * 40 41 42 43 44 45 46 47
+ * 50 51 52 53 54 55 56 57
+ * 60 61 62 63 64 65 66 67
+ * 70 71 72 73 74 75 76 77
+ * 
+ * rect(1, 2, 4, 4), it means define an rectangular the original is (1,2),
+ * width is 5, height is 5. it means from 1,2 to 5,6. then how to get the
+ * center of the rectangular? the center is 3,4.
+ * the center is equal to the original add the height/2, width/2.
+ * 
+ * but it is not suitable for the irregular object. but you can draw the minimize rectangular
+ * for the irregular object. then it will be a though to get the center from a 
+ * feature points set of one irregular object. then, we should transform the points set
+ * from vector<Point> to mat or other data type.
+ * 
+ * you'd better not return a pointer, because you should define a pointer in the current
+ * function first, but it is worth to notice that you need not always to malloc a memory.
+ * it means you need not always to define the pointer, you can statement a pointer variable 
+ * that point to an exist memory in heap. just like you have malloc a memory in this function.
+ * and you have return the pointer variable that point to there, then you should statement
+ * a pointer variable in the function what you used this return pointer function.
+ * but you should notice you should free the pointer when it is usefuless. 
+ * you can define a pointer like as follow two method.
+ * int *pointer1 = (int *)malloc(sizeof(int) * 10);
+ * int *pointer2 = pointer1, pointer1 is an exists pointer in heap.
+ * then, you can free pointer2, it is equal to free the memory created in heap.
+ * because the pointer1 and pointer2 are both the pointer variable, they are all
+ * stored the address in the same address that has malloced in heap when you statemented pointer1.
+ * we have tested the center point is the mean of x and y in the Mat what is 
+ * another matrix data type based on all the feature points set of one object in one image.
+ * 
+ * so we can conclude that the mean of x and y of the object feature points Mat is the center point
+ * if you want to get the center point based on a irreugular shape object.
+ */
+void *calculateAttributionBasedOnFeaturePoints(vector<Point> &pts, int mode) 
+{
+    double *returnPointer;
+    int size = pts.size();
+    // each row can mean a coordinate.
+    Mat ptsCoordinatesMat = Mat(size, 2, CV_64FC1);
+    for (int i = 0; i < size; i++)
+    {
+        ptsCoordinatesMat.at<double>(i, 0) = pts[i].x;
+        ptsCoordinatesMat.at<double>(i, 1) = pts[i].y;
+    }
+    // but we have tested the method to calculate the center point based on
+    // the points set, it is the mean about all x and y. not the method above.
+    // so this method will be simple, yuo just need to get the mean of x and y in mat.
+    /* // you should get min row coordinate and column coordinate.
+    double minCoordinateX, maxCoordinateX, minCoordinateY, maxCoordinateY;
+    minMaxLoc(ptsCoordinatesMat.colRange(0, 1), &minCoordinateX, &maxCoordinateX, 0, 0);
+    minMaxLoc(ptsCoordinatesMat.colRange(1, 2), &minCoordinateY, &maxCoordinateY, 0, 0);
+
+    // you should calculate the center point based on these four number.
+    // the original is minCoordinateX, minCoordinateY, the height = maxCoordinateY - minCoordinateY
+    // the width is equal to maxCoordinateX - minCoordinateX
+    // the center point = minCoordinateX + width / 2, minCoordinateY + height / 2;
+    double *list = (double *)malloc(sizeof(double) * 4);
+    double width = maxCoordinateX - minCoordinateX;
+    double height = maxCoordinateY - minCoordinateY;
+    list[0] = minCoordinateX + width / 2;
+    list[1] = maxCoordinateY + height / 2; */
+
+
+    if(mode == ACS::CENTER)
+    {
+        returnPointer = (double *)malloc(sizeof(double) * 2);
+        returnPointer[0] = cv::mean(ptsCoordinatesMat.colRange(0, 1))[0];
+        returnPointer[1] = cv::mean(ptsCoordinatesMat.colRange(1, 2))[0];
+    }
+
+    return returnPointer;
+}
+
 void sys_error(const char *str) 
 {
     perror(str);
@@ -140,18 +258,18 @@ void printMap(const map<int, Mat, compareMap> &mapBitPlane)
     }
 }
 
-void printOneArrayPointer(const double *array) 
+void printOneArrayPointer(const double *array, int length = 256) 
 {
-    for (int i = 0; i < 256; i++)
+    for (int i = 0; i < length; i++)
     {
         cout << array[i] << endl;
     }
 }
 
 
-void printTwoArrayPointer(const double *array1, const double *array2) 
+void printTwoArrayPointer(const double *array1, const double *array2, int length = 256) 
 {
-    for (int i = 0; i < 256; i++)
+    for (int i = 0; i < length; i++)
     {
         cout << array1[i] << " " << array2[i] << endl;
     }
@@ -280,4 +398,14 @@ void cutImage(Mat inputImage, Mat &outputImage, vector<Point> vectorPoints)
     // that's you can copy the image to a region, this region can be any 
     // Mat object. but you should notice, the size of these two image must be same.
     bitwise_and(inputImage, mask, outputImage);
+}
+
+void freePointer(void *pointer) 
+{
+    free(pointer);
+    pointer = NULL;
+    if (pointer != NULL)
+    {
+        free(pointer);
+    }
 }

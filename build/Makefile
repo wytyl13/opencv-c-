@@ -176,6 +176,54 @@ src/eigen.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/eigen.cpp.s
 .PHONY : src/eigen.cpp.s
 
+src/faceApplication.obj: src/faceApplication.cpp.obj
+.PHONY : src/faceApplication.obj
+
+# target to build an object file
+src/faceApplication.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/faceApplication.cpp.obj
+.PHONY : src/faceApplication.cpp.obj
+
+src/faceApplication.i: src/faceApplication.cpp.i
+.PHONY : src/faceApplication.i
+
+# target to preprocess a source file
+src/faceApplication.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/faceApplication.cpp.i
+.PHONY : src/faceApplication.cpp.i
+
+src/faceApplication.s: src/faceApplication.cpp.s
+.PHONY : src/faceApplication.s
+
+# target to generate assembly for a file
+src/faceApplication.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/faceApplication.cpp.s
+.PHONY : src/faceApplication.cpp.s
+
+src/featureInImage.obj: src/featureInImage.cpp.obj
+.PHONY : src/featureInImage.obj
+
+# target to build an object file
+src/featureInImage.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/featureInImage.cpp.obj
+.PHONY : src/featureInImage.cpp.obj
+
+src/featureInImage.i: src/featureInImage.cpp.i
+.PHONY : src/featureInImage.i
+
+# target to preprocess a source file
+src/featureInImage.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/featureInImage.cpp.i
+.PHONY : src/featureInImage.cpp.i
+
+src/featureInImage.s: src/featureInImage.cpp.s
+.PHONY : src/featureInImage.s
+
+# target to generate assembly for a file
+src/featureInImage.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/featureInImage.cpp.s
+.PHONY : src/featureInImage.cpp.s
+
 src/general.obj: src/general.cpp.obj
 .PHONY : src/general.obj
 
@@ -407,6 +455,12 @@ help:
 	@echo ... src/eigen.obj
 	@echo ... src/eigen.i
 	@echo ... src/eigen.s
+	@echo ... src/faceApplication.obj
+	@echo ... src/faceApplication.i
+	@echo ... src/faceApplication.s
+	@echo ... src/featureInImage.obj
+	@echo ... src/featureInImage.i
+	@echo ... src/featureInImage.s
 	@echo ... src/general.obj
 	@echo ... src/general.i
 	@echo ... src/general.s
