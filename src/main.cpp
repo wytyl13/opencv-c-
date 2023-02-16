@@ -938,10 +938,10 @@ int main(int argc, char const *argv[])
 
     // --------------------test super application-----------------------------
     string windowName = "face detect movie";
-    string path = "../resources/xiyou.mp4";
+    string path = "../../resources/xiyou.mp4";
     // faceDetectMovie(windowName, path, face_cascade, eye_cascade);
 
-    Mat faceImage = imread("../resources/faces.jfif");
+    Mat faceImage = imread("../../resources/faces.jfif");
     Mat outputImage;
     CascadeClassifier face_cascade;
     CascadeClassifier eye_cascade;
@@ -988,11 +988,11 @@ int main(int argc, char const *argv[])
     boundaryTrackUsedOfficial(inputImage, outputImage); */
 
 
-    Mat oceanImage = imread("../resources/ocean.webp");
-    Mat ballImage = imread("../resources/ball.webp");
-    Mat heyingImage = imread("../resources/heying.jpg");
-    Mat oceanFaceImage = imread("../resources/oceanFace.webp");
-    Mat houseImage = imread("../resources/house.jpg");
+    Mat oceanImage = imread("../../resources/ocean.webp");
+    Mat ballImage = imread("../../resources/ball.webp");
+    Mat heyingImage = imread("../../resources/heying.jpg");
+    Mat oceanFaceImage = imread("../../resources/oceanFace.webp");
+    Mat houseImage = imread("../../resources/house.jpg");
     resize(oceanFaceImage, oceanFaceImage, Size(500, 500));
     resize(houseImage, houseImage, Size(500, 500));
 /*     faceFeatureDetectUsedOfficial(oceanImage, outputImage);
@@ -1015,11 +1015,12 @@ int main(int argc, char const *argv[])
     // imshow("dlib detected face image", resizeImage);
 
     // getFaceSamplesFromMovie("../resources/movie/gutianle.mp4", "../resources/trainSample/gtl");
-    vector<string> vectorPath;
+    /* vector<string> vectorPath;
     int count = 0;
-    getAllFileFromDirAndCreatTrainData("../resources/trainSample", vectorPath, \
-        "../resources/labelFile/gyygtl.txt", count);
-    faceRecognitionUsedEigenFace("../resources/labelFile/gyygtl.txt", "../resources/movie/predict.mp4");
+    getAllFileFromDirAndCreatTrainData("../../resources/trainSample", vectorPath, \
+        "../../resources/labelFile/gyygtl.txt", count);
+    faceRecognitionUsedEigenFace("../../resources/labelFile/gyygtl.txt", "../../resources/movie/predict.mp4"); */
+    imshow("ocean image", oceanImage);
     // --------------------test super application-----------------------------
 
     waitKey(0);
