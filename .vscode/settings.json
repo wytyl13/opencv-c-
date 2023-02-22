@@ -63,7 +63,24 @@
         "fft": "cpp",
         "matrixfunctions": "cpp",
         "random": "cpp",
-        "stop_token": "cpp"
+        "stop_token": "cpp",
+        "future": "cpp",
+        "numeric": "cpp",
+        "bitset": "cpp",
+        "forward_list": "cpp",
+        "unordered_set": "cpp",
+        "hash_map": "cpp",
+        "cinttypes": "cpp",
+        "typeindex": "cpp",
+        "valarray": "cpp",
+        "variant": "cpp",
+        "bit": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "numbers": "cpp",
+        "semaphore": "cpp",
+        "lu": "cpp",
+        "iterativelinearsolvers": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

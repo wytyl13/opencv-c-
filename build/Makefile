@@ -272,6 +272,30 @@ src/grayLevelTransform.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.s
 .PHONY : src/grayLevelTransform.cpp.s
 
+src/imageCutting.obj: src/imageCutting.cpp.obj
+.PHONY : src/imageCutting.obj
+
+# target to build an object file
+src/imageCutting.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/imageCutting.cpp.obj
+.PHONY : src/imageCutting.cpp.obj
+
+src/imageCutting.i: src/imageCutting.cpp.i
+.PHONY : src/imageCutting.i
+
+# target to preprocess a source file
+src/imageCutting.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/imageCutting.cpp.i
+.PHONY : src/imageCutting.cpp.i
+
+src/imageCutting.s: src/imageCutting.cpp.s
+.PHONY : src/imageCutting.s
+
+# target to generate assembly for a file
+src/imageCutting.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/imageCutting.cpp.s
+.PHONY : src/imageCutting.cpp.s
+
 src/imageOperation.obj: src/imageOperation.cpp.obj
 .PHONY : src/imageOperation.obj
 
@@ -467,6 +491,9 @@ help:
 	@echo ... src/grayLevelTransform.obj
 	@echo ... src/grayLevelTransform.i
 	@echo ... src/grayLevelTransform.s
+	@echo ... src/imageCutting.obj
+	@echo ... src/imageCutting.i
+	@echo ... src/imageCutting.s
 	@echo ... src/imageOperation.obj
 	@echo ... src/imageOperation.i
 	@echo ... src/imageOperation.s

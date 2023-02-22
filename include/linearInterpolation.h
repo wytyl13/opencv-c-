@@ -17,4 +17,5 @@ Mat scale(Mat &input_image, int height, int width);
 uchar get_scale_value_binary(Mat &input_image, float _i, float _j);
 Mat binary_linear_scale(Mat &input_image, int height, int width);
 
+Mat resizeImage(Mat &inputImage, float scale);
 #endif

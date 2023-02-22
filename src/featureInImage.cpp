@@ -204,7 +204,7 @@ void boundaryTrackUsedOfficial(Mat &inputImage, Mat &outputImage)
     findContours(binaryImage, contours, hireachy, RETR_LIST, CHAIN_APPROX_NONE);
 
     // double *list = (double *)malloc(sizeof(double) * 2);
-    double *list;
+    double *list = NULL;
 
     for (long long unsigned i = 0; i < contours.size(); i++)
     {

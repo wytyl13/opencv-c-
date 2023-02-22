@@ -78,7 +78,7 @@ void saltPepper(Mat srcImage, Mat &dstImage, int count, int size)
  */
 void gaussionNoise(Mat srcImage, Mat &dstImage, float mean = 0, float var = 50) 
 {
-    dstImage = srcImage;
+    dstImage = srcImage.clone();
 
     // two method. you can use randn in opencv. used Scalar data type pass the mean and var.
     // the second method, you can use the fill function. of course, you can init all elment as 0 used zeros function in Mat
@@ -88,7 +88,6 @@ void gaussionNoise(Mat srcImage, Mat &dstImage, float mean = 0, float var = 50)
     Mat noise(dstImage.rows, dstImage.cols, CV_8UC1);
     randn(noise, Scalar::all(mean), Scalar::all(var));
     dstImage += noise;
-
     // randn(dstImage, Scalar::all(mean), Scalar::all(var)); this function randn can also generate a gaussion image
     // the size is same with the dstImage and the mean is mean, the var is var.
     // Mat noise = Mat::zeros(dstImage.rows, dstImage.cols, dstImage.type());

@@ -80,7 +80,7 @@ string& operator+=(string &content, int number)
  */
 void *calculateAttributionBasedOnFeaturePoints(vector<Point> &pts, int mode) 
 {
-    double *returnPointer;
+    double *returnPointer = NULL;
     int size = pts.size();
     // each row can mean a coordinate.
     Mat ptsCoordinatesMat = Mat(size, 2, CV_64FC1);
@@ -275,6 +275,40 @@ void printTwoArrayPointer(const double *array1, const double *array2, int length
     }
 }
 
+
+int extractNum(string &ss, char *ch)
+{
+    const char* c = ss.c_str();
+    int amount = 0;
+    int i = 0;
+    while (c[i] != '\0')
+    {
+        if (c[i] >= '0' && c[i] <= '9')
+        {
+            ch[amount] = c[i];
+            amount++;
+        }
+        i++;
+    }
+    return amount;
+}
+
+bool compareVectorString(std::string str1, std::string str2)
+{
+    char char1[10], char2[10];
+    extractNum(str1, char1);
+    extractNum(str2, char2);
+    // you have get the integer from string, but it is stored use char.
+    // you can use strcmp to compare two char pointer. of course, you can use > direct, but it can
+    // just compare the first char that first pointer point to. so you'd better use the strcmp function.
+    // it will return 1, 0, -1. but we just want to get 0 or 1. only done this you can return bool or false.
+    // or you will get error when you return -1. because the return value is bool.
+    // notice, you should return one bool value.
+    int value = strcmp(char1, char2) < 0 ? 0 : strcmp(char1, char2);
+    return value;
+}
+
+
 /**
  * @Author: weiyutao
  * @Date: 2023-01-31 09:55:51
@@ -400,6 +434,7 @@ void cutImage(Mat inputImage, Mat &outputImage, vector<Point> vectorPoints)
     bitwise_and(inputImage, mask, outputImage);
 }
 
+
 void freePointer(void *pointer) 
 {
     free(pointer);
@@ -408,4 +443,231 @@ void freePointer(void *pointer)
     {
         free(pointer);
     }
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-19 21:50:39
+ * @Parameters: string dir. fileNames, filePaths. countImage.
+ * @Return: .jpg or .png files. and return the numbers of these files.
+ * @Description: return all image files from one directory. notice, it can only read files, can not
+ * read directory.
+ */
+void getImageFileFromDir(const string dirPath, std::vector<cv::String> &imageNames, std::vector<cv::String> &imagePaths, int &countImage)
+{
+    cv::glob(dirPath, imagePaths);
+    imageNames = imagePaths;
+    for (size_t i = 0; i < imagePaths.size(); i++)
+    {
+        if ((imagePaths[i].find(".jpg") != imagePaths[i].npos) || (imagePaths[i].find(".png") != imagePaths[i].npos))
+        {
+            size_t position = imagePaths[i].find_last_of('\\');
+            size_t length = imagePaths[i].find_last_of('.');
+            imageNames[i] = imagePaths[i].substr(position + 1, length - position - 1);
+            countImage++;
+        }
+    }
+}
+
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-16 16:17:14
+ * @Parameters: count is aimed to record the number of recurisiving. the current recursiving
+ * numbers is the label of current face sample.
+ * @Return: 
+ * @Description: notice, in order to record the numbers of recursiving, you should pass
+ * an int variable from main function and use the reference to pass the parame into the function.
+ * only this operation can you define the different label for the different faces.
+ * and you should count++ before the recursive code. or you will not get the efficient 
+ * what you want. of course, we can read the data and set label from memory directly, 
+ * need not to store the txt file in diskdriver, but it is also meaningful to work.
+ * because read the label file from the disk dirver is the formal process. it is useful
+ * for handle the large project.
+ * 
+ * then, we should define the formal process that read the label file from the disk drive file
+ * and train the face samples based on the file. then predict the dest movie based on
+ * the trained model.
+ */
+void getAllFileFromDirAndCreatTrainData(const string directoryPath, vector<string> &imagePath,\
+     const string txtPath, int &count)
+{
+    DIR *pDir;
+    struct dirent *ptr = (struct dirent *)malloc(sizeof(struct dirent));
+    struct stat infos;
+    ofstream outfile(txtPath, ios::app);
+    if (!(pDir = opendir(directoryPath.c_str())))
+    {
+        sys_error("folder does not exist...");
+    }
+    while ((ptr = readdir(pDir)) != 0)
+    {
+        if (strcmp(ptr->d_name, ".") != 0 && strcmp(ptr->d_name, "..") != 0)
+        {
+            string scanPath = directoryPath + "/" + ptr->d_name;
+            if (stat(scanPath.c_str(), &infos) != 0)
+            {
+                sys_error("scaned file error");
+            }
+            else if (infos.st_mode & S_IFDIR)
+            {
+                // DIRECTORY
+                count++;
+                getAllFileFromDirAndCreatTrainData(scanPath, imagePath, txtPath, count);
+            }
+            else if (infos.st_mode & S_IFREG)
+            {
+                // FILE, you should push tha complete path into vector
+                // and store the txt file.
+                imagePath.push_back(scanPath);
+                scanPath += ";";
+                scanPath += count;
+                outfile << scanPath;
+                outfile << endl;
+            }
+            else
+            {
+                sys_error("error...");
+            }
+        }
+    }
+    sort(imagePath.begin(), imagePath.end());
+    closedir(pDir);
+    outfile.close();
+    freePointer(ptr);
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-21 17:09:53
+ * @Parameters: inputImage, one m*m dimension matrix.
+ * @Return: 
+ * @Description: rotate the matrix, notice it is not the rotation about one image.
+ * define a function what can rotate Mat 90 degrees.
+ */
+void rotationMat90(Mat &inputImage)
+{
+    int n = inputImage.rows;
+    if (n == 0)
+    {
+        return;
+    }
+    int r = (n >> 1) - 1;
+    int c = (n - 1) >> 1;
+    for (int i = r; i >= 0; --i)
+    {
+        for (int j = c; j >= 0; --j)
+        {
+            swap(inputImage.at<float>(i, j), inputImage.at<float>(j, (n - i - 1)));
+            swap(inputImage.at<float>(i, j), inputImage.at<float>((n - i - 1), (n - j - 1)));
+            swap(inputImage.at<float>(i, j), inputImage.at<float>((n - j - 1), i));
+        }
+    }
+}
+
+void rotationMat(Mat &inputImage, int degrees) 
+{
+    if (degrees == DEGREES::NINTY)
+    {
+        rotationMat90(inputImage);
+    }
+    if (degrees == DEGREES::ONEEIGHTZERO)
+    {
+        rotationMat90(inputImage);
+        rotationMat90(inputImage);
+    }
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-22 12:47:02
+ * @Parameters: 
+ * @Return: 
+ * @Description: 
+ */
+int getRankFromMat(Mat &inputImage) 
+{
+    if ((inputImage.channels() != 1) || inputImage.empty())
+    {
+        sys_error("the inputImage is empty? please pass the one channel image...");
+    }
+    Eigen::MatrixXd temp;
+    cv::cv2eigen(FUZZYKERNEL, temp);
+    Eigen::JacobiSVD<Eigen::MatrixXd> svd(temp);
+    int rank = svd.rank();
+    return rank;
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-22 12:45:56
+ * @Parameters: w, one Mat that can be separated.
+ * @Return: 
+ * @Description: you should ensure the Mat w can be separated. or you will get error.
+ * the thought to separate one m order matrix  w(m, m) is.
+ * step1, find any nonzero element. just define it as an variable E(Scalar).
+ * step2, find the row of E in the matrix w. defined it as the column vector w2(1, m)
+ * step3, find the column of E in the matrix w, defined it as the vector w1(m, 1).
+ * step4, w2 /= E
+ * step5, w = w1 @ w2.
+ */
+void separateKernel(Mat &w, Mat &w1, Mat &w2) 
+{
+    int rows = w.rows;
+    int cols = w.cols;
+    double *wRow;
+    for (int i = 0; i < rows; i++)
+    {
+        wRow = w.ptr<double>(i);
+        for (int j = 0; j < cols; j++)
+        {
+            if (wRow[j] != 0)
+            {
+                w2 = w.rowRange(i, i + 1).clone();
+                w2 /=  wRow[j];
+                w1 = w.colRange(j, j + 1).clone();
+                return;
+            }
+        }
+    }
+}
+
+
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-22 18:13:10
+ * @Parameters: 
+ * @Return: 
+ * @Description: the function get GaussianKernel, of course, you can also use the official function
+ * getGaussianKernel.
+ */
+Mat getGaussianKernel_(const int size = 3, const double sigma = 1.0)
+{
+    double **gaus = new double *[size];
+    for (int i = 0; i < size; i++)
+    {
+        gaus[i] = new double[size];
+    }
+    Mat Kernel(size, size, CV_64FC1, Scalar(0));
+    const double PI = 4.0 * atan(1.0);
+    int center = size / 2;
+    double sum = 0;
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            gaus[i][j] = (1 / (2 * PI * sigma * sigma)) * exp(-((i - center) * (i - center) + (j - center) * (j - center)) / (2 * sigma * sigma));
+            sum += gaus[i][j];
+        }
+    }
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            gaus[i][j] /= sum;
+            Kernel.at<double>(i, j) = gaus[i][j];
+        }
+    }
+    return Kernel;
 }

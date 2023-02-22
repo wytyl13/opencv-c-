@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/opencv.dir/src/general.cpp.obj.d"
   "CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj"
   "CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj.d"
+  "CMakeFiles/opencv.dir/src/imageCutting.cpp.obj"
+  "CMakeFiles/opencv.dir/src/imageCutting.cpp.obj.d"
   "CMakeFiles/opencv.dir/src/imageOperation.cpp.obj"
   "CMakeFiles/opencv.dir/src/imageOperation.cpp.obj.d"
   "CMakeFiles/opencv.dir/src/linearInterpolation.cpp.obj"

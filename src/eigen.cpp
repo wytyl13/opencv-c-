@@ -1,6 +1,6 @@
 #include "../include/eigen.h"
 
-#if 0
+#if ISOPENEIGEN
 void defineSpecificMatrix() 
 {
     // define a general matrix

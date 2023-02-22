@@ -14,6 +14,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/featureInImage.cpp" "CMakeFiles/opencv.dir/src/featureInImage.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/featureInImage.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/general.cpp" "CMakeFiles/opencv.dir/src/general.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/general.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/grayLevelTransform.cpp" "CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj.d"
+  "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/imageCutting.cpp" "CMakeFiles/opencv.dir/src/imageCutting.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/imageCutting.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/imageOperation.cpp" "CMakeFiles/opencv.dir/src/imageOperation.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/imageOperation.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/linearInterpolation.cpp" "CMakeFiles/opencv.dir/src/linearInterpolation.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/linearInterpolation.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/main.cpp" "CMakeFiles/opencv.dir/src/main.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/main.cpp.obj.d"

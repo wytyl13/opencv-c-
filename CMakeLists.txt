@@ -30,6 +30,7 @@ aux_source_directory(./src SRC_DIR_VAR)#扫描src目录下的所有文件并保�
 #the rule to generate opencv.exe
 add_executable(opencv ${SRC_DIR_VAR})#使用传入变量的方式加入要编译的文件
 
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-O3")
 #define the OpenCV_DIR variable ie equal to D:/development_app2/opencv/build/install
 #it is the path of opencv library
 # notice. this variable is the include path for opencv and Eigen3
@@ -45,6 +46,8 @@ set(OpenCV_DIR C:/Users/weiyutao/opt/opencv/build/install)
 set(EIGEN3_INCLUDE_DIR C:/Users/weiyutao/opt/eigen-3.4.0)
 set(Dlib_INCLUDE_DIR "C:/Users/weiyutao/opt/dlib-19.24/dlib-19.24/install/Program Files (x86)/dlib_project/include")
 set(Dlib_LIBS "C:/Users/weiyutao/opt/dlib-19.24/dlib-19.24/install/Program Files (x86)/dlib_project/lib/libdlib.a")
+#the addtional library for opencv. you can include its head file in your program
+set(OpenCV_Contrib "C:/Users/weiyutao/opt/opencv/source/opencv_contrib-4.7.0/modules")
 # set the static library path, you can set the lib path and added it used
 # target_link_libraries(${PROJECT_NAME} ${Dlib_LIBS} X11 pthread), you should 
 # use find_package(dlib REQUIRED) and target_link_libraries(${PROJECT_NAME} ${dlib_LIBRARIES})
@@ -75,6 +78,7 @@ if((OpenCV_FOUND))
     include_directories(${OpenCV_INCLUDE_DIR})
     include_directories(${EIGEN3_INCLUDE_DIR})
     include_directories(${Dlib_INCLUDE_DIR})
+    include_directories(${OpenCV_Contrib})
     # cpp call python script will use the python head file, what is lacated at the 
     # directory as follow.
     include_directories("C:\\Users\\weiyutao\\opt\\python\\include")

@@ -207,7 +207,8 @@ void rotationUsedAffineMatrix(Mat inputImage, Mat &outputImage, int angle, float
     Mat affineMatrix = Mat::eye(Size(3, 2), CV_64F);
     int height;
     int width;
-    double width_rotate, height_rotate;
+    double width_rotate = 0.0;
+    double height_rotate = 0.0;
     // the first step has not implemented.
     // step2: manual define the affine matrix and calculate the offset and the size of outputImage.
     if (angle > 1)

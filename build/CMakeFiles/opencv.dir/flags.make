@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = @CMakeFiles/opencv.dir/includes_CXX.rsp
 
-CXX_FLAGS = -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11
+CXX_FLAGS = -O3 -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11
 

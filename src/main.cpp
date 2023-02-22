@@ -915,6 +915,27 @@ int main(int argc, char const *argv[])
     vectorImages.push_back(objectImage);
     vectorImages.push_back(outputImage);
     imshowMulti(str, vectorImages); */
+
+    #if ISOPENHISTOGRAMTRANSFORM
+    Mat darkImage = imread("../../resources/darkerImage.webp");
+    Mat darkImage_ = imread("../../resources/darkerImage.jpeg", 0);
+    Mat grayImage, equalizeImage, localStatisticImage, matchingImage;
+    cvtColor(darkImage, grayImage, COLOR_BGR2GRAY);
+    histogramEqualizeTransformation(grayImage, equalizeImage);
+    histogramTransformationLocal(grayImage, outputImage, 3);
+    double k[4] = {0.0, 0.8, 0.0, 0.8};
+    LocalWithStatistics(grayImage, localStatisticImage, 7, k);
+    histogramMatchingTransformation(equalizeImage, darkImage_, matchingImage);
+    vector<Mat> vectorImages;
+    vectorImages.push_back(grayImage);
+    vectorImages.push_back(equalizeImage);
+    vectorImages.push_back(outputImage);
+    vectorImages.push_back(localStatisticImage);
+    vectorImages.push_back(matchingImage);
+    string str = "compare histogram transformation";
+    namedWindow(str, 1);
+    imshowMulti(str, vectorImages);
+    #endif
     // --------------------test histogram transform-----------------------------
 
     // --------------------test spatial filter device -----------------------------
@@ -989,10 +1010,12 @@ int main(int argc, char const *argv[])
 
 
     Mat oceanImage = imread("../../resources/ocean.webp");
+    Mat oceanGrayImage;
     Mat ballImage = imread("../../resources/ball.webp");
     Mat heyingImage = imread("../../resources/heying.jpg");
     Mat oceanFaceImage = imread("../../resources/oceanFace.webp");
     Mat houseImage = imread("../../resources/house.jpg");
+    cvtColor(oceanImage, oceanGrayImage, COLOR_BGR2GRAY);
     resize(oceanFaceImage, oceanFaceImage, Size(500, 500));
     resize(houseImage, houseImage, Size(500, 500));
 /*     faceFeatureDetectUsedOfficial(oceanImage, outputImage);
@@ -1020,8 +1043,135 @@ int main(int argc, char const *argv[])
     getAllFileFromDirAndCreatTrainData("../../resources/trainSample", vectorPath, \
         "../../resources/labelFile/gyygtl.txt", count);
     faceRecognitionUsedEigenFace("../../resources/labelFile/gyygtl.txt", "../../resources/movie/predict.mp4"); */
-    imshow("ocean image", oceanImage);
+
+    #if ISOPENFACEAPPLICATION
+    // test face recognition about dlib.
+    faceDetectUsedDlib(oceanImage, outputImage, DLIB::SHAPE68);
+    imshow("ocean image", outputImage);
+    const string dirPath = "../../resources/trainSample/resnet_src/src";
+    const string targetImagePath = "../../resources/trainSample/resnet_src/target/target.jpg";
+    faceImageRecognitionUsedDlib(dirPath, targetImagePath);
+    const string dirPath = "../../resources/trainSample/resnet_src/src";
+    const string targetMoviePath = "../../resources/trainSample/resnet_src/target/movie.mp4";
+    faceMovieRecognitionUsedDlib(dirPath, targetMoviePath);
+    #endif
     // --------------------test super application-----------------------------
+
+    // --------------------return to test the spatial filter-----------------------------
+    #if ISOPENSPATIALFILTER
+    // officialFilterTest(oceanImage, outputImage, FUZZYKERNEL);
+    // imshow("test", outputImage);
+    string str = "compare the filter";
+    Mat noiseImage = cv::imread("../../resources/noiseImage.webp");
+    Mat noiseGrayImage;
+    cvtColor(noiseImage, noiseGrayImage, COLOR_BGR2GRAY);
+    #if 0
+    Mat sharpenImage, fuzzyImage, image_, smoothImage, smoothImageGaussian;
+    Mat fuzzySeparated, smoothSeparated;
+    vector<Mat> vectorMats;
+    spatialFilterOperation(oceanGrayImage, outputImage, SHARPENKERNEL);
+    vectorMats.push_back(oceanGrayImage);
+    vectorMats.push_back(outputImage);
+    officialFilterTest(oceanGrayImage, sharpenImage, SHARPENKERNEL);
+    vectorMats.push_back(sharpenImage);
+    spatialConvolution(oceanGrayImage, fuzzyImage, SHARPENKERNEL_);
+    vectorMats.push_back(fuzzyImage);
+    spatialFilter(oceanGrayImage, image_, FUZZYKERNEL, CONVOLUTION);
+    vectorMats.push_back(image_);
+    spatialFilter(oceanGrayImage, smoothImage, SMOOTHKERNELCASSETTE, CONVOLUTION);
+    vectorMats.push_back(smoothImage);
+    spatialFilter(oceanGrayImage, smoothImageGaussian, SMMOTHKERNELGAUSSIAN, CONVOLUTION);
+    vectorMats.push_back(smoothImageGaussian);
+    spatialFilterUsedSeparatedKernel(oceanGrayImage, fuzzySeparated, FUZZYKERNEL, CONVOLUTION);
+    vectorMats.push_back(fuzzySeparated);
+    spatialFilterUsedSeparatedKernel(oceanGrayImage, smoothSeparated, SMMOTHKERNELGAUSSIAN, CONVOLUTION);
+    vectorMats.push_back(smoothSeparated);
+    imshowMulti(str, vectorMats);
+    Mat image = (Mat_<float>(2, 2) << 1, 2, 3, 4);
+    double determinantValue = determinant(image);
+    printf("%.2f\n", determinantValue);
+
+    Mat denoisingImage, fuzzyImage, sharpenImage, gaussianImage, gaussianDenoise;
+    vector<Mat> images;
+    images.push_back(oceanGrayImage);
+    gaussionNoise(oceanGrayImage, gaussianImage, 0, 60);
+    images.push_back(gaussianImage);
+    spatialFilterUsedSeparatedKernel(gaussianImage, fuzzyImage, FUZZYKERNEL, CONVOLUTION);
+    images.push_back(fuzzyImage);
+    spatialFilterUsedSeparatedKernel(gaussianImage, denoisingImage, DENOISINGkERNELGAUSSIAN, CONVOLUTION);
+    images.push_back(denoisingImage);
+    GaussianBlur(gaussianImage, gaussianDenoise, Size(7, 7), 3, 0);
+    images.push_back(gaussianDenoise);
+    imshowMulti(str, images);
+    
+    // test the limit condition of gaussian filter kernel.
+    // you can find the efficient will be similar to the kernel size 6*std if your size is greater than
+    // 6*std.
+    Mat gaussian3, gaussian7, gaussian13, gaussian5, gaussian6;
+    vector<Mat> images;
+    images.push_back(oceanGrayImage);
+    Mat gaussianKernel3 = getGaussianKernel_(3, 1);
+    Mat gaussianKernel5 = getGaussianKernel_(5, 1);
+    Mat gaussianKernel7 = getGaussianKernel_(7, 1);
+    Mat gaussianKernel13 = getGaussianKernel_(13, 1);
+    // Mat gaussianKernel6 = getGaussianKernel_(6, 1);
+
+    spatialFilterUsedSeparatedKernel(oceanGrayImage, gaussian5, gaussianKernel5, CONVOLUTION);
+    spatialFilterUsedSeparatedKernel(oceanGrayImage, gaussian7, gaussianKernel7, CONVOLUTION);
+    spatialFilterUsedSeparatedKernel(oceanGrayImage, gaussian13, gaussianKernel13, CONVOLUTION);
+    // spatialFilterUsedSeparatedKernel(oceanGrayImage, gaussian6, gaussianKernel6, CONVOLUTION);
+    images.push_back(gaussian5);
+    images.push_back(gaussian7);
+    images.push_back(gaussian13);
+    imshowMulti(str, images);
+    // test the relationship between the size, standard devatition of the kernel and the size of 
+    // the image.
+    Mat earthImage = imread("../../resources/1500.webp");
+    Mat earthGrayImage, faceGrayImage;
+    Mat gaussian31, gaussian93;
+    cvtColor(earthImage, earthGrayImage, COLOR_BGR2GRAY);
+    cvtColor(faceImage, faceGrayImage, COLOR_BGR2GRAY);
+    Mat gaussianKernel31 = getGaussianKernel_(3, 1);
+    Mat gaussianKernel132 = getGaussianKernel_(13, 2);
+    spatialFilterUsedSeparatedKernel(earthGrayImage, gaussian31, gaussianKernel31, CONVOLUTION);
+    spatialFilterUsedSeparatedKernel(faceGrayImage, gaussian93, gaussianKernel132, CONVOLUTION);
+    vector<Mat> imageTest;
+    imageTest.push_back(earthGrayImage); 
+    imageTest.push_back(gaussian31); 
+    imageTest.push_back(faceGrayImage); 
+    imageTest.push_back(gaussian93); 
+    imshowMulti(str, imageTest);
+    #endif
+
+    // test reduce the shadow
+    Mat shadowImage = imread("../../resources/shadow.webp");
+    Mat shadowGrayImage, gaussianShadow, gaussian111;
+    uchar *shadowGrayRow, *gaussianShadowRow;
+    gaussian111.create(shadowGrayImage.cols, shadowGrayImage.rows, CV_64F);
+    cvtColor(shadowImage, shadowGrayImage, COLOR_BGR2GRAY);
+    Mat gaussianShadowKernel132 = getGaussianKernel_(7, 1);
+    spatialFilterUsedSeparatedKernel(shadowGrayImage, gaussianShadow, gaussianShadowKernel132, CONVOLUTION);
+    for (size_t i = 0; i < shadowGrayImage.rows; i++)
+    {
+        shadowGrayRow = shadowGrayImage.ptr<uchar>(i);
+        gaussianShadowRow = gaussianShadow.ptr<uchar>(i);
+        for (size_t j = 0; j < shadowGrayImage.cols; j++)
+        {
+            gaussian111.at<double>(i, j) = (double)(shadowGrayRow[j] / gaussianShadowRow[j]);
+        }
+    }
+    linearScaling(gaussian111, outputImage);
+
+    vector<Mat> imageTestShadow;
+    imageTestShadow.push_back(shadowGrayImage); 
+    imageTestShadow.push_back(outputImage); 
+    imshowMulti(str, imageTestShadow);
+    #endif
+    // --------------------return to test the spatial filter-----------------------------
+
+
+
+
 
     waitKey(0);
     // notice, you should destroy all the windows you have created at end.

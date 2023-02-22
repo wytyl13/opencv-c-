@@ -150,6 +150,8 @@ void logarithmicAndLinearScaling(Mat inputImage, Mat &outputImage)
  * The k is equal to L-1 or 255.
  * we have tested, this scaling will result to the image distortion.
  * then, we will test the linear function used two point defined.
+ * but this function can not handle the large error between min and max value in one image.
+ * because g=0. it is meaningless.
  */
 void linearScaling(Mat inputImage, Mat &outputImage) 
 {
@@ -726,7 +728,6 @@ double *getCumulativeHistogram(const Mat &inputImage)
         transformValue[i] = s;
         s = 0.0;
     }
-
     return transformValue;
 }
 
@@ -735,8 +736,9 @@ double *getCumulativeHistogram(const Mat &inputImage)
  * @Date: 2023-01-30 11:46:11
  * @Parameters: use the const to modified the former two parameters, they can not be changed.
  * and use reference to modified all parameters, it means we can save the memory that parameter 
- * wasted the run the stack.
- * @Return: 
+ * wasted the run the stack. notice, the inputImage is the histogram equalization image here. objectImage
+ * is any gray image.
+ * @Return: outgoing param outputImage.
  * @Description: we should understand the different between histogram equalization and histogram
  * matching, the former will improve the contrast, but it did not consider the image
  * color evenly, it means, the histogram equalization will only make the contrast of the image
@@ -746,12 +748,12 @@ double *getCumulativeHistogram(const Mat &inputImage)
 
  * then, how to define the histogram matching on the basis of the histogram equalization?
  * you can use two method:
- *     first, you can get the hostogram based on one image. it means you can histogram equalization
- *     from the histogram of one image to another histogram of another image.
+ *     first, you can get the histogram based on one image. it means you can histogram equalization
+ *     from the histogram of one image to the histogram of another image.
  *     
  *     second, you can give a fixed histogram function.
  * then, the first method is generally used. because it is simple and feasible.
- * the generally scenario for histogram matching is, if you want to improve the contranst of one image, 
+ * the generally scenario for histogram matching is, if you want to improve the contrast of one image, 
  * you can do histogram equalization for the original image, if you want to maintain uniform color image,
  * you should do the histogram matching on the basis of the result after doing histogram equalization.
  * then, we will construct this application, remain the image color evenly and to increase the contrast of the image.
@@ -811,6 +813,8 @@ double *getCumulativeHistogram(const Mat &inputImage)
  * the same process, and this address will not free after the function run end if you have modified it used static.
  * so it means we will create this array used malloc function. the function of using malloc is create the variable 
  * in heap when the function run in the stack.
+ * 
+ * you should notice, the histogramMatchingTransformation function is based on the histogram equalization function.
  */
 
 void histogramMatchingTransformation(const Mat &inputImage, const Mat &objectImage, Mat &outputImage) 

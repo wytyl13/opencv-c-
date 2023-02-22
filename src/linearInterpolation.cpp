@@ -247,3 +247,11 @@ and element adjacency.
 boundary
 assume that it has k numbers regions that are not adjacency, 
 */
+
+Mat resizeImage(Mat &inputImage, float scale) 
+{
+    cv::Size size_ = cv::Size(inputImage.cols * scale, inputImage.rows * scale);
+    Mat outputImage = Mat(size_, CV_32S);
+    resize(inputImage, outputImage, size_);
+    return outputImage;
+}
