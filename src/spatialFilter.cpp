@@ -327,6 +327,73 @@
  * this is the gaussian kernel function, the first param is size of the kernel, the second 
  * param is standard diviation.
  * 
+ * the application of gaussian filter kernel is generally used many scenario.
+ * just like, we have learned how to reduct the noise, smooth and fuzzy image used it.
+ * then, we will consider another application, shadow correction.
+ * the concept of shadow correction is g(x, y) = f(x, y) * s(x, y).
+ * the g(x, y) is the shadow image, the f(x, y) is the normal image, the s(x, y) is the shadow image.
+ * so we can get the f(x, y) used g(x, y) / s(x, y). the g(x, y) is the inputImage. then, how to get the 
+ * s(x, y), we will get the s(x, y) as the standard deviation and size of the gaussian filter kernel
+ * increased lager enough. it means you can get the s(x, y) image if you convoluted the image used
+ * an enough big size and standard deviation gaussian filter kernel.
+ * you can find, as the size and standard deviation of the image increasing, the image will be more
+ * fuzzy util you can find the shadow obviously. you can find the image has became one image just like
+ * the binary image, the shadow region shows the blank, and the other regions shows white. of course, it is
+ * different from the binary image. but you should know, this image is the s(x, y), it has the shadow informations
+ * . you can divide it by the shadow image g(x, y). then, just like g(x, y) / s(x, y), then you can get the normal
+ * image what you want. but we have failed to test it successful, so we will test it and the application of
+ * threshold value limit conditions used into gaussian filter kernel in the image convolution filed.
+ * 
+ * then, we will consider the median filter kernel. it is the method about nonlinear filter based on the
+ * statistical sorting. the median filter kernel will change the center gray value used the median of the
+ * neighborhood of the center coordinate, the application of the median filter kernel involved the reduction
+ * of the random noise, compared with the same size of the linear smooth filter kernel, the feature is
+ * it can result the smaller degrees of smoothing. so you can use it to reduct the random noise, just like
+ * the salt pepper noise, it is more efficient than the linear smooth filter kernel. the nature of the median
+ * filter kernel is make the value of center coordinated closer to their neighboring points. the median filter
+ * kernel is the most efficient filter in the statistic sorting filter. of course, you can also use the maximun
+ * of the neighboring of the center to change the center gray vlaue. you can also use the minimize value to
+ * instead it. it will be named as maximun filter kernel and minimize filter kernel. then, we will define 
+ * the function medianFilter. because the median filter need not to used the convolution and kernel.
+ * so we will create the separate function.
+ * 
+ * learned here, we will start the high-pass filter, sharpen filter kernel. this filter will pass the
+ * high frequency and inhibition of the low frequency. the shrpen filter kernel can be established based
+ * on the first derivative and the second derivative. the first derivative and the second derivative of
+ * the constant gray value region must be zero. because the derivative show the rate of changing.
+ * you should distingush the slope and the step. they are all the special situation.
+ * the first derivative of the slope must be nonzero, because the gray value is continuous, and
+ * the second derivative of the slope must be zero, because the rate of changing is constant.
+ * the second derivative of the start or end of the slope and step must be nonzero. 
+ * and the first derivative of the start of the slope or the step must be nonzero.
+ * the first derivative of the end of the slope and step must be zero if connected with the constant region.
+ * because the gray value will be changed. you can draw the figure of the derivative about the constant, 
+ * slope and step. you can find some new feature about the digital image. it will be amazing.
+ * what we should notice is, the slope is close to the edge in the image. because the gray value is continuous
+ * in the edge, so the first derivative of the edge is nonzero. so the first derivative of the edge will
+ * generate the widely edge, why? we can give a case. just like as follow.
+ * 1 1 1 1 1 2 3 4 5 6 8 8 8 8 8  -> gray value.
+ * 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0  -> first derivative.
+ * 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0  -> second derivative.
+ * the first derivative of the start or end of the slope and step must be nonzero.
+ * the first derivative of the start of the slope and step must be nonzero. it means the end can be zero.
+ * of course. the first derivative of the end of the slope and step will be zero if they connected with
+ * a contant region. we can find it is suitable for these concept above case.
+ * we can find the first derivative result to the slope what means the edge in digital image has
+ * the widely region, but the second derivative has a narrow region. so we will compare the features between these two
+ * derivative. we can intuitively find that the second derivative will result to more clearly edge, it has 
+ * generated the edge that width is 1 pixel and cutted by two zero. and the amount of the calculation about
+ * the derivative is smaller than first derivative obviously. so the second derivative will be a very good tool
+ * to sharpen the image. then, we will learn how to sharpen the image used the second derivative of the image.
+ * then, we have update the function spatialFilterOperation, this function has had the sharpen function used
+ * four laplasian operators. the difference between the laplacian operator and other filter kernel is
+ * the other can use the linear scaling function, but the laplacian need to use the truncation mapping method
+ * , just like gray value = (gray value > 255, < 0) : (255, 0) ? (gray value). and the laplacian operators
+ * are all the symmetric square, and the sum of all gray value in these two square are all zero. you can find
+ * the rule based on them. so we have defined the generally function based on these feature of these operator.
+ * you can find the laplacian operator convolution with the original image result to the edge image what the
+ * edge region is the original value, and the weakening the other region. then you can add the convolution image
+ * and the original image. you will get the image than enhanced the edge what is the image of sharpening.
  * 
  * then we will create another file what dedicated to the frequency domain filter.
 ***********************************************************************/
@@ -436,7 +503,6 @@ void spatialFilterOperation(Mat &inputImage, Mat &outputImage, Mat kernel)
 
     double minValue, maxValue;
     minMaxLoc(tempMat, &minValue, &maxValue, 0, 0);
-    cout << minValue << ", " << maxValue << endl;
     kernel.convertTo(kernel, CV_64F);
     Mat tempMat__ = Mat::zeros(tempMat.size(), CV_64F);
     Mat scannedMat;
@@ -462,6 +528,34 @@ void spatialFilterOperation(Mat &inputImage, Mat &outputImage, Mat kernel)
             }
             tempMat__.at<double>(y, x) = sumValue;
         }
+    }
+    // notice sum function will return a Scalar what is the class defined in opencv.
+    // it is a one dimension array, you should index it and receive it used double if you want to sum one 
+    // single channel Mat.
+    double sumMat = cv::sum(kernel)[0];
+    if (sumMat == 0)
+    {
+        Mat addImage, tempMat___;
+        // laplacian, we can inference you want to sharpen the image.
+        // you can not use the linearScaling method to mapping the gray value to range(0, 255)
+        // you should use the method saturate_cast, gray value = (gray value > 255, < 0) : (255, 0) ? (gray value)
+        cv::add(tempMat, tempMat__, addImage);
+        double *addImageRow, *tempMatRow, *tempMat__Row;
+        double minValue, maxValue;
+        cv::minMaxLoc(kernel, &minValue, &maxValue, 0, 0);
+        int c = (maxValue > 1) ? 1 : -1;
+        for (int i = 0; i < addImage.rows; i++)
+        {
+            addImageRow = addImage.ptr<double>(i);
+            tempMatRow = tempMat.ptr<double>(i);
+            tempMat__Row = tempMat__.ptr<double>(i);
+            for (int j = 0; j < addImage.cols; j++)
+            {
+                addImageRow[j] = cv::saturate_cast<double>(tempMatRow[j] + c * tempMat__Row[j]);
+            }
+        }
+        addImage.convertTo(outputImage, CV_8UC1);
+        return;
     }
     linearScaling(tempMat__, outputImage);
 }
@@ -534,14 +628,45 @@ void spatialFilterUsedSeparatedKernel(Mat &inputImage, Mat &outputImage, Mat ker
         // based on 1 dimension kernel.
         // you should judge the rank of the kernel.
         int rank = getRankFromMat(kernel);
+        cout << rank << endl;
         if (rank != 1)
         {
             spatialConvolution(inputImage, outputImage, kernel);
+            return;
         }
         Mat w1, w2;
         separateKernel(kernel, w1, w2);
         spatialConvolution(inputImage, outputImage, w1);
         spatialConvolution(outputImage, outputImage, w2);
+        return;
     }
     spatialFilterOperation(inputImage, outputImage, kernel);
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-23 15:48:03
+ * @Parameters: kernelSize, one odd number.
+ * @Return: 
+ * @Description: 
+ */
+void medianFilter(Mat &inputImage, Mat &outputImage, int kernelSize) 
+{
+    int rows = inputImage.rows;
+    int cols = inputImage.cols;
+    int halfKernel = kernelSize >> 1;
+    outputImage = Mat::zeros(cols + halfKernel, rows + halfKernel, CV_8UC1);
+    Mat tempImage = outputImage(Rect(halfKernel, halfKernel, cols, rows));
+    Mat tempKernelImage, tempSortKernelImage;
+    inputImage.copyTo(tempImage);
+    for (int i = halfKernel; i < rows; i++)
+    {
+        for (int j = halfKernel; j < cols; j++)
+        {
+            tempKernelImage = outputImage(Rect((j - halfKernel), (i - halfKernel), kernelSize, kernelSize)).clone();
+            tempKernelImage = tempKernelImage.reshape(1, 1);
+            cv::sort(tempKernelImage, tempSortKernelImage, 0);
+            swap(outputImage.at<uchar>(i, j), tempSortKernelImage.at<uchar>(0, (kernelSize * kernelSize / 2)));
+        }
+    }
 }

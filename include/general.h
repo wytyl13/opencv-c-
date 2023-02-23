@@ -238,8 +238,16 @@ using namespace face;
 // you can define any type Mat as the kernel, we will transformed them to double in super function.
 
 // the exchange domain filter. sharpen is high-pass filter. high-pass and low-pass is dedicated to the frequency domain.
-#define SHARPENKERNEL (Mat_<int>(3, 3) << 0, -1, 0, -1, 5, -1, 0, -1, 0)
-#define SHARPENKERNEL_ (Mat_<int>(3, 3) << -1, -1, -1, -1, 9, -1, -1, -1, -1)
+// notice, there are four sharpen kernel, they can also be named as laplacian.
+// and you should notice, the function of laplacian is similar to the second derivative of the gray value.
+// you should do the convolution operation used these four laplacian, and you should based on the expression as follow.
+// only this, you can get the efficient of sharpening.
+// g(x, y) = f(x, y) + c * (the result of convolution used the laplacian), c = the former laplacian : -1 ? 1
+// you can find the rule that the sum of the each element in laplacian is zero.
+#define SHARPENKERNEL_ (Mat_<int>(3, 3) << 0, 1, 0, 1, -4, 1, 0, 1, 0)
+#define SHARPENKERNEL__ (Mat_<int>(3, 3) << 1, 1, 1, 1, -8, 1, 1, 1, 1)
+#define SHARPENKERNEL___ (Mat_<int>(3, 3) << 0, -1, 0, -1, 4, -1, 0, -1, 0)
+#define SHARPENKERNEL____ (Mat_<int>(3, 3) << -1, -1, -1, -1, 8, -1, -1, -1, -1)
 
 // the spatial domain filter.
 // you can find the the smooth is light fuzzy. the efficient about them is general similar but not equal.
@@ -411,6 +419,7 @@ void rotationVector(vector<vector<T>> &matrix)
     }
 }
 
+void rotationMatVector(Mat &inputImage, int degrees);
 void rotationMat90(Mat &inputImage);
 void rotationMat(Mat &inputImage, int degrees);
 int getRankFromMat(Mat &inputImage);

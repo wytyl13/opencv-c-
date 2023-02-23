@@ -29,14 +29,13 @@
 void saltPepper(Mat srcImage, Mat &dstImage, int count, int size) 
 {
     dstImage.create(srcImage.size(), srcImage.type());
-    dstImage = srcImage;
+    dstImage = srcImage.clone();
     int x, y, noiseType;
 
     while (count)
     {
         x = rand() % (srcImage.rows - size + 1);
         y = rand() % (srcImage.cols - size + 1);
-        cout << x << ", " << y << endl;
         noiseType = rand() % 2; // 0 or 1.
         if (noiseType)
         {

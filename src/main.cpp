@@ -1018,6 +1018,7 @@ int main(int argc, char const *argv[])
     cvtColor(oceanImage, oceanGrayImage, COLOR_BGR2GRAY);
     resize(oceanFaceImage, oceanFaceImage, Size(500, 500));
     resize(houseImage, houseImage, Size(500, 500));
+    vector<Mat> vectorImages;
 /*     faceFeatureDetectUsedOfficial(oceanImage, outputImage);
     imshow("feature detect test one", outputImage);
     faceFeatureDetectUsedOfficial(oceanFaceImage, outputImage);
@@ -1141,17 +1142,15 @@ int main(int argc, char const *argv[])
     imageTest.push_back(faceGrayImage); 
     imageTest.push_back(gaussian93); 
     imshowMulti(str, imageTest);
-    #endif
-
     // test reduce the shadow
     Mat shadowImage = imread("../../resources/shadow.webp");
     Mat shadowGrayImage, gaussianShadow, gaussian111;
     uchar *shadowGrayRow, *gaussianShadowRow;
     gaussian111.create(shadowGrayImage.cols, shadowGrayImage.rows, CV_64F);
     cvtColor(shadowImage, shadowGrayImage, COLOR_BGR2GRAY);
-    Mat gaussianShadowKernel132 = getGaussianKernel_(7, 1);
+    Mat gaussianShadowKernel132 = getGaussianKernel_(181, 30);
     spatialFilterUsedSeparatedKernel(shadowGrayImage, gaussianShadow, gaussianShadowKernel132, CONVOLUTION);
-    for (size_t i = 0; i < shadowGrayImage.rows; i++)
+/*     for (size_t i = 0; i < shadowGrayImage.rows; i++)
     {
         shadowGrayRow = shadowGrayImage.ptr<uchar>(i);
         gaussianShadowRow = gaussianShadow.ptr<uchar>(i);
@@ -1160,13 +1159,48 @@ int main(int argc, char const *argv[])
             gaussian111.at<double>(i, j) = (double)(shadowGrayRow[j] / gaussianShadowRow[j]);
         }
     }
-    linearScaling(gaussian111, outputImage);
+    linearScaling(gaussian111, outputImage); */
 
     vector<Mat> imageTestShadow;
     imageTestShadow.push_back(shadowGrayImage); 
-    imageTestShadow.push_back(outputImage); 
+    imageTestShadow.push_back(gaussianShadow); 
     imshowMulti(str, imageTestShadow);
+    // test the medianFilter function, median filter can reduct the noise and does not increase the degrees of fuzzying.
+    // compare the effcient of the median filter and gaussian filter kernel, smooth filter kenel.
+    // gaussian filter can reduct the noise, but the efficient is not good and it can just reduct the noise
+    // that suitable for the gaussian distribution.
+    Mat saltPepperImage, medianFilterImage, smoothFilerImage, gaussianImage71, gaussianImag132;
+    Mat gaussianKernel71 = getGaussianKernel_(7, 1);
+    Mat gaussianKernel132 = getGaussianKernel_(13, 2);
+    saltPepper(oceanGrayImage, saltPepperImage, 200, 3);
+    medianFilter(saltPepperImage, medianFilterImage, 5);
+    spatialFilterUsedSeparatedKernel(saltPepperImage, smoothFilerImage, SMOOTHKERNELCASSETTE, CONVOLUTION);
+    spatialFilterUsedSeparatedKernel(saltPepperImage, gaussianImage71, gaussianKernel71, CONVOLUTION);
+    spatialFilterUsedSeparatedKernel(saltPepperImage, gaussianImag132, gaussianKernel132, CONVOLUTION);
+    vectorImages.push_back(oceanGrayImage);
+    vectorImages.push_back(saltPepperImage);
+    vectorImages.push_back(medianFilterImage);
+    vectorImages.push_back(smoothFilerImage);
+    vectorImages.push_back(gaussianImage71);
+    vectorImages.push_back(gaussianImag132);
+    imshowMulti(str, vectorImages);
     #endif
+    // test the difference between the four laplacian operator.
+    // the param c of former two operators is euqal to -1, the last is 1. notice it.
+    Mat laplacianImage, laplacianImage_, laplacianImage__, laplacianImage___, laplacianImage____, result;
+    spatialFilterUsedSeparatedKernel(oceanGrayImage, laplacianImage_, SHARPENKERNEL_, CONVOLUTION);
+    spatialFilterUsedSeparatedKernel(oceanGrayImage, laplacianImage__, SHARPENKERNEL__, CONVOLUTION);
+    spatialFilterUsedSeparatedKernel(oceanGrayImage, laplacianImage___, SHARPENKERNEL___, CONVOLUTION);
+    spatialFilterUsedSeparatedKernel(oceanGrayImage, laplacianImage____, SHARPENKERNEL____, CONVOLUTION);
+    vectorImages.push_back(oceanGrayImage);
+    vectorImages.push_back(laplacianImage_);
+    vectorImages.push_back(laplacianImage__);
+    vectorImages.push_back(laplacianImage___);
+    // vectorImages.push_back(laplacianImage____);
+    // vectorImages.push_back(outputImage);
+    imshowMulti(str, vectorImages);
+    #endif
+
     // --------------------return to test the spatial filter-----------------------------
 
 

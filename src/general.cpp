@@ -543,7 +543,9 @@ void getAllFileFromDirAndCreatTrainData(const string directoryPath, vector<strin
  * @Parameters: inputImage, one m*m dimension matrix.
  * @Return: 
  * @Description: rotate the matrix, notice it is not the rotation about one image.
- * define a function what can rotate Mat 90 degrees.
+ * define a function what can rotate Mat 90 degrees. this function should be suitable for any dimension
+ * Mat param. but the one dimension matrix is different from the two dimension matrix, so we will define
+ * one extra function that dedicated to rotating the one dimensin matrix 180 degrees.
  */
 void rotationMat90(Mat &inputImage)
 {
@@ -565,11 +567,45 @@ void rotationMat90(Mat &inputImage)
     }
 }
 
+void rotationMatVector(Mat &inputImage, int degrees) 
+{
+    int rows = inputImage.rows;
+    int cols = inputImage.cols;
+    int halfRows = rows >> 1;
+    int halfCols = cols >> 1;
+    if (rows != 1 && cols != 1)
+    {
+        sys_error("you should input one vector...\n");
+    }
+    if (degrees == NINTY)
+    {
+        transpose(inputImage.clone(), inputImage);
+    }
+    else if (degrees == ONEEIGHTZERO)
+    {
+        for (int i = halfRows; i >= 0; i--)
+        {
+            for (int j = halfCols; j >= 0; j--)
+            {
+                swap(inputImage.at<double>(i, j), inputImage.at<double>(rows - i - 1, cols - j - 1));
+            }
+        }
+    }
+}
+
 void rotationMat(Mat &inputImage, int degrees) 
 {
+    int rows = inputImage.rows;
+    int cols = inputImage.cols;
+    if (rows == 1 || cols == 1)
+    {
+        rotationMatVector(inputImage, degrees);
+        return;
+    }
     if (degrees == DEGREES::NINTY)
     {
         rotationMat90(inputImage);
+        return;
     }
     if (degrees == DEGREES::ONEEIGHTZERO)
     {
@@ -592,7 +628,7 @@ int getRankFromMat(Mat &inputImage)
         sys_error("the inputImage is empty? please pass the one channel image...");
     }
     Eigen::MatrixXd temp;
-    cv::cv2eigen(FUZZYKERNEL, temp);
+    cv::cv2eigen(inputImage, temp);
     Eigen::JacobiSVD<Eigen::MatrixXd> svd(temp);
     int rank = svd.rank();
     return rank;

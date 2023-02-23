@@ -15,6 +15,7 @@ void spatialFilterOperation(Mat &inputImage, Mat &outputImage, Mat kernel);
 void spatialConvolution(Mat &inputImage, Mat &outputImage, Mat kernel);
 void spatialFilter(Mat &inputImage, Mat &outputImage, Mat kernel, int model);
 void spatialFilterUsedSeparatedKernel(Mat &inputImage, Mat &outputImage, Mat kernel, int model);
+void medianFilter(Mat &inputImage, Mat &outputImage, int kernelSize);
 #endif
 
 #endif
