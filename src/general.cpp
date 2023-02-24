@@ -707,3 +707,4 @@ Mat getGaussianKernel_(const int size = 3, const double sigma = 1.0)
     }
     return Kernel;
 }
+

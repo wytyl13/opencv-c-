@@ -394,6 +394,66 @@
  * you can find the laplacian operator convolution with the original image result to the edge image what the
  * edge region is the original value, and the weakening the other region. then you can add the convolution image
  * and the original image. you will get the image than enhanced the edge what is the image of sharpening.
+ * but how to get the laplacian operators, we will learn it last. we will recod this problem and handle it at last.
+ * but we can get some useful information to deep understand the laplacian operators. you can find, the sum of all 
+ * element of the laplacian operator is zero. then, the result of convoluting will be zero if the scanned
+ * gray value are one constant, just like the gray value you have scanned are all one, then, you can simulation
+ * the convolution process used the arithmetic method, the result value will be 1*(sum(all the laplacian param)), 
+ * because sum(all the laplacian param) is the constant zero, so the reuslt of covoluting must be zero.
+ * so laplacian operator can narrow the gray value of region what the gray value is constant in the image.
+ * the direction of narrowing is tend to be zero. so the reult image what be handled by the laplacian operator
+ * will just show the edge region of the image, the gray value of other region of the image will be zero or
+ * close to zero. then, you can add the result image and the original image to sharpen the image. this is
+ * the concept about the image of sharpening, and have involved some basic view about how to define the 
+ * laplacian operators.
+ * 
+ * then, we will start to learn another method to sharpen the image, first, you should understand what is 
+ * sharpen, and what is passivation. the image of sharpening is enhand the edge of image. and the image of 
+ * passivating is to smooth the image. you can consider the image of passivating involved smooth and fuzzy.
+ * another method to sharpen the image is to use the original image reduction of the passivation image.
+ * this process can be named as passivation masking. of course, you can implement it based on the 
+ * imaging technology. but we will consider how to implement it based on the digital image processing.
+ * you should implement these steps as follow:
+ * 1 fuzzy the original image, f_(x, y)
+ * 2 the original image reduction of the fuzzy image. g_mask(x, y) = f(x, y) - f_(x, y).
+ * 3 add the weighted g_mask(x, y) and the original image f(x, y). g(x, y) = f(x, y) + k * g_mask(x, y)
+ * notice, the k is the weighted. g(x, y) = (k <= 1) ? <passivation masking> : high improve filtering.
+ * then, we will deep understand the working principle for the image of sharpening used this method.
+ * we can also name it as the template image. because we will implement this efficient used the template.
+ * the template is the g_mask(x, y) image what we have calculated it at the step 2.
+ * let us describe it used more professional way.
+ * step 1, we will get the fuzzy image f_(x, y) based on the original image. you can use smoothKernel, gaussianKernel
+ * or the fuzzy kernel. but what we want to say here is the more intuitive efficient of fuzzying image.
+ * what is the fuzzy? highlight he edge of the image. how to highlight it? reduce or increase the gray value of the 
+ * edge region of the image. reduce the gray value if it is low gray value, or you will increase it. the efficient is
+ * to make dark is more dark, and light is more light. 
+ * just like the original image value is as follow, 
+ * 1 1 1 1 1 3 4 5 6 7 9 9 9 9 9 -> original image 
+ * 1 1 1 1 2 3 4 5 6 7 8 9 9 9 9 -> fuzzy or smooth image. they can all be named as passivation image.
+ * 0 0 0 0 -1 0 0 0 0 0 1 0 0 0 0 -> the passivation template. 
+ *      original image f(x, y) - passivation imagef_(x, y) = g_mask(x, y).
+ * 1 1 1 1 0 3 4 5 6 7 10 9 9 9 9 -> f(x, y) + g_mask(x, y) = g(x, y).
+ * of course, you can also show the information above used function figure, it is more obviouse.
+ * util here, we can define the another function sharpenImage based on the template.
+ * we have defined the first sharpening method based on the laplacian operator, we will conclusion these two method.
+ * 
+ * sharpen image usded laplacian operators.
+ * 1 find the edge image used the laplacian operators directly. the concept is remain the original gray value
+ *      of the edge region and set the gray value of the other region used zero. you can get the image f_(x, y).
+ * 2 add the original image and the f_(x, y) image what have calculated at the step 1.
+ * 
+ * sharpen image used passivation template.
+ * 1 fuzzy the image. get f_(x, y);
+ * 2 f(x, y) - f_(x, y) = g_mask(x, y).
+ * 3 g(x, y) = f(x, y) + k * g_mask(x, y).
+ * 4 sharpen the image if k <= 1, high improve filtering if k > 1.
+ * we have implemented the function shapen image used laplacian operators.
+ * then, we will implement the function that sharpen image used passivation template.
+ * you can adjust the param k to change the degrees of sharpening. bigger k more degrees,
+ * the efficient will be smaller if the k is less than 1. of course, k can also be negative.
+ * it will be the opposite of sharpening operation, just like smooth or fuzzy. so this function
+ * to sharpen the image is more generally used. because it can fuzzy, smooth, sharpen the image by
+ * adjusting the value of param k. and it can change the degrees of efficient.
  * 
  * then we will create another file what dedicated to the frequency domain filter.
 ***********************************************************************/
@@ -669,4 +729,115 @@ void medianFilter(Mat &inputImage, Mat &outputImage, int kernelSize)
             swap(outputImage.at<uchar>(i, j), tempSortKernelImage.at<uchar>(0, (kernelSize * kernelSize / 2)));
         }
     }
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-24 16:03:29
+ * @Parameters: inputImage, inputImage_ are all the any type Mat, outputImage is double Mat. 
+ * @Return: 
+ * @Description: notice, cast from any type to double will not change the value. but it has the premise
+ * condition. you should use the correct type variable to accept it. just like you accept the int type
+ * used double or used the int variable to accept the double data. it will happen to the truncate and
+ * overflow.
+ */
+void operateTwoMatMultiThread(Mat &inputImage, Mat &inputImage_, Mat &outputImage, int symbol = ADD) 
+{
+    assert((inputImage.size() == inputImage_.size()) && (!inputImage.empty() || !inputImage_.empty()));
+    Mat inputImageTemp = Mat(inputImage.size(), CV_64F);
+    Mat inputImage_Temp = Mat(inputImage.size(), CV_64F);
+    outputImage.create(inputImage.size(), CV_64F);
+    inputImage.convertTo(inputImageTemp, CV_64F);
+    inputImage_.convertTo(inputImage_Temp, CV_64F);
+    double *inputImageRow, *inputImage_Row;
+    int rows = inputImage.rows;
+    int cols = inputImage.cols;
+    for (int i = 0; i < rows; i++)
+    {
+        inputImageRow = inputImageTemp.ptr<double>(i);
+        inputImage_Row = inputImage_Temp.ptr<double>(i);
+        for (int j = 0; j < cols; j++)
+        {
+            if (symbol == ADD)
+            {
+                outputImage.at<double>(i, j) = inputImageRow[j] + inputImage_Row[j];
+            }
+            else if (symbol == SUB)
+            {
+                outputImage.at<double>(i, j) = inputImageRow[j] - inputImage_Row[j];
+            }else if (symbol == MULTI)
+            {
+                outputImage.at<double>(i, j) = inputImageRow[j] * inputImage_Row[j];
+            }
+            else if(symbol == DIVIDE)
+            {
+                outputImage.at<double>(i, j) = inputImageRow[j] / inputImage_Row[j];
+            }
+            else
+            {
+                sys_error("the input of symbol is invalid...");
+            }
+        }
+    }
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-24 16:52:21
+ * @Parameters: 
+ * @Return: 
+ * @Description: zero padding and can only padding the CV_8UC1 type image.
+ */
+void zeroPaddingMat(Mat &inputImage, Mat &outputImage, Mat kernel) 
+{
+    int kernelRows = kernel.rows;
+    int kernelCols = kernel.cols;
+    int rows = inputImage.rows;
+    int cols = inputImage.cols;
+    outputImage = Mat::zeros(Size(cols + kernelCols - 1, rows + kernelRows - 1), CV_8UC1);
+    Mat tempMat_ = outputImage(Rect((kernelCols >> 1), (kernelRows >> 1), cols, rows));
+    inputImage.copyTo(tempMat_);    
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-24 16:36:31
+ * @Parameters: 
+ * @Return: maskImage
+ * @Description:  
+ * sharpen image used passivation template.
+ * 1 fuzzy the image. get f_(x, y);
+ * 2 f(x, y) - f_(x, y) = g_mask(x, y).
+ * 3 g(x, y) = f(x, y) + k * g_mask(x, y).
+ * 4 sharpen the image if k <= 1, high improve filtering if k > 1.
+ */
+void sharpenImageUsedPassivationTemplate(Mat &inputImage, Mat &outputImage, Mat fuzzyOrSmoothKernel, float k) 
+{
+    Mat fuzzyImage, maskImage, zeroPaddingImage;
+    zeroPaddingMat(inputImage, zeroPaddingImage, fuzzyOrSmoothKernel);
+    spatialFilterUsedSeparatedKernel(inputImage, fuzzyImage, fuzzyOrSmoothKernel, CONVOLUTION);
+    operateTwoMatMultiThread(zeroPaddingImage, fuzzyImage, maskImage, SUB);
+    maskImage *= k;
+    operateTwoMatMultiThread(zeroPaddingImage, maskImage, outputImage, ADD);
+    outputImage.convertTo(outputImage, CV_8UC1);
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-24 17:03:25
+ * @Parameters: maskImage, the template image.
+ * @Return: 
+ * @Description: generally, the kernel is fuzzy, smooth kernel. you can use gaussian filter kernel, 
+ * casette filter kernel or smooth kernel and other fuzzy kernel. the efficient is fuzzy the image.
+ * 1 fuzzy the image. get f_(x, y);
+ * 2 f(x, y) - f_(x, y) = g_mask(x, y).
+ * we have done two zero padding in this function.
+ */
+void getMaskImage(Mat &inputImage, Mat &maskImage, Mat fuzzyOrSmoothKernel) 
+{
+    Mat fuzzyImage, zeroPaddingImage;
+    zeroPaddingMat(inputImage, zeroPaddingImage, fuzzyOrSmoothKernel);
+    spatialFilterUsedSeparatedKernel(inputImage, fuzzyImage, fuzzyOrSmoothKernel, CONVOLUTION);
+    operateTwoMatMultiThread(zeroPaddingImage, fuzzyImage, maskImage, SUB);
+    maskImage.convertTo(maskImage, CV_8UC1);
 }

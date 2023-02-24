@@ -137,6 +137,7 @@
 #define SOMEENUM 1
 #define SOMEKERNEL 1
 #define SOMEXMLFILES 1
+#define ISOPENTEMPLATEFUNCTION 1
 
 #include <iostream>
 #include <cstdarg>
@@ -150,6 +151,7 @@
 #include <cstdlib>
 #include <cmath>
 #include <algorithm>
+#include <cassert>
 
 #include <opencv2/opencv_modules.hpp>
 #include <opencv2/opencv.hpp>
@@ -248,6 +250,9 @@ using namespace face;
 #define SHARPENKERNEL__ (Mat_<int>(3, 3) << 1, 1, 1, 1, -8, 1, 1, 1, 1)
 #define SHARPENKERNEL___ (Mat_<int>(3, 3) << 0, -1, 0, -1, 4, -1, 0, -1, 0)
 #define SHARPENKERNEL____ (Mat_<int>(3, 3) << -1, -1, -1, -1, 8, -1, -1, -1, -1)
+#define GAUSSIANKERNEL71 getGaussianKernel_(7, 1)
+#define GAUSSIANKERNEL132 getGaussianKernel_(13, 2)
+#define GAUSSIANKERNEL193 getGaussianKernel_(19, 3)
 
 // the spatial domain filter.
 // you can find the the smooth is light fuzzy. the efficient about them is general similar but not equal.
@@ -343,6 +348,16 @@ typedef enum spatialFilter
     CONVOLUTION
 } SPATIALFILTER;
 
+
+typedef enum operators
+{
+    ADD,
+    SUB,
+    MULTI,
+    DIVIDE
+} OPERATORS;
+
+
 class compareMap
 {
 public:
@@ -398,6 +413,8 @@ void getImageFileFromDir(const string dir, std::vector<cv::String> &imageNames, 
 void getAllFileFromDirAndCreatTrainData(const string directoryPath, vector<string> &imagePath,\
      const string txtPath, int &count);
 
+#if ISOPENTEMPLATEFUNCTION
+// define some generally used template function.
 template<class T>    
 void rotationVector(vector<vector<T>> &matrix)
 {
@@ -418,6 +435,10 @@ void rotationVector(vector<vector<T>> &matrix)
         }
     }
 }
+
+#endif
+
+
 
 void rotationMatVector(Mat &inputImage, int degrees);
 void rotationMat90(Mat &inputImage);

@@ -1184,23 +1184,59 @@ int main(int argc, char const *argv[])
     vectorImages.push_back(gaussianImage71);
     vectorImages.push_back(gaussianImag132);
     imshowMulti(str, vectorImages);
-    #endif
     // test the difference between the four laplacian operator.
     // the param c of former two operators is euqal to -1, the last is 1. notice it.
-    Mat laplacianImage, laplacianImage_, laplacianImage__, laplacianImage___, laplacianImage____, result;
+    Mat laplacianImage, laplacianImage_, laplacianImage__, laplacianImage___, laplacianImage____;
+    Mat smoothImage, fuzzyImage, gaussianImage71, gaussianImage132;
     spatialFilterUsedSeparatedKernel(oceanGrayImage, laplacianImage_, SHARPENKERNEL_, CONVOLUTION);
     spatialFilterUsedSeparatedKernel(oceanGrayImage, laplacianImage__, SHARPENKERNEL__, CONVOLUTION);
     spatialFilterUsedSeparatedKernel(oceanGrayImage, laplacianImage___, SHARPENKERNEL___, CONVOLUTION);
     spatialFilterUsedSeparatedKernel(oceanGrayImage, laplacianImage____, SHARPENKERNEL____, CONVOLUTION);
+    spatialFilterUsedSeparatedKernel(oceanGrayImage, gaussianImage71, GAUSSIANKERNEL71, CONVOLUTION);
+    spatialFilterUsedSeparatedKernel(oceanGrayImage, gaussianImage132, GAUSSIANKERNEL132, CONVOLUTION);
     vectorImages.push_back(oceanGrayImage);
     vectorImages.push_back(laplacianImage_);
     vectorImages.push_back(laplacianImage__);
     vectorImages.push_back(laplacianImage___);
-    // vectorImages.push_back(laplacianImage____);
-    // vectorImages.push_back(outputImage);
+    vectorImages.push_back(gaussianImage71);
+    vectorImages.push_back(gaussianImage132);
+    imshowMulti(str, vectorImages);
+    // test the image of sharpening function used passitation template image.
+    // operateTwoMatMultiThread(oceanGrayImage, oceanGrayImage, outputImage, ADD);
+    // you can change the param k in the sharpenImageUsedPassivationTemplate function to adjust the
+    // efficient of shapening. bigger k, more degrees of sharpening.
+    Mat maskImage, passivationImage1, passivationImage2, passivationImage3, passivationImage4;
+    sharpenImageUsedPassivationTemplate(oceanGrayImage, passivationImage1, FUZZYKERNEL, 1);
+    sharpenImageUsedPassivationTemplate(oceanGrayImage, passivationImage2, FUZZYKERNEL, 2);
+    sharpenImageUsedPassivationTemplate(oceanGrayImage, passivationImage3, FUZZYKERNEL, 3);
+    sharpenImageUsedPassivationTemplate(oceanGrayImage, passivationImage4, FUZZYKERNEL, -1);
+    getMaskImage(oceanGrayImage, maskImage, SMOOTHKERNELCASSETTE);
+    vectorImages.push_back(oceanGrayImage);
+    vectorImages.push_back(passivationImage1);
+    vectorImages.push_back(passivationImage2);
+    vectorImages.push_back(passivationImage3);
+    vectorImages.push_back(passivationImage4);
+    vectorImages.push_back(maskImage);
     imshowMulti(str, vectorImages);
     #endif
-
+    Mat fuzzyImage, fuzzyGrayImage, sharpenBeauty1, sharpenBeauty2, sharpenBeauty3;
+    Mat sharpenBeauty4, sharpenBeauty5;
+    fuzzyImage = imread("../../resources/fuzzyImage.webp");
+    cvtColor(fuzzyImage, fuzzyGrayImage, COLOR_BGR2GRAY);
+    sharpenImageUsedPassivationTemplate(fuzzyGrayImage, sharpenBeauty1, GAUSSIANKERNEL132, 1);
+    sharpenImageUsedPassivationTemplate(fuzzyGrayImage, sharpenBeauty2, GAUSSIANKERNEL132, 3);
+    sharpenImageUsedPassivationTemplate(fuzzyGrayImage, sharpenBeauty3, GAUSSIANKERNEL132, 5);
+    sharpenImageUsedPassivationTemplate(fuzzyGrayImage, sharpenBeauty4, GAUSSIANKERNEL193, 5);
+    sharpenImageUsedPassivationTemplate(fuzzyGrayImage, sharpenBeauty5, GAUSSIANKERNEL71, 5);
+    vectorImages.push_back(fuzzyGrayImage);
+    vectorImages.push_back(sharpenBeauty1);
+    vectorImages.push_back(sharpenBeauty2);
+    vectorImages.push_back(sharpenBeauty3);
+    vectorImages.push_back(sharpenBeauty4);
+    vectorImages.push_back(sharpenBeauty5);
+    imshowMulti(str, vectorImages);
+    
+    #endif
     // --------------------return to test the spatial filter-----------------------------
 
 
