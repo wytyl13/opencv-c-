@@ -1315,8 +1315,8 @@ int main(int argc, char const *argv[])
     imshow("123", resizeWordImage);
     imshow("test", documentImage);
     #endif
-    Mat wordImage = imread("../../resources/noteWord.webp");
-    ORC::documentScannedBasedonMinAreaRect(wordImage, outputImage);
+    Mat wordImage = imread("../../resources/paper111.jpg");
+    ORC::documentScannedBasedonMinAreaRect_(wordImage, outputImage);
     #endif
     // --------------------return to test the spatial filter-----------------------------
 

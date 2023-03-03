@@ -21,10 +21,10 @@
 class Base64
 {
 public:
-	static std::string base64Decode(const char *Data, int DataByte)
+	static std::string base64Decode(const unsigned char *Data, int DataByte)
 	{
 		//解码表
-		const char DecodeTable[] =
+		const unsigned char DecodeTable[] =
 		{
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -42,7 +42,6 @@ public:
 		std::string strDecode;
 		int nValue;
 		int i = 0;
-		printf("%d", DataByte);
 		while (i < DataByte) {
 			if (*Data != '\r' && *Data != '\n') {
 				nValue = DecodeTable[*Data++] << 18;
@@ -61,10 +60,6 @@ public:
 			else {
 				Data++;
 				i++;
-			}
-			if (i % 100000 == 0)
-			{
-				printf("WHOAMI\n");
 			}
 		}
 		return strDecode;
@@ -127,7 +122,7 @@ public:
 	{
 		cv::Mat img;
 		std::string s_mat;
-		s_mat = base64Decode(base64_data.data(), base64_data.size());
+		s_mat = base64Decode((const unsigned char *)base64_data.data(), base64_data.size());
 		std::vector<char> base64_img(s_mat.begin(), s_mat.end());
 		img = cv::imdecode(base64_img, IMREAD_COLOR);
 		return img;

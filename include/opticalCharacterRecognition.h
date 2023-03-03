@@ -58,7 +58,23 @@
  * 
  * we have finished how to detect the text region from one image. then, we will finish how to recognize
  * each word in from the text region, of course, it is suitable for the original image. because it is 
- * dedicated to recognize the word object.
+ * dedicated to recognize the word object. we will use tesseract module.
+ * 
+ * but before that, we have to mention some problem about the text region detected function. we have detected
+ * the text region in original image used two method. and the method that by adjusting the morphology
+ * of image have got the good efficient. but the problem is we have to threshold the detected region.
+ * you can use the function edgeEnhance we have defined used sobel operators what used the second 
+ * derivative of the gray value in original image. but it is badly efficient for the text region.
+ * then, we consider the threshold value what defined one threshold value and binary the gray value
+ * of the text region. it is efficient but badly for the shadow region in the text region. then, we will
+ * learn how to binary the text region of the original image and can handle the shadow region goodly.
+ * we have tested to histogram transform first, it is not efficient. because the histogram transformation
+ * method will enhance the shadow region. it is more badly because it can not distinguish the shadow and 
+ * the text in shadow region goodly. then, how to handle it? we consider the local threshold, it will
+ * consider the local threshold not the global threshold, just the threshold and adaptiveThreshold in opencv.
+ * but it is not efficient. but it is efficient for the shadow region but is not efficient for other region.
+ * just like some withe region that can mapping the reverse page text. it is not the efficient that we want to get.
+ * we have handled the shadow region problem, but can not handle these region.
 ***********************************************************************/
 #ifndef _OPTICALCHARACTERRECOGNITION_
 #define _OPTICALCHARACTERRECOGNITION_
@@ -79,7 +95,7 @@ public:
         resize(grayImage, resizeImage, Size(cols * scale, rows * scale));
         GaussianBlur(resizeImage, blurImage, Size(3, 3), 3, 0);
         Canny(blurImage, cannyImage, 25, 75);
-        Mat kernel = getStructuringElement(MORPH_RECT, Size(9, 9));
+        Mat kernel = getStructuringElement(MORPH_RECT, Size(51, 51));
         dilate(cannyImage, dilImage, kernel);
         return dilImage;
     }
@@ -92,7 +108,7 @@ public:
         vector<vector<Point>> conPoly(contours.size());
         vector<Point> biggestArea;
         float maxArea = 0;
-        for (int i = 0; i < contours.size(); i++)
+        for (size_t i = 0; i < contours.size(); i++)
         {
             float area = cv::contourArea(contours[i]);
             cout << area << endl;
@@ -115,7 +131,7 @@ public:
 
     static void drawPoints(Mat &inputImage, vector<Point> points, Scalar color)
     {
-        for (int i = 0; i < points.size(); i++)
+        for (size_t i = 0; i < points.size(); i++)
         {
             circle(inputImage, points[i], 5, color, FILLED);
             putText(inputImage, to_string(i), {points[i].x - 5, points[i].y - 5}, FONT_HERSHEY_PLAIN, 3, color, 3);
@@ -147,7 +163,7 @@ public:
     {
         vector<Point> newPoints;
         vector<int> sumPoints, subPoints;
-        for (int i = 0; i < points.size(); i++)
+        for (size_t i = 0; i < points.size(); i++)
         {
             sumPoints.push_back(points[i].x + points[i].y);
             subPoints.push_back(points[i].x - points[i].y);
@@ -207,7 +223,7 @@ public:
             MaxAreaRRect = max(MaxAreaRRect, AreaRRect);
         }
         double RRect_degree = 0;
-        Mat output = inputImage.clone(); // 这里涉及是否复制数据的问题
+        Mat output = inputImage.clone();
         for (size_t t = 0; t < contours.size(); t++) {
             RotatedRect RRect = minAreaRect(contours[t]);
             double AreaRRect = RRect.size.area();
@@ -225,11 +241,58 @@ public:
         }
         resize(output, output, Size(dilImage.cols * 0.5, dilImage.rows * 0.5));
         imshow("1233333", output);
-        Point2f center(inputImage.cols/2,inputImage.rows/2);
-        Mat Rotation = getRotationMatrix2D(center,RRect_degree,1.0);
+        Point2f center(inputImage.cols / 2, inputImage.rows / 2);
+        Mat Rotation = getRotationMatrix2D(center, RRect_degree, 1.0);
         warpAffine(inputImage, outputImage, Rotation, inputImage.size(), INTER_CUBIC, BORDER_CONSTANT, Scalar(255, 255, 255));
         resize(outputImage, outputImage, Size(outputImage.cols * 0.5, outputImage.rows * 0.5));
         imshow("2u9eu2", outputImage);
+    }
+
+    static void documentScannedBasedonMinAreaRect_(Mat &inputImage, Mat &outputImage)
+    {        
+        Mat resizeImage;
+        Mat dilImage = preProcessing(inputImage);
+        resize(dilImage, resizeImage, Size(dilImage.cols * 0.5, dilImage.rows * 0.5));
+        imshow("123332", resizeImage);
+        vector<vector<Point>> contours;
+        vector<Vec4i> hierarchy;
+        findContours(dilImage, contours, hierarchy, RETR_TREE, CHAIN_APPROX_NONE, Point());
+        double MaxAreaRRect = 0;
+        int SizeContour = 0;
+        for (size_t t = 0; t < contours.size(); t++) {
+            RotatedRect RRect = minAreaRect(contours[t]);
+            double AreaRRect = 0;
+            AreaRRect = RRect.size.area();
+            MaxAreaRRect = max(MaxAreaRRect, AreaRRect);
+        }
+        double RRect_degree = 0;
+        Mat output = inputImage.clone();
+        for (size_t t = 0; t < contours.size(); t++) {
+            RotatedRect RRect = minAreaRect(contours[t]);
+            double AreaRRect = RRect.size.area();
+            if (AreaRRect == MaxAreaRRect ) {
+                SizeContour = SizeContour + 1;
+                // Rotate degree
+                RRect_degree = RRect.angle;
+                // Draw this rectangle
+                Point2f vertex[4];
+                RRect.points(vertex);
+                for (int i = 0; i < 4; i++) {
+                    line(output, Point(vertex[i]), Point(vertex[(i + 1) % 4]), Scalar(0, 255, 0), 2, LINE_8);
+                }
+                outputImage = output(cv::Rect(Point(vertex[0]), Point(vertex[2])));
+            }
+        }
+        cvtColor(outputImage, outputImage, COLOR_BGR2GRAY);
+        // edgeStrengthenUsedSobelOperator(grayWrapImage, outputImage, SOBELOPERATORGX, SOBELOPERATORGY, 0);
+        // THRESH_BINARY: binary the gray value. THRESH_OTSU: select the min value from many peak value.
+        // threshold(outputImage, outputImage, 0, 255, THRESH_BINARY | THRESH_OTSU);
+        // in order to handle the complex scenario, you should use the adaptive threshold.
+        adaptiveThreshold(outputImage, outputImage, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY, 171, 0);
+        resize(output, output, Size(dilImage.cols * 0.5, dilImage.rows * 0.5));
+        imshow("1233333", output);
+        resize(outputImage, outputImage, Size(outputImage.cols * 0.5, outputImage.rows * 0.5));
+        imshow("1233333ee", outputImage);
     }
 
     ~ORC(){};

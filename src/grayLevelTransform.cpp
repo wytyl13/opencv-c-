@@ -892,6 +892,11 @@ void histogramMatchingTransformation(const Mat &inputImage, const Mat &objectIma
  * if you want to enhance the left upper region contrast, you will reduce the other high region contrast
  * if you used the global histogram transformation. but it will not happen if you used the local
  * histogram transformation.
+ * 
+ * then, we have deep learned the transformation. we should update the former understand for the transformation.
+ * because the former transformation result should not influence the current transformation.
+ * but the efficient will be more badly if update the function based on the above concept.
+ * so we will not change it. we will consider it last.
  */
 void histogramTransformationLocal(const Mat &inputImage, Mat &outputImage, int sideLength)
 {
