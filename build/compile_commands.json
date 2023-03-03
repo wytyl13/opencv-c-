@@ -21,6 +21,11 @@
 },
 {
   "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
+  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -O3 -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\frequencyFilter.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\frequencyFilter.cpp",
+  "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/frequencyFilter.cpp"
+},
+{
+  "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
   "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -O3 -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\general.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\general.cpp",
   "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/general.cpp"
 },
@@ -56,6 +61,11 @@
 },
 {
   "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
+  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -O3 -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\opticalCharacterRecognition.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\opticalCharacterRecognition.cpp",
+  "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/opticalCharacterRecognition.cpp"
+},
+{
+  "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
   "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -O3 -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\someSuperApplication.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\someSuperApplication.cpp",
   "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/someSuperApplication.cpp"
 },
@@ -68,5 +78,10 @@
   "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
   "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -O3 -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\transformUsedAffineMatrix.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\transformUsedAffineMatrix.cpp",
   "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/transformUsedAffineMatrix.cpp"
+},
+{
+  "directory": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/build",
+  "command": "C:\\Users\\weiyutao\\opt\\mingw64\\bin\\g++.exe  @CMakeFiles/opencv.dir/includes_CXX.rsp -O3 -g -Wall -fexec-charset=GBK -std=c++11 -std=gnu++11 -o CMakeFiles\\opencv.dir\\src\\wordDetect.cpp.obj -c C:\\Users\\weiyutao\\development_code_2023-01-28\\vscode\\opencv\\src\\wordDetect.cpp",
+  "file": "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/wordDetect.cpp"
 }
 ]

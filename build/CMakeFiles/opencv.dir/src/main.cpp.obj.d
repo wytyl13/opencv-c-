@@ -743,4 +743,7 @@ CMakeFiles/opencv.dir/src/main.cpp.obj: \
  C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/include/faceApplication.h \
  C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/include/linearInterpolation.h \
  C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/include/featureInImage.h \
- C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/include/spatialFilter.h
+ C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/include/spatialFilter.h \
+ C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/include/wordDetect.h \
+ C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/include/base64.h \
+ C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/include/opticalCharacterRecognition.h

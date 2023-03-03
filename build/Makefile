@@ -224,6 +224,30 @@ src/featureInImage.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/featureInImage.cpp.s
 .PHONY : src/featureInImage.cpp.s
 
+src/frequencyFilter.obj: src/frequencyFilter.cpp.obj
+.PHONY : src/frequencyFilter.obj
+
+# target to build an object file
+src/frequencyFilter.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/frequencyFilter.cpp.obj
+.PHONY : src/frequencyFilter.cpp.obj
+
+src/frequencyFilter.i: src/frequencyFilter.cpp.i
+.PHONY : src/frequencyFilter.i
+
+# target to preprocess a source file
+src/frequencyFilter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/frequencyFilter.cpp.i
+.PHONY : src/frequencyFilter.cpp.i
+
+src/frequencyFilter.s: src/frequencyFilter.cpp.s
+.PHONY : src/frequencyFilter.s
+
+# target to generate assembly for a file
+src/frequencyFilter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/frequencyFilter.cpp.s
+.PHONY : src/frequencyFilter.cpp.s
+
 src/general.obj: src/general.cpp.obj
 .PHONY : src/general.obj
 
@@ -392,6 +416,30 @@ src/noise.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/noise.cpp.s
 .PHONY : src/noise.cpp.s
 
+src/opticalCharacterRecognition.obj: src/opticalCharacterRecognition.cpp.obj
+.PHONY : src/opticalCharacterRecognition.obj
+
+# target to build an object file
+src/opticalCharacterRecognition.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/opticalCharacterRecognition.cpp.obj
+.PHONY : src/opticalCharacterRecognition.cpp.obj
+
+src/opticalCharacterRecognition.i: src/opticalCharacterRecognition.cpp.i
+.PHONY : src/opticalCharacterRecognition.i
+
+# target to preprocess a source file
+src/opticalCharacterRecognition.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/opticalCharacterRecognition.cpp.i
+.PHONY : src/opticalCharacterRecognition.cpp.i
+
+src/opticalCharacterRecognition.s: src/opticalCharacterRecognition.cpp.s
+.PHONY : src/opticalCharacterRecognition.s
+
+# target to generate assembly for a file
+src/opticalCharacterRecognition.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/opticalCharacterRecognition.cpp.s
+.PHONY : src/opticalCharacterRecognition.cpp.s
+
 src/someSuperApplication.obj: src/someSuperApplication.cpp.obj
 .PHONY : src/someSuperApplication.obj
 
@@ -464,6 +512,30 @@ src/transformUsedAffineMatrix.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.s
 .PHONY : src/transformUsedAffineMatrix.cpp.s
 
+src/wordDetect.obj: src/wordDetect.cpp.obj
+.PHONY : src/wordDetect.obj
+
+# target to build an object file
+src/wordDetect.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/wordDetect.cpp.obj
+.PHONY : src/wordDetect.cpp.obj
+
+src/wordDetect.i: src/wordDetect.cpp.i
+.PHONY : src/wordDetect.i
+
+# target to preprocess a source file
+src/wordDetect.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/wordDetect.cpp.i
+.PHONY : src/wordDetect.cpp.i
+
+src/wordDetect.s: src/wordDetect.cpp.s
+.PHONY : src/wordDetect.s
+
+# target to generate assembly for a file
+src/wordDetect.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\opencv.dir\build.make CMakeFiles/opencv.dir/src/wordDetect.cpp.s
+.PHONY : src/wordDetect.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -485,6 +557,9 @@ help:
 	@echo ... src/featureInImage.obj
 	@echo ... src/featureInImage.i
 	@echo ... src/featureInImage.s
+	@echo ... src/frequencyFilter.obj
+	@echo ... src/frequencyFilter.i
+	@echo ... src/frequencyFilter.s
 	@echo ... src/general.obj
 	@echo ... src/general.i
 	@echo ... src/general.s
@@ -506,6 +581,9 @@ help:
 	@echo ... src/noise.obj
 	@echo ... src/noise.i
 	@echo ... src/noise.s
+	@echo ... src/opticalCharacterRecognition.obj
+	@echo ... src/opticalCharacterRecognition.i
+	@echo ... src/opticalCharacterRecognition.s
 	@echo ... src/someSuperApplication.obj
 	@echo ... src/someSuperApplication.i
 	@echo ... src/someSuperApplication.s
@@ -515,6 +593,9 @@ help:
 	@echo ... src/transformUsedAffineMatrix.obj
 	@echo ... src/transformUsedAffineMatrix.i
 	@echo ... src/transformUsedAffineMatrix.s
+	@echo ... src/wordDetect.obj
+	@echo ... src/wordDetect.i
+	@echo ... src/wordDetect.s
 .PHONY : help
 
 

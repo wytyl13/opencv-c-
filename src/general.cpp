@@ -1,7 +1,8 @@
 #include "../include/general.h"
 
 #define MAX_COLUMN = 7
-
+#define MAX_ 1200
+const char *base64_code = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
 
 // overload the + and += operators. you can use string+int or
@@ -649,20 +650,21 @@ int getRankFromMat(Mat &inputImage)
  */
 void separateKernel(Mat &w, Mat &w1, Mat &w2) 
 {
+    Mat wDouble;
+    w.convertTo(wDouble, CV_64F);
     int rows = w.rows;
     int cols = w.cols;
     double *wRow;
     for (int i = 0; i < rows; i++)
     {
-        wRow = w.ptr<double>(i);
+        wRow = wDouble.ptr<double>(i);
         for (int j = 0; j < cols; j++)
         {
             if (wRow[j] != 0)
             {
-                w2 = w.rowRange(i, i + 1).clone();
+                w2 = wDouble.rowRange(i, i + 1).clone();
                 w2 /=  wRow[j];
-                w1 = w.colRange(j, j + 1).clone();
-                return;
+                w1 = wDouble.colRange(j, j + 1).clone();
             }
         }
     }

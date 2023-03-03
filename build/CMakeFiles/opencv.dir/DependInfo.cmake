@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/eigen.cpp" "CMakeFiles/opencv.dir/src/eigen.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/eigen.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/faceApplication.cpp" "CMakeFiles/opencv.dir/src/faceApplication.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/faceApplication.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/featureInImage.cpp" "CMakeFiles/opencv.dir/src/featureInImage.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/featureInImage.cpp.obj.d"
+  "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/frequencyFilter.cpp" "CMakeFiles/opencv.dir/src/frequencyFilter.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/frequencyFilter.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/general.cpp" "CMakeFiles/opencv.dir/src/general.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/general.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/grayLevelTransform.cpp" "CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/grayLevelTransform.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/imageCutting.cpp" "CMakeFiles/opencv.dir/src/imageCutting.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/imageCutting.cpp.obj.d"
@@ -19,9 +20,11 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/linearInterpolation.cpp" "CMakeFiles/opencv.dir/src/linearInterpolation.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/linearInterpolation.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/main.cpp" "CMakeFiles/opencv.dir/src/main.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/main.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/noise.cpp" "CMakeFiles/opencv.dir/src/noise.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/noise.cpp.obj.d"
+  "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/opticalCharacterRecognition.cpp" "CMakeFiles/opencv.dir/src/opticalCharacterRecognition.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/opticalCharacterRecognition.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/someSuperApplication.cpp" "CMakeFiles/opencv.dir/src/someSuperApplication.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/someSuperApplication.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/spatialFilter.cpp" "CMakeFiles/opencv.dir/src/spatialFilter.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/spatialFilter.cpp.obj.d"
   "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/transformUsedAffineMatrix.cpp" "CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/transformUsedAffineMatrix.cpp.obj.d"
+  "C:/Users/weiyutao/development_code_2023-01-28/vscode/opencv/src/wordDetect.cpp" "CMakeFiles/opencv.dir/src/wordDetect.cpp.obj" "gcc" "CMakeFiles/opencv.dir/src/wordDetect.cpp.obj.d"
   )
 
 # Targets to which this target links.

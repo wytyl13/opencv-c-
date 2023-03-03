@@ -260,7 +260,11 @@ using namespace face;
 #define SMOOTHKERNELCASSETTE (Mat::ones(3, 3, CV_32F) / (float)(9))
 #define SMMOTHKERNELGAUSSIAN ((Mat_<double>(3, 3) << 0.3679, 0.6065, 0.3679, 0.6065, 1.0000, 0.6065, 0.3679, 0.6065, 0.3679) / 4.8976)
 #define DENOISINGkERNELGAUSSIAN ((Mat_<double>(3, 3) << 1, 2, 1, 2, 4, 2, 1, 2, 1) / 16)
-
+// two sobel operators about the image of sharpening.
+#define SOBELOPERATORGX (Mat_<int>(3, 3) << -1, -2, -1, 0, 0, 0, 1, 2, 1)
+#define SOBELOPERATORGY (Mat_<int>(3, 3) << -1, 0, 1, -2, 0, 2, -1, 0, 1)
+#define SOBELOPERATORGX_CONVOLUTION (Mat_<int>(3, 3) << 1, 2, 1, 0, 0, 0, -1, -2, -1)
+#define SOBELOPERATORGY_CONVOLUTION (Mat_<int>(3, 3) << 1, 0, -1, -2, 0, 2, -1, 0, 1)
 #endif
 
 #if ISOPENDLIB
@@ -437,7 +441,6 @@ void rotationVector(vector<vector<T>> &matrix)
 }
 
 #endif
-
 
 
 void rotationMatVector(Mat &inputImage, int degrees);

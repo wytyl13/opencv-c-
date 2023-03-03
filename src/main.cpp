@@ -9,6 +9,9 @@
 #include "../include/spatialFilter.h"
 #include "../include/faceApplication.h"
 #include "../include/featureInImage.h"
+#include "../include/wordDetect.h"
+#include "../include/base64.h"
+#include "../include/opticalCharacterRecognition.h"
 #include <time.h>
 
 // typedef enum ENUM
@@ -1188,12 +1191,12 @@ int main(int argc, char const *argv[])
     // the param c of former two operators is euqal to -1, the last is 1. notice it.
     Mat laplacianImage, laplacianImage_, laplacianImage__, laplacianImage___, laplacianImage____;
     Mat smoothImage, fuzzyImage, gaussianImage71, gaussianImage132;
-    spatialFilterUsedSeparatedKernel(oceanGrayImage, laplacianImage_, SHARPENKERNEL_, CONVOLUTION);
-    spatialFilterUsedSeparatedKernel(oceanGrayImage, laplacianImage__, SHARPENKERNEL__, CONVOLUTION);
-    spatialFilterUsedSeparatedKernel(oceanGrayImage, laplacianImage___, SHARPENKERNEL___, CONVOLUTION);
-    spatialFilterUsedSeparatedKernel(oceanGrayImage, laplacianImage____, SHARPENKERNEL____, CONVOLUTION);
-    spatialFilterUsedSeparatedKernel(oceanGrayImage, gaussianImage71, GAUSSIANKERNEL71, CONVOLUTION);
-    spatialFilterUsedSeparatedKernel(oceanGrayImage, gaussianImage132, GAUSSIANKERNEL132, CONVOLUTION);
+    spatialFilterUsedSeparatedKernel(oceanGrayImage, laplacianImage_, SHARPENKERNEL_, CONVOLUTION, true);
+    spatialFilterUsedSeparatedKernel(oceanGrayImage, laplacianImage__, SHARPENKERNEL__, CONVOLUTION, true);
+    spatialFilterUsedSeparatedKernel(oceanGrayImage, laplacianImage___, SHARPENKERNEL___, CONVOLUTION, true);
+    spatialFilterUsedSeparatedKernel(oceanGrayImage, laplacianImage____, SHARPENKERNEL____, CONVOLUTION, true);
+    spatialFilterUsedSeparatedKernel(oceanGrayImage, gaussianImage71, GAUSSIANKERNEL71, CONVOLUTION, false);
+    spatialFilterUsedSeparatedKernel(oceanGrayImage, gaussianImage132, GAUSSIANKERNEL132, CONVOLUTION, false);
     vectorImages.push_back(oceanGrayImage);
     vectorImages.push_back(laplacianImage_);
     vectorImages.push_back(laplacianImage__);
@@ -1218,7 +1221,7 @@ int main(int argc, char const *argv[])
     vectorImages.push_back(passivationImage4);
     vectorImages.push_back(maskImage);
     imshowMulti(str, vectorImages);
-    #endif
+    // test the different efficient that the image of sharpening used template method used different param.
     Mat fuzzyImage, fuzzyGrayImage, sharpenBeauty1, sharpenBeauty2, sharpenBeauty3;
     Mat sharpenBeauty4, sharpenBeauty5;
     fuzzyImage = imread("../../resources/fuzzyImage.webp");
@@ -1235,7 +1238,85 @@ int main(int argc, char const *argv[])
     vectorImages.push_back(sharpenBeauty4);
     vectorImages.push_back(sharpenBeauty5);
     imshowMulti(str, vectorImages);
-    
+    // test to strengthen the edge used gradient. sobel operators are the gradient kernel.
+    // of course, you can find this function will return the edge image.
+    Mat edgeStrengthenImage, sharpenImageBasedonSobel, sharpenImageBasedonLaplacian;
+    Mat maskImage, sharpenImageBasedonTemplate, fuzzyImage, gaussianImage;
+    Mat darkImages = imread("../../resources/darkImages.webp", 0);
+    Mat faceGrayImage;
+    cvtColor(faceImage, faceGrayImage, COLOR_BGR2GRAY);
+    edgeStrengthenUsedSobelOperator(faceGrayImage, edgeStrengthenImage, SOBELOPERATORGX, SOBELOPERATORGY, 355);
+    // sharpenImageUsedSobelOperator(oceanGrayImage, sharpenImageBasedonSobel, SOBELOPERATORGX, SOBELOPERATORGY, 355);
+    // spatialFilterUsedSeparatedKernel(oceanGrayImage, sharpenImageBasedonLaplacian, SHARPENKERNEL_, CONVOLUTION, true);
+    // spatialFilterUsedSeparatedKernel(oceanGrayImage, outputImage, SMOOTHKERNELCASSETTE, CONVOLUTION, false);
+    // spatialFilterUsedSeparatedKernel(oceanGrayImage, fuzzyImage, FUZZYKERNEL, CONVOLUTION, false);
+    // spatialFilterUsedSeparatedKernel(oceanGrayImage, gaussianImage, GAUSSIANKERNEL71, CONVOLUTION, false);
+    // getMaskImage(oceanGrayImage, maskImage, GAUSSIANKERNEL71);
+    // sharpenImageUsedPassivationTemplate(oceanGrayImage, sharpenImageBasedonTemplate, GAUSSIANKERNEL71, 6);
+    vectorImages.push_back(faceGrayImage);
+    // vectorImages.push_back(sharpenImageBasedonSobel);
+    // vectorImages.push_back(sharpenImageBasedonLaplacian);
+    // vectorImages.push_back(sharpenImageBasedonTemplate);
+    vectorImages.push_back(edgeStrengthenImage);    
+    // vectorImages.push_back(sharpenImageBasedonTemplate);
+    imshowMulti(str, vectorImages);
+    Mat wordImage = imread("../../resources/word.jpg", 0);
+    Mat laplacianImage;
+    edgeStrengthenUsedSobelOperator(wordImage, laplacianImage, SOBELOPERATORGX, SOBELOPERATORGY, 0);
+    vectorImages.push_back(wordImage);
+    vectorImages.push_back(laplacianImage);
+    imshowMulti(str, vectorImages);
+    // test document recognition.
+    // Mat wordImage = imread("../../resources/word.jpg", 0);
+    // // Mat dialtImage = preprocess(wordImage);
+    // wordRegionExtract(wordImage, outputImage);
+    // vectorImages.push_back(wordImage);
+    // vectorImages.push_back(outputImage);
+    // imshowMulti(str, vectorImages);
+    // string base64Code = Base64::Mat2Base64(wordImage, ".jpg");
+    // Mat image = Base64::Base2Mat(base64Code);
+    // imshow("test", image);
+    Mat wordImage = imread("../../resources/noteWord.webp");
+    ORC orc = ORC();
+    Mat dilImage = orc.preProcessing(wordImage);
+    vector<Point> biggest = orc.getContours(dilImage, wordImage);
+    orc.drawPoints(wordImage, biggest, Scalar(255, 0, 255));
+    vector<Point> reorderbiggest = orc.reorderBiggestPoint(biggest);
+    Mat wrapImage = orc.getWrap(wordImage, reorderbiggest, 420, 596);
+    Mat resizeImage;
+    resize(wrapImage, resizeImage, Size(wordImage.cols * 0.3, wordImage.rows * 0.3));
+    imshow("test", resizeImage);
+    // test the combination function, but the efficient is not well, because the concept about this
+    // function used the max area of detected contours as the text recognition region. so it is 
+    // not professional. we will try the other method to detect the text region.
+    // Mat wordImage = imread("../../resources/document.jpg");
+    Mat wordImage = imread("../../resources/paper.jpg");
+    ORC orc = ORC();
+    Mat dilImage = orc.preProcessing(wordImage);
+    Mat resizeDilImage, resizeWordImage;
+    resize(dilImage, resizeDilImage, Size(dilImage.cols * 0.3, dilImage.rows * 0.3));
+    vector<Point> points = orc.getContours(dilImage, wordImage);
+    resize(wordImage, resizeWordImage, Size(dilImage.cols * 0.3, dilImage.rows * 0.3));
+    cout << points << endl;
+
+    imshow("123", resizeDilImage);
+    imshow("123123", resizeWordImage);
+    // imshow("12345", resizeWordImage);
+    // Mat documentImage;
+    // orc.documentScanned(wordImage, documentImage);
+    // imshow("test", wordImage);
+    // test the efficient of documentScanned function
+    ORC orc = ORC();
+    Mat wordImage = imread("../../resources/note.jpg");
+    Mat documentImage, resizeWordImage;
+    orc.documentScanned(wordImage, documentImage);
+    resize(wordImage, resizeWordImage, Size(wordImage.cols * 0.3, wordImage.rows * 0.3));
+    cout << wordImage.size() << ", " << documentImage.size() << endl;
+    imshow("123", resizeWordImage);
+    imshow("test", documentImage);
+    #endif
+    Mat wordImage = imread("../../resources/noteWord.webp");
+    ORC::documentScannedBasedonMinAreaRect(wordImage, outputImage);
     #endif
     // --------------------return to test the spatial filter-----------------------------
 

@@ -455,6 +455,164 @@
  * to sharpen the image is more generally used. because it can fuzzy, smooth, sharpen the image by
  * adjusting the value of param k. and it can change the degrees of efficient.
  * 
+ * then, we have learned how to sharpen the image used the second derivative of the image, and have implemented
+ * it, just like the laplacian operators. then, we will learn how to sharpen the image used the first derivative.
+ * just like the first derivative in deep learning, it can be also named as the gradient. then, what is the gradient
+ * for one image? just like the cost function in deep learning, generally, the samples we will handle has the
+ * same dimension with one image. the gradient in deep learning is calculated based on the cost function.
+ * but it is based on one image in digital image process. just like the simple cost function about linear regression, 
+ * J(theta) = (1/2m) * (X @ theta - y)^2, X means the original feature data matrix, theta is the params what
+ * we want to optimize, y is the label for each sample. J(theta)' = dJ / d(theta) = 1/m * (X @ theta - y) @ X.T.
+ * notice, this cost function has not consider any optimized params. theta is unknown param in the cost function.
+ * it is more simple than the first derivative of one image. the first derivative of f(x, y), x, y is the coordinates
+ * of the image. f is the corresponding gray value. how to represent the first derivative of the f(x, y).
+ * grad(f) = [df(x, y) / dx, df(x, y) / dy].T, it is the partial derivatives of f(x, y) about x and y.
+ * we can find the grad(f) is one two dimension column vector. we can use g_x, g_y to represent the partial
+ * derivatives of f(x, y), it means grad(f) = [g_x, g_y].T. what is the geometric properties of this vector?
+ * just like the J(theta)' in deep learning, it point to the direction that the most rate of changing of f(x, y).
+ * the length or the amplitude of the column vector is the vector norm. M(x, y) = ||f|| = (g_x^2 + g_y^2)^1/2
+ * ≈ |g_x| + |g_y|. the M(x, y) is the value about the rate of changing of the coordinates in origina image.
+ * so M(x, y) has the same shape with the original image. you can also consider it as one image. we generally 
+ * named it as gradient image. the component of the gradient vector is the derivative value. the derivative operation
+ * is linear operators, but the operation about the M(x, y) what involved square and the square root. sometimes
+ * we used the approximate computing to avoid the nonlinear operation. just like 
+ * M(x, y) = (g_x^2 + g_y^2)^1/2 ≈ |g_x| + |g_y|. this approximate expression remained large informations, but
+ * it will also loss some informations. then, we will define the approximate kernel based on these expression.
+ * just like the laplacian kernel. assuming we have one kernel what size is 3*3, each element is k1, k2, k3, ...
+ * k9, the original coordinate is k5. k1...k9 represent the scanned gray value in the original image used the 3*3 kernel.
+ * so we can define the kernel used the gray value operation what we want to make.
+ * k1 k2 k3
+ * k4 k5 k6
+ * k7 k8 k9
+ * notice the difference between kernel and original image. k5 = kernel(0, 0), it is corresponding to
+ * f(1, 1), so f(x - 1, y - 1) is corresponding to k1 if the orginal point k5 in the kernel represent the f(x, y).
+ * you can represent g_x = (k8-k5), g_y = (k6-k5)
+ * how to understand the robert operator?
+ * the gradient is the first derivative. the gradient of the image is the first derivative of the 
+ * combine of each coordinates. f(x, y)' = [df(x, y)/dx, df(x, y)/dy].T = [g_x, g_y].T, the first derivative value is the
+ * normal value of the vector, so you can get the first derivative value is equal to (g_x^2 + g_y^2)^(1/2) ≈ |g_x|+|g_y|, 
+ * g_X = f(x+1, y) - f(x, y) = k8-k5, g_y = f(x, y+1) - f(x, y) = k6-k5, this is normal of first derivative.
+ * the robert operator is crossover operator. so g_x = f(x+1, y+1) - f(x, y), g_y = f(x+1, y) - f(x, y+1)
+ * the vertical axis of the image is x, the horizontal axis of the image is y.
+ * so you can deep understand the robert operator.
+ * then, we will define the kernel based on these operator, involved robert and sobel operators.
+ * the concept is defining the kernel for g_x and g_y, so you should define two kernel for each operator.
+ * 
+ * we can use robert crossover operator to represent the g_x and g_y, g_x = (k9-k5), g_y = (k8-k6).
+ * then, we can conclude that 
+ * M(x, y) = [(k9-k5)^2 + (k8-k6)^2]^(1 / 2) ≈ |k9 - k5| + |k8 - k6|
+ * this is robert crossover operator. but it just considered 2*2 kernel, we just consider the kernel as follow
+ * at above expression
+ * k5 k6
+ * k8 k9
+ * how to represent the robert crossover operator used one odd size kernel? just like 3*3 kernel?
+ * M(x, y) = [[(k7+2k8+k9) - (k1+2k2+k3)]^2] + [(k3+2k6+k9) - (k1+2k4+k7)]^2]]^(1 / 2)
+ * why used weight 2 to modified the center of the kernel, just like k8, k2, k6, k4, they are all the center.
+ * we want to emphasis the importance of the center.
+ * then, we have learned two operators, the first is robert crossover operator, it used two 2*2 kernel.
+ * the second operator is sobel opeartor. it used two 3*3 kernel.
+ * we can implement the robert crossove operator used these two kernels as follow.
+ * -1 0           0 -1   
+ *  0 1           1  0
+ * the scanned gray value in original is as follow
+ * k5 k6
+ * k8 k9
+ * then done the convolution operation used these two kernel.
+ * you can get g_x based on the first kernel, and get g_y based on the second kernel.
+ * g_x = k5-k9, g_y = k6-k8, M(x, y) = the direvative value of the f(x, y) = (g_x^2+g_y^2)^(1/2) ≈ |g_x|+|g_y|.
+ * ≈ |k5-k9| + |k6-k8|
+ * we have defined the robert operator based on the concept above, then we will define the sobel operators.
+ * M(x, y) = [[(k7+2k8+k9) - (k1+2k2+k3)]^2] + [(k3+2k6+k9) - (k1+2k4+k7)]^2]]^(1 / 2)
+ * we can get g_x = (k7+2k8+k9) - (k1+2k2+k3), g_y = (k3+2k6+k9) - (k1+2k4+k7), and the weight 2 is aim to
+ * emphasis the importance of the center point. then, how to understand this expression?
+ * just like the original first derivative of one coordinate, just like the value of f(x, y)' = M(x, y)
+ * = |g_x| + |g_y|, g_x = f(x+1, y) - f(x, y), g_y = f(x, y+1) - f(x, y), if we define a 2*2 size kernel.
+ * just like we have learned the original derivative above, notice, you can optimize this original method
+ * used two method, one is robert crossover opeartor, we have deep learned it above, then, we will learn another
+ * optimize method, just like sobel operator, sobel will use 3*3 kernel to calculate the first derivative
+ * of the center point value k5 in the original image. notice, k1...k9 means the gray value in original image.
+ * then, we will consider sobel operator to calculate g_x and g_y what is the partial derivative of the center 
+ * point f(x, y) what is k5 in this case. notice, because M(x, y) = |g_x|+|g_y|, so the signed of convolution result
+ * will not influence the value of the first derivative of the f(x, y). just like the robert operator above, 
+ * the result will be |g_x| + |gy| = |k9-k5|+|k8-k6| if you does not convolution the kernel, if you do convolution
+ * , you will get |g_x| + |gy| = |k5-k9|+|k6-k8|. these two result all have the same value.
+ * then, let us return to the chase how to get the sobel operator.
+ * k1 k2 k3
+ * k4 k5 k6
+ * k7 k8 k9 
+ * k5 = f(x, y), we want to calculate M(x, y) = f(x, y)' = |g_x|+|g_y|, 
+ * g_x = (k7+k8+k9) - (k1+k2+k3), g_y = (k3+k6+k9) - (k1+k4+k7), notice, we used the vetical axis of the original
+ * image to represent x, and used the horizontal axis to represent y. notice the difference between it and the size
+ * Point Rect ptr, at and so on in Mat. we have noticed the weight is difference in sobel operator, the weight for
+ * the center is two and other is one. so it is aim to emphasis the importance about the center k8, k2, k6, k4.
+ * so we can get the M(x, y) expression is M(x, y) = [[(k7+2k8+k9) - (k1+2k2+k3)]^2] + [(k3+2k6+k9) - (k1+2k4+k7)]^2]]^(1 / 2)
+ * = |(k7+2k8+k9) - (k1+2k2+k3)| + |(k3+2k6+k9) - (k1+2k4+k7)| in sobel operator.
+ * so we will define the sobel operator kernel based on this expression. similarly, we will define two 3*3 kernel
+ * , one is g_x, one is g_y.
+ * we can define the g_x operator based on g_x = (k7+2k8+k9) - (k1+2k2+k3) = k7+2k8+k9-k1-2k2-k3
+ * -1 -2 -1
+ *  0  0  0
+ *  1  2  1
+ * notice, because the absolute value, so the result of convolution kernel is similar to the original kernel.
+ * so we can ignore the influence of convolution. but we can also define the kernel based on the influence of 
+ * convolution. rotation the kernel 180 degrees will get the convolution kernel.
+ *  1  2  1
+ *  0  0  0
+ * -1 -2 -1
+ * 
+ * we can define the g_y operator based on g_y = (k3+2k6+k9) - (k1+2k4+k7) = k3+2k6+k9-k1-2k4-k7
+ * -1  0 1
+ * -2  0 2
+ * -1  0 1
+ * we can also get the convolution kernel.
+ * 1  0 -1
+ * 2  0 -2
+ * 1  0 -1
+ * of course, these kernel will have the same efficient.
+ * so we can get the sobel operators.
+ * -1 -2 -1   -1  0 1
+ *  0  0  0   -2  0 2
+ *  1  2  1   -1  0 1
+ * this is the kernel what does not consider the influence of convolution.
+ * 
+ * 
+ *  1  2  1   1  0 -1
+ *  0  0  0   -2  0 2
+ * -1 -2 -1   -1  0 1
+ * this is the sobel operators what have considered the influence of convolution.
+ * 
+ * then,  how to sharpen the image used sobel operators? because the size numbers is 2 for the robert operator,
+ * so we will just consider the sobel operators. because we just consider the odd number size kernel.
+ * then, how to implement the image of sharpening used sobel operators? of course, it is similar to the other
+ * filter. but it is different from the other filter, you should convolution two times based on two kernel.
+ * just like the laplacian operators, the sum value of all the element in the laplacian kernel is equal to
+ * zero, so you will get the result of convolution zero if the gray value is constant in the original image. 
+ * it means the result convolution value of edge region will be nonzero value, because the gray value in 
+ * edge region is not the constant. so the laplacian kernel will remain the original gray value in edge region.
+ * the other constant gray value region in original image will be zero. so you will get the edge image of the original
+ * image. it is similar to sobel operators. the convolution that original image and sobel operators is equivalent
+ * of the first derivative value of the original image. the geometric properties of the first derivative of the
+ * original image is the rate of changing about the gray value. the rate of changing about the edge region is 
+ * nonzero, it will be negative or opposite number, and the constant region will be zero. notice, because
+ * M(x, y) is the absolute value of the g_x and g_y, so the negative and opposite will be ignored.
+ * what we focus on is just the edge of the original image, not the direction of changing about the gray value.
+ * and you should notice, the first derivative, second derivative are all the linear filter. the median
+ * nonlinear filter. then, we will implement the gradient image, it can also be named as sharpen image
+ * used the sobel operator. then, we will define the function sharpenImageUsedSobelOperator, it will return the
+ * edge image after strengthening. then, you should add it and the original image if you want to get
+ * the sharpening efficient based on the original image. but you should know that you can not 
+ * use the linearScaling function to mapping the gray value to the range from 0 to 255. you should 
+ * truncate the gray value, just like gray value = (gray value > 255 || gray value < 0) ? (255 || 0) : (gray value).
+ * you will find you will get the important edge if you set the bigger threshold in edgeStrengthenUsedSobelOperator
+ * function, because you have ignored the unimportant edge. then, how to get the sharpen image based on
+ * the edge image? add the original image and the edge image, and truncate it.
+ * just like gray value = (gray value > 255 || gray value < 0) ? (255 || 0) : (gray value).
+ * because we have used the zero padding, so all the round of the image must be detected as the edge region.
+ * you should use the other padding method just like copy padding or mirror padding to if you want to handle this problem.
+ * or you will get no better solution. or you can implement the sobel operators function used
+ * the expression. it will not do the convolution operations.
+ * 
+ * then, we will start the next chapter.
  * then we will create another file what dedicated to the frequency domain filter.
 ***********************************************************************/
 #include "../include/spatialFilter.h"
@@ -500,7 +658,8 @@ void officialImageMixTest(Mat &inputImage1, Mat &inputImage2, Mat &outputImage, 
  * symbol to modify the parameters. because the stack will not create the new container to store the parameter
  * you shold input one gray image, or you will get error. because we have defined the mapping function based on the 
  * gray image.
- * @Return: outputImage, the image you interested in.
+ * @Return: outputImage, the image you interested in. notice, this function will return the same size Mat as the size 
+ * of inputImage.
  * @Description: 
  * spatial filter function created by ourselves test.
  * you should consider your mat data type if you want to dot or @ two mat in opencv.
@@ -535,7 +694,7 @@ void officialImageMixTest(Mat &inputImage1, Mat &inputImage2, Mat &outputImage, 
  * you can call it in the function spatialFilterUsedSeparatedKernel. we have defined the function getGaussianKernel
  * function.
  */
-void spatialFilterOperation(Mat &inputImage, Mat &outputImage, Mat kernel) 
+void spatialFilterOperation(Mat &inputImage, Mat &outputImage, Mat kernel, bool isLaplacian = false, bool isSobel = false) 
 {
     int kernelRows = kernel.rows;
     int kernelCols = kernel.cols;
@@ -577,11 +736,11 @@ void spatialFilterOperation(Mat &inputImage, Mat &outputImage, Mat kernel)
             // you should add .clone() when you created the scannedMat if you want to use deep copy.
             scannedMat = tempMat(cv::Rect(x - halfKernelCols, y - halfKernelRows, kernelCols, kernelRows));
             double sumValue = 0.0;
-            for (int i = 0; i < scannedMat.rows; i++)
+            for (int i = 0; i < kernelRows; i++)
             {
                 scannedMatRow = scannedMat.ptr<double>(i);
                 kernelRowMat = kernel.ptr<double>(i);
-                for (int j = 0; j < scannedMat.cols; j++)
+                for (int j = 0; j < kernelCols; j++)
                 {
                     sumValue += (scannedMatRow[j] * kernelRowMat[j]);
                 }
@@ -592,10 +751,16 @@ void spatialFilterOperation(Mat &inputImage, Mat &outputImage, Mat kernel)
     // notice sum function will return a Scalar what is the class defined in opencv.
     // it is a one dimension array, you should index it and receive it used double if you want to sum one 
     // single channel Mat.
-    double sumMat = cv::sum(kernel)[0];
-    if (sumMat == 0)
+    // sobel, laplacian operator will enter into this condition. so you should distinguish it and the laplacian.
+    if (isSobel)
     {
-        Mat addImage, tempMat___;
+        // return cv64f data.
+        outputImage = tempMat__(cv::Rect(halfKernelCols, halfKernelRows, cols, rows)).clone();
+        return;
+    }
+    if (isLaplacian)
+    {
+        Mat addImage;
         // laplacian, we can inference you want to sharpen the image.
         // you can not use the linearScaling method to mapping the gray value to range(0, 255)
         // you should use the method saturate_cast, gray value = (gray value > 255, < 0) : (255, 0) ? (gray value)
@@ -603,6 +768,7 @@ void spatialFilterOperation(Mat &inputImage, Mat &outputImage, Mat kernel)
         double *addImageRow, *tempMatRow, *tempMat__Row;
         double minValue, maxValue;
         cv::minMaxLoc(kernel, &minValue, &maxValue, 0, 0);
+        // this judge has some problem. we will modify it last.
         int c = (maxValue > 1) ? 1 : -1;
         for (int i = 0; i < addImage.rows; i++)
         {
@@ -611,13 +777,18 @@ void spatialFilterOperation(Mat &inputImage, Mat &outputImage, Mat kernel)
             tempMat__Row = tempMat__.ptr<double>(i);
             for (int j = 0; j < addImage.cols; j++)
             {
-                addImageRow[j] = cv::saturate_cast<double>(tempMatRow[j] + c * tempMat__Row[j]);
+                addImageRow[j] = cv::saturate_cast<uchar>(tempMatRow[j] + c * tempMat__Row[j]);
             }
         }
-        addImage.convertTo(outputImage, CV_8UC1);
+        addImage(cv::Rect(halfKernelCols, halfKernelRows, cols, rows)).convertTo(outputImage, CV_8UC1);
         return;
     }
-    linearScaling(tempMat__, outputImage);
+    if (kernelRows == 1)
+    {
+        linearScaling(tempMat__(cv::Rect(halfKernelCols, halfKernelRows, cols, rows)), outputImage);
+        return;
+    }
+    outputImage = tempMat__(cv::Rect(halfKernelCols, halfKernelRows, cols, rows)).clone();
 }
 
 /**
@@ -646,10 +817,10 @@ void spatialFilterOperation(Mat &inputImage, Mat &outputImage, Mat kernel)
  * 
  * 
  */
-void spatialConvolution(Mat &inputImage, Mat &outputImage, Mat kernel) 
+void spatialConvolution(Mat &inputImage, Mat &outputImage, Mat kernel, bool isLaplacian = false) 
 {
     rotationMat(kernel, ONEEIGHTZERO);
-    spatialFilterOperation(inputImage, outputImage, kernel);
+    spatialFilterOperation(inputImage, outputImage, kernel, isLaplacian);
 }
 
 
@@ -668,16 +839,16 @@ void spatialConvolution(Mat &inputImage, Mat &outputImage, Mat kernel)
  * simple to do multiply kernels convolution operation. we will consider the deep differnce between them.
  * put the feature aside, the result of correlation is similar to the result of convolution.
  */
-void spatialFilter(Mat &inputImage, Mat &outputImage, Mat kernel, int model = CORRELATION) 
+void spatialFilter(Mat &inputImage, Mat &outputImage, Mat kernel, int model = CORRELATION, bool isLaplacian = false) 
 {
     if (model == CONVOLUTION)
     {
-        spatialConvolution(inputImage, outputImage, kernel);
+        spatialConvolution(inputImage, outputImage, kernel, isLaplacian);
     }
-    spatialFilterOperation(inputImage, outputImage, kernel);
+    spatialFilterOperation(inputImage, outputImage, kernel, isLaplacian);
 }
 
-void spatialFilterUsedSeparatedKernel(Mat &inputImage, Mat &outputImage, Mat kernel, int model = CORRELATION) 
+void spatialFilterUsedSeparatedKernel(Mat &inputImage, Mat &outputImage, Mat kernel, int model = CORRELATION, bool isLaplacian = false) 
 {
     // if you have used the original operation that correlation, you can not use the 
     // separated kernel because the correlation operation is not suitable for the 
@@ -691,16 +862,16 @@ void spatialFilterUsedSeparatedKernel(Mat &inputImage, Mat &outputImage, Mat ker
         cout << rank << endl;
         if (rank != 1)
         {
-            spatialConvolution(inputImage, outputImage, kernel);
+            spatialConvolution(inputImage, outputImage, kernel, isLaplacian);
             return;
         }
         Mat w1, w2;
         separateKernel(kernel, w1, w2);
-        spatialConvolution(inputImage, outputImage, w1);
-        spatialConvolution(outputImage, outputImage, w2);
+        spatialConvolution(inputImage, outputImage, w1, isLaplacian);
+        spatialConvolution(outputImage, outputImage, w2, isLaplacian);
         return;
     }
-    spatialFilterOperation(inputImage, outputImage, kernel);
+    spatialFilterOperation(inputImage, outputImage, kernel, isLaplacian);
 }
 
 /**
@@ -741,7 +912,7 @@ void medianFilter(Mat &inputImage, Mat &outputImage, int kernelSize)
  * used double or used the int variable to accept the double data. it will happen to the truncate and
  * overflow.
  */
-void operateTwoMatMultiThread(Mat &inputImage, Mat &inputImage_, Mat &outputImage, int symbol = ADD) 
+void operateTwoMatMultiThread(Mat &inputImage, Mat &inputImage_, Mat &outputImage, int symbol = ADD, bool isTruncate = false) 
 {
     assert((inputImage.size() == inputImage_.size()) && (!inputImage.empty() || !inputImage_.empty()));
     Mat inputImageTemp = Mat(inputImage.size(), CV_64F);
@@ -760,10 +931,20 @@ void operateTwoMatMultiThread(Mat &inputImage, Mat &inputImage_, Mat &outputImag
         {
             if (symbol == ADD)
             {
+                if (isTruncate)
+                {
+                    outputImage.at<double>(i, j) = saturate_cast<uchar>(inputImageRow[j] + inputImage_Row[j]);
+                    continue;
+                }
                 outputImage.at<double>(i, j) = inputImageRow[j] + inputImage_Row[j];
             }
             else if (symbol == SUB)
             {
+                if (isTruncate)
+                {
+                    outputImage.at<double>(i, j) = saturate_cast<uchar>(inputImageRow[j] - inputImage_Row[j]);
+                    continue;
+                }
                 outputImage.at<double>(i, j) = inputImageRow[j] - inputImage_Row[j];
             }else if (symbol == MULTI)
             {
@@ -813,12 +994,19 @@ void zeroPaddingMat(Mat &inputImage, Mat &outputImage, Mat kernel)
  */
 void sharpenImageUsedPassivationTemplate(Mat &inputImage, Mat &outputImage, Mat fuzzyOrSmoothKernel, float k) 
 {
-    Mat fuzzyImage, maskImage, zeroPaddingImage;
+    Mat fuzzyImage, maskImage, zeroPaddingImage, zeroPaddingFuzzyImage;
     zeroPaddingMat(inputImage, zeroPaddingImage, fuzzyOrSmoothKernel);
     spatialFilterUsedSeparatedKernel(inputImage, fuzzyImage, fuzzyOrSmoothKernel, CONVOLUTION);
-    operateTwoMatMultiThread(zeroPaddingImage, fuzzyImage, maskImage, SUB);
+    // because the spatialFilterUsedSeparatedKernel function returned the same size Mat like inputImage.
+    // so we should zero padding it, aims to call the function operateTwoMatMultiThread. because this function
+    // required the same size of the former two Mat. of course, we can also return the zero pading size Mat
+    // in the function spatialFilterUsedSeparatedKernel. but we will have to do the size changing again.
+    // then, we have changed the size in spatialFilterUsedSeparatedKernel function, it means the fuzzyImage
+    // has the same size with the inputImage. so you can add then directly.
+    zeroPaddingMat(fuzzyImage, zeroPaddingFuzzyImage, fuzzyOrSmoothKernel);
+    operateTwoMatMultiThread(inputImage, fuzzyImage, maskImage, SUB);
     maskImage *= k;
-    operateTwoMatMultiThread(zeroPaddingImage, maskImage, outputImage, ADD);
+    operateTwoMatMultiThread(inputImage, maskImage, outputImage, ADD);
     outputImage.convertTo(outputImage, CV_8UC1);
 }
 
@@ -835,9 +1023,98 @@ void sharpenImageUsedPassivationTemplate(Mat &inputImage, Mat &outputImage, Mat 
  */
 void getMaskImage(Mat &inputImage, Mat &maskImage, Mat fuzzyOrSmoothKernel) 
 {
-    Mat fuzzyImage, zeroPaddingImage;
+    Mat fuzzyImage, zeroPaddingImage, zeroPaddingFuzzy;
     zeroPaddingMat(inputImage, zeroPaddingImage, fuzzyOrSmoothKernel);
     spatialFilterUsedSeparatedKernel(inputImage, fuzzyImage, fuzzyOrSmoothKernel, CONVOLUTION);
-    operateTwoMatMultiThread(zeroPaddingImage, fuzzyImage, maskImage, SUB);
+    operateTwoMatMultiThread(inputImage, fuzzyImage, maskImage, SUB, true);
     maskImage.convertTo(maskImage, CV_8UC1);
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-26 23:13:35
+ * @Parameters: 
+ * @Return: you will get the image of strengthening the edge of the image.
+ * @Description: sobel operator is the application of the first derivative in the image of sharpening, 
+ * laplacian operator is the application of the second derivative in the image of sharpening.
+ * and the convolution of original image and sobel operators is different from the other operators.
+ * you should consider the g_x and g_y, so you will convolution two kernel. one is x axis, one is y axis.
+ * so we will define this function out of the generally function about convolution. of course, we can also
+ * use the generally function spatialFilterUsedSeparatedKernel, we can use this function convolution each kernel,
+ * and then abs each result, and add them. but we can also redefine this function spatialConvolution. of course, 
+ * there are two improver methods, one is to design two convolution in the circle, another is to implement
+ * the convolution process used expression. just like the kernel of g_x is equal to k7+2k8+k9-k1-2k2-k3.
+ * k1...k9 is the original gray value, you just need to scan the original gray value used the expression method.
+ * but this expression method is not the generally method. but it is the most simple method. but we will use
+ * the function spatialConvolution we have defined, we will calculate g_x and g_y used this function first, then
+ * abs(g_x) and abs(g_y), then add them. but this method will be low efficient, but it will be more generally.
+ * but we need to modify the function spatialConvolution if we want to use it in this function. because spatialConvolution
+ * function will return uchar type. but we want to get the signed number. so you should change it.
+ * and it will be very complex if we want to modify it. so we will redefine the function that dedicated to
+ * the sobel operators. but we have failed to redefine this function, because it will be very complex at
+ * the convolution operation. because |f*kernelGx| + |f*kernelGy| = |f*kernelGx1*kernelGx2| + |f*kernelGy1*kernelGy2|
+ * ≠ |f*kernelGx1*kernelGy1| + |f*kernelGx2*kernelGy2|. so we can not redefine the function spatialFilterOperation by
+ * adding one circle, so we will define the function sharpenImageUsedSobelOperator by handling it at the end.
+ * and you should notice, you can not cast the data type from 64F to 8UC1, because we should get 
+ * the obsolute value of the convolution value first, then add these two result. so the generally function 
+ * spatialFilterOperation is not suitable for this function. so we should update the function spatialFilterOperation
+ * we can find the edge detected is so fine that we can not find the important edge. then, we will define the
+ * threshold value to ignore some unimportant edge. it means you should define the threshold value
+ * that can set some below the threshold value region where the rate of changing about the gray value 
+ * in original image as 0.
+ */
+void edgeStrengthenUsedSobelOperator(Mat &inputImage, Mat &outputImage, Mat kernelGx, Mat kernelGy, double threshold = 30) 
+{
+    // first, assert the kernel.
+    int rankGx = getRankFromMat(kernelGx);
+    int rankGy = getRankFromMat(kernelGy);
+    int rows = inputImage.rows;
+    int cols = inputImage.cols;
+    assert((rankGx == 1) && (rankGy == 1));
+    Mat kernelGx1, kernelGx2, kernelGy1, kernelGy2;
+    Mat outputImageKernelGx1, outputImageKernelGy1, outputImageKernelGx2, outputImageKernelGy2;
+    separateKernel(kernelGx, kernelGx1, kernelGx2);
+    separateKernel(kernelGy, kernelGy1, kernelGy2);
+    rotationMat(kernelGx1, ONEEIGHTZERO);
+    rotationMat(kernelGx2, ONEEIGHTZERO);
+    rotationMat(kernelGy1, ONEEIGHTZERO);
+    rotationMat(kernelGy2, ONEEIGHTZERO);
+    outputImage.create(inputImage.size(), CV_64F);
+    spatialFilterOperation(inputImage, outputImageKernelGx1, kernelGx1, false, true);
+    spatialFilterOperation(outputImageKernelGx1, outputImageKernelGx2, kernelGx2, false, true);
+    spatialFilterOperation(inputImage, outputImageKernelGy1, kernelGy1, false, true);
+    spatialFilterOperation(outputImageKernelGy1, outputImageKernelGy2, kernelGy2, false, true);
+    double *outputImageKernelGx2Row, *outputImageKernelGy2Row;
+    double sumValue = 0.0, value = 0.0;
+    for (int i = 0; i < rows; i++)
+    {
+        outputImageKernelGx2Row = outputImageKernelGx2.ptr<double>(i);
+        outputImageKernelGy2Row = outputImageKernelGy2.ptr<double>(i);
+        for (int j = 0; j < cols; j++)
+        {
+            sumValue = std::abs(outputImageKernelGx2Row[j]) + std::abs(outputImageKernelGy2Row[j]);
+            value = (sumValue > threshold) ? sumValue : 0.0;
+            outputImage.at<double>(i, j) = value;
+        }
+    }
+    outputImage.convertTo(outputImage, CV_8UC1);
+}
+
+/**
+ * @Author: weiyutao
+ * @Date: 2023-02-27 15:04:07
+ * @Parameters: 
+ * @Return: the image of sharpening.
+ * @Description: sharpening image based on the sobel operators. notice, this threshold is not efficient at
+ * here, because we have considered the size 3*3 kernel. and we have judge the value based on the result value
+ * of convoluting result. so it will be inaccurate. but we can also get the same sharpening efficient.
+ * but the importance of sobel operator is dedicated to the edge strengthening. and we have got the
+ * edge image used edgeStrengthenUsedSobelOperator function. so it is successful.
+ */
+void sharpenImageUsedSobelOperator(Mat inputImage, Mat &outputImage, Mat kernelGx, Mat kernelGy, double threshold = 30) 
+{
+    Mat edgeStrengthenImage, addImage;
+    edgeStrengthenUsedSobelOperator(inputImage, edgeStrengthenImage, kernelGx, kernelGy, threshold);
+    operateTwoMatMultiThread(inputImage, edgeStrengthenImage, addImage, ADD, true);
+    addImage.convertTo(outputImage, CV_8UC1);
 }
